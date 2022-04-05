@@ -1,0 +1,36 @@
+site_name: Quién tiene tus datos
+site_url: https://socialtic.github.io/QTTD
+site_description: Documentación del proyecto "Quién tiene tus datos"
+
+nav:
+  - Instalación de servidor VPN: 'tutorial_openvpn.md'
+  - Plantila de aplicación: 'plantilla_app.md'
+
+theme:
+  name: material
+  language: es
+  # logo: # logotipo del proyecto
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  features:
+    - search.highlight
+plugins:
+  - search:
+      separator: '[\s\-\.\_]'
+extra:
+  social:
+    - icon: fontawesome/brands/twitter-square
+      link: https://twitter.com/socialtic
+    - icon: fontawesome/brands/github-square
+      link: https://github.com/socialtic/qttd
