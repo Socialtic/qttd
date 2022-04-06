@@ -1,165 +1,230 @@
-# Instalación de servidor VPN
+# Creación de laboratorio de análisis de aplicaciones móviles
+
+En esta primera sección crearemos y configuraremos el laboratorio de análisis de aplicaciones móviles. El diagrama que seguiremos será el siguiente:
+
+![digrama](./img/diagrama.png)
 
 ## Prerrequisitos
 
-1. Linux Ubuntu o Linux Mint
+Nos enfocaremos en crear una máquina virtual que será el servidor de datos, donde capturaremos el tráfico de red. Los prerequisitos son los siguientes:
+
+1. Ubuntu o Linux Mint instalado en nuestra computadora
+    - [Guía de instalación](https://linuxmint-installation-guide.readthedocs.io/en/latest/) de Linux Mint
 2. VirtualBox instalado
-3. Máquina Virtual con Ubuntu Server 20.04 LTS instalado
-4. El modo red de la máquina virtual debe ser "bridged" o "puente". Esto le dará a la máquina virtual una ip del estilo: 192.168.x.x. Si la ip de la máquina virtual es del estilo 10.x.x.x, se está utilizando el modo NAT y no el Bridged. Hay que cambiarlo en la sección de Configuración/Red de VirtualBox. Para averiguar la ip local basta correr el comando.
+    - [Guía de instalación](https://www.virtualbox.org/wiki/Downloads) de VirtualBox
+3. Máquina Virtual con [Ubuntu Server](https://ubuntu.com/download/server) 20.04 LTS 
+    - [Guía de creación](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox) de una máquina virtual
+    - [Guía de instalación](https://ubuntu.com/server/docs/installation) de Ubuntu Server
+4. Configurar el modo de red de la máquina virtual a "bridged" o "puente".
+    - Seleccionar la máquina virtual, ir a "Ajustes" -> "Red" -> "Modo de red" -> "Puente"
+    - Para verificar será necesario ingresar a la máquina virtual y desde una terminal ejecutar el comando `IP a | grep -w inet`. Si una de las direcciones es similar a 192.168.X.X la configuración es correcta.
 
-```
-ip a
-```
+## Instalación de OpenVPN
 
-Bajo la interfaz enp0s3 debería aparecer la dirección ip.   
+Continuaremos la instalación del servidor VPN en la máquina virtual que creamos. Después de iniciar la máquina virtual, desde una terminal seguremos los siguientes pasos.
 
-## Instalación OpenVPN
+Descargaremos el siguiente script (programa) que facilita la instalación:
 
-Bajar el siguiente script:
-
-``` 
+```bash
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 ```
 
-Cambiar los permisos de ejecución del script:
-``` 
+Cambiaremos los permisos de ejecución del scrip:
+
+```bash
 chmod +x openvpn-install.sh
 ```
 
-Ejecutar el script:
-```
+Ejecutaremos el scrip:
+
+```bash
 sudo bash openvpn-install.sh
 ```   
 
-Si en la primera pregunta la ip es de la forma 192.168.x.x, entonces dar enter.
-![imagen](https://user-images.githubusercontent.com/76178268/158869657-5d95e961-4df1-46c2-8576-ff56e48e5d52.png)
-
-En la siguiente pregunta, el script reconocerá la ip pública, aceptar.   
-![imagen](https://user-images.githubusercontent.com/76178268/158870405-d3a5b737-615b-46a6-b7d1-e19e2a2c6c58.png)
-
-Seleccionar el puerto por default o cambiarlo:   
-![imagen](https://user-images.githubusercontent.com/76178268/158870470-fdd18d07-f692-495c-8183-51f1bd8cedd7.png)
-
-Seleccionar el protoclo UDP:   
-![imagen](https://user-images.githubusercontent.com/76178268/158870526-ea563a71-c878-4e59-bb24-481d9dbc8f84.png)
-
-Seleccionar el DNS de CloudFlare:   
-![imagen](https://user-images.githubusercontent.com/76178268/158870655-4ae5c3a0-4d0d-4d88-8ee6-add79484d6d4.png)
-
-No usar compresión:   
-![imagen](https://user-images.githubusercontent.com/76178268/158870803-14e8feda-ea57-4427-a992-afec0c5fe38a.png)
-
-No modificar las opciones cifrado:   
-![imagen](https://user-images.githubusercontent.com/76178268/158870862-339763ea-ef36-499c-8806-317943851326.png)
-
-Continuar con la instalación y si todo resultó conrrectamente, el script nos pedirá el nombre del cliente. Este nombre puede ser aleatorio.   
-![imagen](https://user-images.githubusercontent.com/76178268/158871430-be19887a-dcd7-4be0-9fea-8644b03f5e32.png)
-
-Se puede agregar un password, aunque no es necesario:   
-![imagen](https://user-images.githubusercontent.com/76178268/158871658-c12ca8da-8749-4744-bd28-e04f5aa9a586.png)
-
-Si no hay ningún error, tendremos la siguiente pantalla:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872001-af4de4a3-ffe9-4632-939d-3201b7a3af12.png)
-
-Listar la carpeta /etc/openvpn/
-```
-ls /etc/openvpn
-```
-
-Si en dicho directorio existen muchos archivos, como se ve en la siguiente imagen:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872209-78ec98f4-bc8a-4f92-a0df-1cce4b7c483b.png)
-
-Entonces es necesario mover casi todos al directorio /server. En la carpeta /etc/openvpn/ sólo deben estar los siguientes archivos y directorios:
-- /ccd
-- /client
-- /server
-- client-template.txt
-- update-resolv-conf
-
-Los demás archivos deben moverse al directorio de server.
-
-Entramos a la carpeta /etc/openvpn:
+Nos encontraremos con un asistente de instalación que nos hará unas preguntas. Si en la primera pregunta la IP es de la forma 192.168.X.X, entonces presionar `Enter`. En caso de que la dirección IP no sea similar, necesitaremos verificar que la máquina virtual esté en el modo de red "puente".
 
 ```
-cd /etc/openvpn
+I need to know the IPv4 address of the network interface you want OpenVPN listening to.
+Unless your server is behind NAT, it should be your public IPv4 address.
+IP address: 192.168.1.126
 ```
 
-Movemos los archivos:
+En la siguiente pregunta, el script reconocerá la IP pública, aceptar.   
 
 ```
-sudo mv archivo.1 archivo.2 dir.1 dir.2 /etc/openvpn/server
+It seems this server is behind NAT. What is its public IPv4 address or hostname?
+We need it for the clients to connect to the server.
+Public IPv4 address or hostname: 111.222.333.444
 ```
 
-Permitimos el servicio de OpenVPN:
+Recomendamos negar el uso de conectividad por IPv6.
+
+```
+Checking for IPv6 connectivity...
+
+Your host appears to have IPv6 connectivity.
+
+Do you want to enable IPv6 support (NAT)? [y/n]: n
+```
+
+Seleccionamos un puerto, podemos elegir el puerto por defecto.
+
+```
+What port do you want OpenVPN to listen to?
+   1) Default: 1194
+   2) Custom
+   3) Random [49152-65535]
+Port choice [1-3]: 1
+```
+
+Seleccionamos el protoclo UDP:
+
+```
+What protocol do you want OpenVPN to use?
+UDP is faster. Unless it is not available, you shouldn't use TCP.
+   1) UDP
+   2) TCP
+Protocol [1-2]: 1
+```
+
+Seleccionamos el DNS de CloudFlare:   
+
+```
+What DNS resolvers do you want to use with the VPN?
+   1) Current system resolvers (from /etc/resolv.conf)
+   2) Self-hosted DNS Resolver (Unbound)
+   3) Cloudflare (Anycast: worldwide)
+   ...
+   13) Custom
+DNS [1-12]: 3
+```
+
+Evitamos usar compresión:
+
+```
+Do you want to use compression? It is not recommended since the VORACLE attack makes use of it.
+Enable compression? [y/n]: n
+```
+
+No modificaremos las opciones de cifrado:   
+
+```
+Do you want to customize encryption settings?
+Unless you know what you're doing, you should stick with the default parameters provided by the script.
+Note that whatever you choose, all the choices presented in the script are safe. (Unlike OpenVPN's defaults)
+See https://github.com/angristan/openvpn-install#security-and-encryption to learn more.
+
+Customize encryption settings? [y/n]: n
+```
+
+Continuamos con la instalación, automáticamente se instalará algunos paquetes y si todo fue correcto el script nos pedirá el nombre del cliente. Este nombre puede ser aleatorio.
+
+```
+Tell me a name for the client.
+The name must consist of alphanumeric character. It may also include an underscore or a dash.
+Client name: vpn-qttd
+```
+
+Después se puede agregar una contraseña, aunque no es necesaria:
+
+```
+Do you want to protect the configuration file with a password?
+(e.g. encrypt the private key with a password)
+   1) Add a passwordless client
+   2) Use a password for the client
+Select an option [1-2]: 1
+```
+
+Si no hubo ningún error, tendremos la siguiente información:   
+
+```
+Write out database with 1 new entries
+Data Base Updated
+
+Client vpn-qttd added.
+
+The configuration file has been written to /home/user/vpn-qttd.ovpn.
+Download the .ovpn file and import it in your OpenVPN client.
+```
+
+Lo siguiente será mover a la carpeta `/etc/openvpn/server` los siguientes archivos y directorios.
+
+```
+$ cd /etc/openvpn/
+sudo mv ca.* crl.pem easy-rsa ipp.txt server.conf server_* tls-crypt.key server
+```
+
+En la carpeta `/etc/openvpn/` sólo deberían estar los siguientes archivos y directorios:
+
+```
+$ ls /etc/openvpn/
+ccd  client  client-template.txt  server  update-resolv-conf
+```
+
+Habilitamos el servicio de OpenVPN:
 
 ```
 sudo systemctl enable openvpn-server@server.service
 ```
 
-Reiniciamos el servidor desde el menú de VirtualBox Archivo/Cerrar/Enviar Señal de apagado.
+Ahora reiniciamos el servidor y después de que haya arrancado de nuevo verificamos que el servicio de OpenVPN se haya ejecutado sin errores.
 
 ```
-sudo systemctl openvpn-server@server.service
+$ sudo systemctl status openvpn-server@server.service
+● openvpn-server@server.service - OpenVPN service for server
+     Loaded: loaded (/lib/systemd/system/openvpn-server@.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2022-04-05 22:38:44 UTC; 15h ago
+       Docs: man:openvpn(8)
+             https://community.openvpn.net/openvpn/wiki/Openvpn24ManPage
+             https://community.openvpn.net/openvpn/wiki/HOWTO
+   Main PID: 677 (openvpn)
+     Status: "Initialization Sequence Completed"
 ```
-
-Activamos el servicio openvpn-server:
-
-```
-sudo systemctl start openvpn-server@server.service
-```
-
-Revisamos que no haya problemas:
-
-```
-sudo systemctl status openvpn-server@server.service
-```
-
-Debería aparecer una pantalla similar:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872289-e84bb02c-db2e-484c-a9dc-b9cbd63b9dad.png)
 
 ## Instalación del servidor SSH
 
 Para poder recuperar el archivo de cliente nombre.ovpn, necesitamos pasarlo a la máquina huésped de la máquina virtual. Hay varias maneras, aquí sugerimos una muy sencilla.
 
-Instalamos openssh server:
+Instalamos openssh server.
 
 ```
 sudo apt install openssh-server
 ```
 
-Permitimos el servicio:
+Habilitamos el servicio.
 
 ```
 sudo systemctl enable ssh
 ```
 
-Activamos el servicio:
+Activamos el servicio.
 
 ```
 sudo systemctl start ssh
 ```
 
 ## Recuperación y edición del archivo de cliente
+
 En la terminal de la máquina huesped ingresamos el siguiente comando:
 
 ```
-scp nombre_usuario@192.168.x.x:nombre.ovpn /home/usuario/Descargas
+scp nombre_usuario@192.168.X.X:~/nombre.ovpn ~
 ```
 
-Una vez que tenemos el archivo en nuestra máquina huesped, tenemos que editarlo. Abrirlo con cualquier editor de texto y cambiar la siguiente línea por la ip local:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872516-ae22246f-eddd-4c6c-ae36-b7200bd9b349.png)
+Una vez que tenemos el archivo en nuestra máquina huesped, tenemos que editarlo con cualquier editor de texto y cambiar la siguiente dirección IP por la IP local:   
+
+```
+remote 192.168.1.126 1194
+```
 
 Guardar los cambios y enviarlo al celular.
 
-## OpenVPN en el celular
+## Instalación de OpenVPN en el celular
  
-Descargamos desde la Playstore la app OpenVPN:   
+Descargamos desde la Playstore la aplicación OpenVPN:   
 ![imagen](https://user-images.githubusercontent.com/76178268/158872588-579f1ca6-9072-4c7c-81d7-68c9602b0a54.png)
 
-Abrimos la app y aceptamos la licencia de uso:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872648-2896c061-70a4-49f1-b7cd-c15e7dc0348e.png)
-
-Nos vamos a FILE:   
+Abrimos la aplicación e ingresamos a "FILE" para usar el archivo `.openvpn` que copiamos al celular:   
 ![imagen](https://user-images.githubusercontent.com/76178268/158872697-5fabfa88-b04f-44f1-a0a5-def0d1529f7b.png)
 
 Seleccionamos la carpeta donde tenemos nuestro archivo de cliente:   
@@ -174,7 +239,7 @@ Seleccionamos Connect after import, le damos en ADD y aceptamos la advertencia d
 El celular debería estar conectado a la VPN:   
 ![imagen](https://user-images.githubusercontent.com/76178268/158873016-0524f35d-f5ef-41d7-af5d-65fc963f243d.png)
 
-## Tshark
+## Instalación de Tshark
 
 Instalaremos Tshark para capturar el tráfico de red del celular.
 
@@ -184,31 +249,31 @@ sudo apt install tshark
 
 ## Captura de paquetes de red
 
-1. En el celular con LineageOS desinstalar  y deshabilitar todas las apps no necesarias. Esto nos permitirá tener el menor ruido en la captura de tráfico.
-2. Instalar la app que se quiere analizar.
+1. En el celular (preferentemente con  LineageOS) desinstalar  y deshabilitar todas las aplicaciones no necesarias. Esto nos permitirá tener el menor ruido en la captura de tráfico.
+2. Instalar la aplicaciones que se quiere analizar.
 3. En el servidor Ubuntu inicializar Tshark:
 
 ```
 sudo tshark -i enp0s3 -w /tmp/nombre.pcap
 ```
 
-La interfaz de escucha es la misma que la de nuestra ip local.
+La interfaz de escucha es la misma que la de nuestra IP local.
 
 4. Conectar el celular a la VPN a través de OpenVPN.
-5. Explorar la app.
+5. Explorar la aplicación.
 
-# Transferencia del archivo nombre.pcap a nuestro huesped para analizar en Wireshark
+## Transferencia del archivo nombre.pcap a nuestro huesped para analizar en Wireshark
 
 Mover el archivo pcap a la carpeta /home del usuario en el servidor Ubuntu:
 
 ```
-sudo mv /tmp/nombre.pcap /~
+sudo mv /tmp/nombre.pcap ~
 ```
 
 Darle los permisos necesarios para poderla copiar:
 
 ```
-sudo chmod 777 nombre.pcap
+sudo chmod 776 nombre.pcap
 ```
 
 En la terminal de nuestro equipo huesped:
@@ -217,4 +282,4 @@ En la terminal de nuestro equipo huesped:
 scp usuario@192.168.x.x:nombre.pcap /home/usuario/Descargas
 ```
 
-Abrirlo el archivo con Wireshark y analizar tráfico.
+Abrirlo el archivo con Wireshark y analizar el tráfico.
