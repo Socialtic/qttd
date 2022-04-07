@@ -1,6 +1,6 @@
-# Creación de laboratorio de análisis de aplicaciones móviles
+# Instalación de laboratorio
 
-En esta primera sección crearemos y configuraremos el laboratorio de análisis de aplicaciones móviles. El diagrama que seguiremos será el siguiente:
+En esta primera sección crearemos el laboratorio de análisis de aplicaciones móviles. El diagrama que seguiremos será el siguiente:
 
 ![digrama](./img/diagrama.png)
 
@@ -12,16 +12,16 @@ Nos enfocaremos en crear una máquina virtual que será el servidor de datos, do
     - [Guía de instalación](https://linuxmint-installation-guide.readthedocs.io/en/latest/) de Linux Mint
 2. VirtualBox instalado
     - [Guía de instalación](https://www.virtualbox.org/wiki/Downloads) de VirtualBox
-3. Máquina Virtual con [Ubuntu Server](https://ubuntu.com/download/server) 20.04 LTS 
+3. Máquina Virtual con Ubuntu Server 20.04
     - [Guía de creación](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox) de una máquina virtual
     - [Guía de instalación](https://ubuntu.com/server/docs/installation) de Ubuntu Server
 4. Configurar el modo de red de la máquina virtual a "bridged" o "puente".
-    - Seleccionar la máquina virtual, ir a "Ajustes" -> "Red" -> "Modo de red" -> "Puente"
-    - Para verificar será necesario ingresar a la máquina virtual y desde una terminal ejecutar el comando `IP a | grep -w inet`. Si una de las direcciones es similar a 192.168.X.X la configuración es correcta.
+    - En VirtualBox elegir la máquina, ir a "Configuración" -> "Red" -> "Conectado a" y seleccionar "Adaptador puente"
+    - Para verificar será necesario ingresar a la máquina virtual y desde una terminal ejecutar el comando `IP a | grep -w inet`. Si una de las direcciones es similar a `192.168.X.X` la configuración es correcta.
 
-## Instalación de OpenVPN
+## Instalación del servidor OpenVPN
 
-Continuaremos la instalación del servidor VPN en la máquina virtual que creamos. Después de iniciar la máquina virtual, desde una terminal seguremos los siguientes pasos.
+Continuaremos con la instalación del servidor VPN en la máquina virtual que creamos. Después de iniciar la máquina virtual, desde una terminal seguremos los siguientes pasos.
 
 Descargaremos el siguiente script (programa) que facilita la instalación:
 
@@ -167,7 +167,7 @@ Habilitamos el servicio de OpenVPN:
 sudo systemctl enable openvpn-server@server.service
 ```
 
-Ahora reiniciamos el servidor y después de que haya arrancado de nuevo verificamos que el servicio de OpenVPN se haya ejecutado sin errores.
+Ahora reiniciamos el servidor y después de que haya arrancado verificamos que el servicio de OpenVPN se haya ejecutado sin errores.
 
 ```
 $ sudo systemctl status openvpn-server@server.service
@@ -181,64 +181,6 @@ $ sudo systemctl status openvpn-server@server.service
      Status: "Initialization Sequence Completed"
 ```
 
-## Instalación del servidor SSH
-
-Para poder recuperar el archivo de cliente nombre.ovpn, necesitamos pasarlo a la máquina huésped de la máquina virtual. Hay varias maneras, aquí sugerimos una muy sencilla.
-
-Instalamos openssh server.
-
-```
-sudo apt install openssh-server
-```
-
-Habilitamos el servicio.
-
-```
-sudo systemctl enable ssh
-```
-
-Activamos el servicio.
-
-```
-sudo systemctl start ssh
-```
-
-## Recuperación y edición del archivo de cliente
-
-En la terminal de la máquina huesped ingresamos el siguiente comando:
-
-```
-scp nombre_usuario@192.168.X.X:~/nombre.ovpn ~
-```
-
-Una vez que tenemos el archivo en nuestra máquina huesped, tenemos que editarlo con cualquier editor de texto y cambiar la siguiente dirección IP por la IP local:   
-
-```
-remote 192.168.1.126 1194
-```
-
-Guardar los cambios y enviarlo al celular.
-
-## Instalación de OpenVPN en el celular
- 
-Descargamos desde la Playstore la aplicación OpenVPN:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872588-579f1ca6-9072-4c7c-81d7-68c9602b0a54.png)
-
-Abrimos la aplicación e ingresamos a "FILE" para usar el archivo `.openvpn` que copiamos al celular:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872697-5fabfa88-b04f-44f1-a0a5-def0d1529f7b.png)
-
-Seleccionamos la carpeta donde tenemos nuestro archivo de cliente:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872750-4e3f287e-153e-44c9-b8a7-395f12045222.png)
-
-Lo seleccionamos y le damos importar:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872805-b444ae76-bb30-47d0-b80e-818f4a363e33.png)
-
-Seleccionamos Connect after import, le damos en ADD y aceptamos la advertencia de seguridad:   
-![imagen](https://user-images.githubusercontent.com/76178268/158872974-4f230c9b-05ab-4a16-bcd5-2cca9d754107.png)
-
-El celular debería estar conectado a la VPN:   
-![imagen](https://user-images.githubusercontent.com/76178268/158873016-0524f35d-f5ef-41d7-af5d-65fc963f243d.png)
-
 ## Instalación de Tshark
 
 Instalaremos Tshark para capturar el tráfico de red del celular.
@@ -247,39 +189,46 @@ Instalaremos Tshark para capturar el tráfico de red del celular.
 sudo apt install tshark
 ```
 
-## Captura de paquetes de red
+## Recuperación y edición del archivo de cliente
 
-1. En el celular (preferentemente con  LineageOS) desinstalar  y deshabilitar todas las aplicaciones no necesarias. Esto nos permitirá tener el menor ruido en la captura de tráfico.
-2. Instalar la aplicaciones que se quiere analizar.
-3. En el servidor Ubuntu inicializar Tshark:
+Finalmente tenemos que modificar el arcihvo `.ovpn` generado en la máquina virtual, con un editor de texto cambiaremos la dirección IP del campo `remote` por la IP local de la máquina virtual.
 
 ```
-sudo tshark -i enp0s3 -w /tmp/nombre.pcap
+remote 192.168.1.126 1194
 ```
 
-La interfaz de escucha es la misma que la de nuestra IP local.
+Luego necesitaremos enviar el archivo al celular, podemos hacerlo desde la máquina virtual habilitando un servidor web temporal:
 
-4. Conectar el celular a la VPN a través de OpenVPN.
-5. Explorar la aplicación.
-
-## Transferencia del archivo nombre.pcap a nuestro huesped para analizar en Wireshark
-
-Mover el archivo pcap a la carpeta /home del usuario en el servidor Ubuntu:
-
-```
-sudo mv /tmp/nombre.pcap ~
+```bash
+python3 -m http.server 8000
 ```
 
-Darle los permisos necesarios para poderla copiar:
+Desde un navegador web en nuestro celular visitaremos la página usando la dirección IP local de la máquina virtual y agregando el puerto 8000 al final. Para nuestro caso sería [192.168.1.199:8000](192.168.1.199:8000), una vez dentro podemos seleccionar el archivo y este se descargará al celular.
 
-```
-sudo chmod 776 nombre.pcap
-```
+## Instalación de OpenVPN en el celular
+ 
+Descargamos desde la Playstore la aplicación OpenVPN.
 
-En la terminal de nuestro equipo huesped:
+![imagen](https://user-images.githubusercontent.com/76178268/158872588-579f1ca6-9072-4c7c-81d7-68c9602b0a54.png)
 
-``` 
-scp usuario@192.168.x.x:nombre.pcap /home/usuario/Descargas
-```
+Abrimos la aplicación e ingresamos a "FILE" para usar el archivo `.openvpn` que copiamos al celular.
 
-Abrirlo el archivo con Wireshark y analizar el tráfico.
+![imagen](https://user-images.githubusercontent.com/76178268/158872697-5fabfa88-b04f-44f1-a0a5-def0d1529f7b.png)
+
+Seleccionamos la carpeta donde tenemos nuestro archivo de cliente.
+
+![imagen](https://user-images.githubusercontent.com/76178268/158872750-4e3f287e-153e-44c9-b8a7-395f12045222.png)
+
+Lo seleccionamos y le damos importar.
+
+![imagen](https://user-images.githubusercontent.com/76178268/158872805-b444ae76-bb30-47d0-b80e-818f4a363e33.png)
+
+Seleccionamos Connect after import, le damos en ADD y aceptamos la advertencia de seguridad.
+
+![imagen](https://user-images.githubusercontent.com/76178268/158872974-4f230c9b-05ab-4a16-bcd5-2cca9d754107.png)
+
+Ahora el celular debería estar conectado a la VPN.
+
+![imagen](https://user-images.githubusercontent.com/76178268/158873016-0524f35d-f5ef-41d7-af5d-65fc963f243d.png)
+
+Los siguientes pasos serán capturar el tráfico generado y analizar este mismo.
