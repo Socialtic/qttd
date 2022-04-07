@@ -183,7 +183,7 @@ $ sudo systemctl status openvpn-server@server.service
 
 ## Instalación de Tshark
 
-Instalaremos Tshark para capturar el tráfico de red del celular.
+Instalaremos Tshark para capturar el tráfico desde la máquina virtual generado por el celular.
 
 ```
 sudo apt install tshark
