@@ -2,11 +2,11 @@
 
 En esta primera sección crearemos el laboratorio de análisis de aplicaciones móviles. El diagrama que seguiremos será el siguiente:
 
-![digrama](./img/diagrama.png)
+![diagrama](./img/diagrama.png)
 
 ## Prerrequisitos
 
-Nos enfocaremos en crear una máquina virtual que será el servidor de datos, donde capturaremos el tráfico de red. Los prerequisitos son los siguientes:
+Nos enfocaremos en crear una máquina virtual que será el servidor de datos, donde capturaremos el tráfico de red. Los prerrequisitos son los siguientes:
 
 1. Ubuntu o Linux Mint instalado en nuestra computadora
     - [Guía de instalación](https://linuxmint-installation-guide.readthedocs.io/en/latest/) de Linux Mint
@@ -21,7 +21,7 @@ Nos enfocaremos en crear una máquina virtual que será el servidor de datos, do
 
 ## Instalación del servidor OpenVPN
 
-Continuaremos con la instalación del servidor VPN en la máquina virtual que creamos. Después de iniciar la máquina virtual, desde una terminal seguremos los siguientes pasos.
+Continuaremos con la instalación del servidor VPN en la máquina virtual que creamos. Después de iniciar la máquina virtual, desde una terminal seguiremos los siguientes pasos.
 
 Descargaremos el siguiente script (programa) que facilita la instalación:
 
@@ -29,13 +29,13 @@ Descargaremos el siguiente script (programa) que facilita la instalación:
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 ```
 
-Cambiaremos los permisos de ejecución del scrip:
+Cambiaremos los permisos de ejecución del script:
 
 ```bash
 chmod +x openvpn-install.sh
 ```
 
-Ejecutaremos el scrip:
+Ejecutaremos el script:
 
 ```bash
 sudo bash openvpn-install.sh
@@ -77,7 +77,7 @@ What port do you want OpenVPN to listen to?
 Port choice [1-3]: 1
 ```
 
-Seleccionamos el protoclo UDP:
+Seleccionamos el protocolo UDP:
 
 ```
 What protocol do you want OpenVPN to use?
@@ -183,7 +183,7 @@ $ sudo systemctl status openvpn-server@server.service
 
 ## Instalación de Tshark
 
-Instalaremos Tshark para capturar el tráfico desde la máquina virtual generado por el celular.
+Instalaremos `tshark` para capturar el tráfico desde la máquina huésped generado por el celular.
 
 ```
 sudo apt install tshark
@@ -191,7 +191,7 @@ sudo apt install tshark
 
 ## Recuperación y edición del archivo de cliente
 
-Finalmente tenemos que modificar el arcihvo `.ovpn` generado en la máquina virtual, con un editor de texto cambiaremos la dirección IP del campo `remote` por la IP local de la máquina virtual.
+Finalmente tenemos que modificar el archivo `.ovpn` generado en la máquina virtual, con un editor de texto cambiaremos la dirección IP del campo `remote` por la IP local de la máquina virtual.
 
 ```
 remote 192.168.1.126 1194
@@ -207,7 +207,7 @@ Desde un navegador web en nuestro celular visitaremos la página usando la direc
 
 ## Instalación de OpenVPN en el celular
  
-Descargamos desde la Playstore la aplicación OpenVPN.
+Descargamos desde la tienda de Google Play la aplicación OpenVPN.
 
 ![imagen](https://user-images.githubusercontent.com/76178268/158872588-579f1ca6-9072-4c7c-81d7-68c9602b0a54.png)
 
@@ -223,7 +223,7 @@ Lo seleccionamos y le damos importar.
 
 ![imagen](https://user-images.githubusercontent.com/76178268/158872805-b444ae76-bb30-47d0-b80e-818f4a363e33.png)
 
-Seleccionamos Connect after import, le damos en ADD y aceptamos la advertencia de seguridad.
+Seleccionamos "Connect after import", luego "ADD" y aceptamos la advertencia de seguridad.
 
 ![imagen](https://user-images.githubusercontent.com/76178268/158872974-4f230c9b-05ab-4a16-bcd5-2cca9d754107.png)
 

@@ -6,7 +6,7 @@ En esta sección mostraremos cómo capturar los paquetes de red desde la máquin
 
 1. En el celular (preferentemente con una ROM como LineageOS) desinstalar y deshabilitar todas las aplicaciones no necesarias pues esto nos permitirá tener menos "ruido" en la captura de tráfico
 2. Instalar las aplicaciones que se quiere analizar
-3. En la máquina virtual inicializar `tshark` en la interfáz correspondiente
+3. En la máquina virtual inicializar `tshark` en la interfaz correspondiente
    ```bash
    sudo tshark -i enp0s3 -w /tmp/nombre.pcap
    ```
@@ -28,7 +28,7 @@ Cambiar el dueño del archivo y grupo
 sudo chown user:user nombre.pcap
 ```
 
-Transferir el archivo a nuestro equipo huésped. Podemos iniciar un servidor web con python en la máquina virtual.
+Transferir el archivo a nuestro equipo huésped. Podemos iniciar un servidor web con Python en la máquina virtual.
 
 ```bash
 python3 -m http.server 8000
