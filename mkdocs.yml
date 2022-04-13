@@ -3,9 +3,12 @@ site_url: https://socialtic.github.io/QTTD
 site_description: Documentación del proyecto "Quién tiene tus datos"
 
 nav:
-  - 'instalacion_laboratorio.md'
-  - 'analisis_aplicaciones.md'
-  - Plantila de aplicación: 'plantilla_app.md'
+  - 'Herramientas para analizar una app':
+      - 'instalacion_laboratorio.md'
+      - 'analisis_aplicaciones.md'
+  - 'Plantila de aplicación': 'plantilla_app.md'
+  - 'Aplicaciones analizadas':
+      - 'Mi Policía': '2022-03/mi-policia.md'
 
 theme:
   name: material
