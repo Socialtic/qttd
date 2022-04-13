@@ -8,15 +8,15 @@
 
 ## Descripción de la aplicación
 
-- **Link de descarga:** https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US
+- **Link de descarga:** [https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US](https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US)
 - **Descargas:** 500,000+
 - **Ultima fecha de actualización:** 9 abril 2022
 - **Versión:** 3.0.2
-- **Desarrollador:** https://www.ssc.cdmx.gob.mx/
+- **Desarrollador:** [https://www.ssc.cdmx.gob.mx/](https://www.ssc.cdmx.gob.mx/)
 - **Firma:** Saul Espinosa Ruiz
 - **Contacto:** mipolicia@ssp.df.gob.mx
 - **Condiciones de uso y Política de privacidad:**
-    - https://www.ssc.cdmx.gob.mx/ciudadania/mi-policia/condiciones-de-uso-y-aviso-de-privacidad  
+    - [https://www.ssc.cdmx.gob.mx/ciudadania/mi-policia/condiciones-de-uso-y-aviso-de-privacidad](https://www.ssc.cdmx.gob.mx/ciudadania/mi-policia/condiciones-de-uso-y-aviso-de-privacidad)
 - **Descripción en PlayStore:**
 ~~~
 La Policía de la Ciudad de México, ofrece una estrategia operativa, denominada
@@ -34,7 +34,7 @@ ubicación de los Cuadrantes de la Ciudad de México.
 
 - **Esta aplicación no contiene trackers.**
 - **Enlace de Exodus Privacy:**
-    - https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/
+    - [https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/](https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/)
 
 
 ## Permisos   
