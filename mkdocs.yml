@@ -8,7 +8,7 @@ nav:
       - 'analisis_aplicaciones.md'
   - 'Plantila de aplicación': 'plantilla_app.md'
   - 'Aplicaciones analizadas':
-      - 'Mi Pólicia': '2022-03/mi-policia.md'
+      - 'Mi Policía': '2022-03/mi-policia.md'
 
 theme:
   name: material
