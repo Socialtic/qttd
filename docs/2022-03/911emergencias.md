@@ -265,9 +265,9 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 - Además se asigna un folio al reporte que se puede revisar.
 - El botón de Alerta de Pánico envía:
- - Fecha
- - Ubicación
- - Teléfono
+  - Fecha
+  - Ubicación
+  - Teléfono
 
 
 
