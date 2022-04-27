@@ -35,7 +35,13 @@ móvil.*
 
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/gob.sesnsp.emergencia911/latest/).
 
+## Empresas relacionadas con esta aplicación
+- Google (Trackers y servicio de ubicación)
+- Alestra (Servidor donde está albergada la aplicación)
+
 ## Permisos
+#### Número de permisos 
+
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
 
@@ -183,31 +189,33 @@ _modify system settings_
 
 El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 #### Permisos solicitados al usuario durante el uso de la aplicación
-- Acceso a Ubicación (!) (Si se niega, funciona en segundo plano)
-- Acceso a llamadas telefónicas (Para botón 911)
-- Acceso a contactos (Si se quiere introducir de manera automática a los contactos de la red de contactos)
-- Acceso a Grabar Audio (En las notificaciones se puede adjuntar un archivo de Audio)
-- Acceso a Tomar Fotos y Video (En las notificaciones se puede adjuntar un archivo de foto o uno de viídeo)
-- Acceso a fotos, archivos multimedia y archivos (Para adjuntar los archivos en las notificaciones)
-- Acceso a "No molestar" (Cuando se aprieta el botón de pánico, el celular entra en modo no molestar)
-- Acceso a SMS (Cuando se hace una notificación, se puede notificar de manera automática a la red de contactos)
+- 🔴 Acceso a Ubicación (Si se niega, funciona en segundo plano)
+- 🔵 Acceso a llamadas telefónicas (Para botón 911)
+- 🔵 Acceso a Contactos (Si se quiere introducir de manera automática a los contactos de la red de contactos)
+- 🔵 Acceso a Grabar Audio (En las notificaciones se puede adjuntar un archivo de Audio)
+- 🔵 Acceso a Tomar Fotos y Video (En las notificaciones se puede adjuntar un archivo de foto o uno de vídeo)
+- 🔵 Acceso a fotos, archivos multimedia y archivos (Para adjuntar los archivos en las notificaciones)
+- 🔵 Acceso a "No molestar" (Cuando se aprieta el botón de pánico, el celular entra en modo no molestar)
+- 🔵 Acceso a SMS (Cuando se hace una notificación, se puede notificar de manera automática a la red de contactos)
 
+🔴 Este ícono indica permiso obligatorio   
+🔵 Este ícono indica permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
 ### Datos solicitados al usuario durante el uso de la aplicación
-- Número de celular (!)
-- Compañia telefónica (!)
-- Nombre (!)
-- Apellido Paterno (!)
-- Apellido Materno (!)
-- Correo Electrónico (!)
+- 🔴 Número de celular
+- 🔴 Compañia telefónica
+- 🔴 Nombre
+- 🔴 Apellido Paterno
+- 🔴 Apellido Materno
+- 🔴 Correo Electrónico
 - Fecha de nacimiento
-- Sexo (!)
-- Domicilio (!)
-- Estado (!)
-- Municipio (!)
-- Colonia (!)
-- C.P. (!)
+- 🔴 Sexo
+- 🔴 Domicilio
+- 🔴 Estado
+- 🔴 Municipio
+- 🔴 Colonia
+- 🔴 C.P.
 - Contactos de emergencia (Máx. 5)
 - Perfil médico que incluye:
   - Peso
@@ -215,8 +223,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
   - Padecimientos
   - Alergias y reacciones
   - Medicamentos actuales
-  - Tipo de sangre
-
+  - Tipo de sangre   
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria
 
 
 #### Tabla de conexiones realizadas durante el uso de la aplicación
@@ -234,13 +242,15 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 142.251.40.46   |                 26 | United States |                       |     15169 | GOOGLE                      |
 | 201.151.6.27    |                234 | Mexico        | Mineral de la Reforma |     11172 | Alestra, S. de R.L. de C.V. |
 
+#### Mapa de conexiones 
+
+
 #### Otros datos recolectados
 - Cuando se instala la app, se manda un identificador a Google.
-- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob.Este último recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
+- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob. Este último recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - En el análisis no notamos particulares accesos de datos más que de Tag Manager. Puede ser que los otros trackers, a pesar de estar presentes, estén desactivados.
 - Se contacta el servidor clients4.google.com. No hay mucha información sobre este dominio y su utilidad. En este caso tiene que ver probablemente con algún tracker. Sabemos que se manda el sistema operativo y su versión, pero nada más.
 - El servidor 201.151.6.27 es el Host de esta aplicación. Todas las llamadas que se hacen a ese servidor están cifradas.
-- El servidor de ubicación es Google.
 - Cuando se hace una llamada al 911, se envía automáticamente la ubicación y el número de teléfono.
 - El reporte de incidente envía:
  - archivo
