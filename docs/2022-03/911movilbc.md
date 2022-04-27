@@ -259,23 +259,23 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por el tracker de Firebase. Este último asigna, a través de otro tracker, [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 
 - El servidor 066movilbc.seguridadbc.gob.mx con IP: 200.76.246.123 es el Host de la app. Todos los datos que el usuario debe introducir son guardados ahí. Las llamadas se hacen en texto plano, HTTP, lo que implica una brecha de seguridad.Se pueden ver los siguientes datos en el http:
- - ID de usuario
- - Nuevo Equipo (si al acceder con un número ya registrado, se está accediendo desde otro equipo al original)
+   - ID de usuario
+   - Nuevo Equipo (si al acceder con un número ya registrado, se está accediendo desde otro equipo al original)
 Número de teléfono
- - Correo
- - Número de confirmación que se usa para acceder a la aplicación y si este fue aceptado por el servidor de manera correcta.
- - Marca del celular
- - Modelo del celular
- - Sistema Operativo
- - Versión del sistema Operativo
- - Todo el Perfil Médico  
- - Firebase Token
+   - Correo
+   - Número de confirmación que se usa para acceder a la aplicación y si este fue aceptado por el servidor de manera correcta.
+   - Marca del celular
+   - Modelo del celular
+   - Sistema Operativo
+   - Versión del sistema Operativo
+   - Todo el Perfil Médico  
+   - Firebase Token
 - Las notificaciones de emergencia hechas con el botón Violencia de Género y el Botón de Pánico, se hacen mediante HTML y tampoco están cifradas. Incluyen estos datos:
- - Número de teléfono
- - Ubicación
- - Dirección (aunque no existe esta función)
- - Si el número desde el que se mandó la alerta pertenece a una empresa de seguridad privada.
- - Número de incidente
+   - Número de teléfono
+   - Ubicación
+   - Dirección (aunque no existe esta función)
+   - Si el número desde el que se mandó la alerta pertenece a una empresa de seguridad privada.
+   - Número de incidente
 - La página [www.seguridad.gob.mx](www.seguridad.gob.mx), en la cual están las funciones de "Estadísticas", "Desaparición de menores" y "Qué hacer", a veces está cifrada con HTTPS, y a veces no.  
 
 
