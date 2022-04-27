@@ -198,8 +198,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - 🔵 Acceso a "No molestar" (Cuando se aprieta el botón de pánico, el celular entra en modo no molestar)
 - 🔵 Acceso a SMS (Cuando se hace una notificación, se puede notificar de manera automática a la red de contactos)
 
-🔴 Este ícono indica permiso obligatorio   
-🔵 Este ícono indica permiso opcional pero se pierde una funcionalidad particular
+🔴 Este ícono indica un permiso obligatorio   
+🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
 ### Datos solicitados al usuario durante el uso de la aplicación
@@ -209,15 +209,15 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - 🔴 Apellido Paterno
 - 🔴 Apellido Materno
 - 🔴 Correo Electrónico
-- Fecha de nacimiento
+- ⚪ Fecha de nacimiento
 - 🔴 Sexo
 - 🔴 Domicilio
 - 🔴 Estado
 - 🔴 Municipio
 - 🔴 Colonia
 - 🔴 C.P.
-- Contactos de emergencia (Máx. 5)
-- Perfil médico que incluye:
+- ⚪ Contactos de emergencia (Máx. 5)
+- ⚪ Perfil médico que incluye:
   - Peso
   - Estatura
   - Padecimientos
@@ -225,7 +225,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
   - Medicamentos actuales
   - Tipo de sangre   
 
-🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
+⚪ Este ícono indica que estos datos son opcionales. 
 
 
 #### Tabla de conexiones realizadas durante el uso de la aplicación
