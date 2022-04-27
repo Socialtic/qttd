@@ -204,7 +204,7 @@ _Modify or delete the contents of your SD card_
 
 El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 
-####  7 Permisos solicitados al usuario durante el uso de la aplicación
+####  Permisos solicitados al usuario durante el uso de la aplicación
 *Antes de aceptarlos aparece una leyenda que informa al usuario que de no aceptarlos, la app no funcionará. Lasnotificaciones aparecen una tras otras solicitando los permisos*
 
 - 🔴 Acceso a tomar Fotos y Vídeos (Función de chat de emergencia)
