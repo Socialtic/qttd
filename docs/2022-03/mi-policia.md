@@ -171,6 +171,13 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - En los servidores de Uninet están guardados tanto el vídeo del alcoholímetro, como el PDF con el reglamento de tránsito.
 - El servidor de Akamai está directamente relacionado con el servicio de Here, y de ahí se extraen íconos y visuales.
 
+## Funciones particulares de la aplicación:
+- Escaneo de placa de un policía para ver si tiene derecho a levantar infracciones de tránsito
+- Revisar por nombre o número de placa si un policía tiene el derecho a levantar infracciones de tránsito
+- Video explicativo sobre el funcionamiento del Alcoholímetro
+- Denuncias de *Asistencia Ciudadana*
+- Contacto con policía turística
+- PDF con el reglamento de tránsito
 ## Notas
 
 - La función de denuncia ciudadana no funcionó.
