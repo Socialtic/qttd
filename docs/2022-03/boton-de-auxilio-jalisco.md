@@ -41,6 +41,10 @@ Utiliza esta aplicación con responsabilidad.
 
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.jpriskcorp.botonpanicoapp.jal/latest/).
 
+## Empresas relacionadas con esta aplicación:
+- Google (Trackers y ubicación)
+- Coeficiente comunicaciones (Servidor donde está albergada la aplicación)
+
 ## Permisos
 
 - **Según la Playstore:** 12 permisos, de los cuales 4 tienen dos subpermisos cada uno.
@@ -146,25 +150,32 @@ _Modify or delete the contents of your SD card_
 
 - C2D_MESSAGE   
 
-- MAPS_RECEIVE    
+- MAPS_RECEIVE   
+
+El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 
 #### Permisos solicitados durante el uso de la aplicación:
-- Acceso a Ubicación (!)
-- Acceso a Contactos (!)
-- Acceso a Llamadas (!)
-- Acceso a Almacenamiento (!)
-- Acceso a Estado del Teléfono (!)
+- 🔴 Acceso a Ubicación (Sirve para el botón de pánico y especifica que se trata de ubicación precisa)
+- 🔴 Acceso a Contactos (Sirve para agregar los contactos de emergencia desde la libreta de direcciones de Google)
+- 🔴 Acceso a Llamadas (Sirve para poder realizar las llamadas a los distintos servicios de emergencia)
+- 🔴 Acceso a Almacenamiento (Instalación de la aplicación en tarjeta SD)
+- 🔴 Acceso a Estado del Teléfono (Sirve para la función de botón de acceso rápido)  
+
+🔴 Este ícono indica un permiso obligatorio
 ## Datos
 #### Datos solicitados al usuario durante el uso
-- Nombre (!)
-- Apellido Paterno (!)
-- Apellido Materno
-- Correo electrónico (!)
-- Número de teléfono (!)
-- Número de contacto (!)
-- Riesgos o padecimientos
-- Tipo de usuario (Incluye: particular, transporte público, transporte privado, escuela, tienda de conveniencia, nave industrial, otro).
-- Puesto en caso de haber seleccionado empresa
+- 🔴 Nombre (!)
+- 🔴 Apellido Paterno (!)
+- ⚪ Apellido Materno
+- 🔴 Correo electrónico (!)
+- 🔴 Número de teléfono (!)
+- 🔴 Número de contacto (!)
+- ⚪ Riesgos o padecimientos
+- ⚪ Tipo de usuario (Incluye: particular, transporte público, transporte privado, escuela, tienda de conveniencia, nave industrial, otro).
+- ⚪ Puesto en caso de haber seleccionado alguna empresa en la pregunta anterior.
+
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
+⚪ Este ícono indica que estos datos son opcionales.
 
 
 #### Tabla de conexiones realizadas durante el uso de la aplicación
@@ -187,19 +198,17 @@ _Modify or delete the contents of your SD card_
 
 
 #### Otros datos recolectados
-- Error: androidx.multidex.MultideDexApplication relies on google play services. Por lo tanto no hubo conexiones a Google en los trackers. Sin embargo podemos suponer que al estar Firebase, sucede lo mismo que en las otras apps.
-- **El servidor de Coeficiente Comunicaciones es el host de la app. Las llamadas a ese servidor se hacen en HTTP, tanto las de emergencia como las de registro, es decir que no están cifradas.**
+- *Error: androidx.multidex.MultideDexApplication relies on google play services. Por lo tanto no hubo conexiones a Google en los trackers. Sin embargo podemos suponer que al estar Firebase, sucede lo mismo que en las otras apps.*
+- El servidor de Coeficiente Comunicaciones es el host de la app. Las llamadas a ese servidor se hacen en HTTP, tanto las de emergencia como las de registro, es decir que no están cifradas.
 
-#### Funciones notables
-- Tiene un botón "Prueba de Servicio" que permite verificar que todo funciona sin que se  haga una llamada o notificación real de emergencia.
+#### Funciones específicas de la aplicación
+- Tiene un botón "Prueba de Servicio" que permite verificar que todo funciona sin que se haga una llamada o notificación real de emergencia.
 - Incluye Auxilio Ciudadano (Policía); Bomberos; Médicos y llamada directa a 911.
 - Incluye botón de acceso rápido (3 toques seguidos del botón de apagado o bloqueo). Con esto, según la documentación, se hace un aviso de emergencia de manera automática. Como la prueba se hizo fuera de Jalisco, no pudimos probar esta funcionalidad.
-- Permite modificar los datos, la contraseña y darse de baja.
+- Permite modificar los datos, la contraseña y darse de baja de la cuenta.
 ### Notas
-- El permiso de acceso a contactos es para ingresar 3 contactos desde la libreta de Google a los que se notifica por SMS en caso de emergencia.
-- El permiso de Acceso a Estado permite la funcionalidad del botón de acceso rápido
 - Hay que aceptar los Términos de uso de manera expresa
 - Hay que aceptar el Aviso de Privacidad de manera expresa
 - Mandan un correo con un código para verificar la cuenta.
-- Solicita la opción de ubicación fina en los permisos (basado en redes wifi, GPS y otros)
-- Funcionalidad de ubicación proporcionado por Google.
+
+
