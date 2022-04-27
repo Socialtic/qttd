@@ -7,7 +7,8 @@
 - **Análisis Posteriores:** -
 
 ## Descripción de la aplicación
-
+- **Tipo:** Aplicación de emergencias de la CDMX   
+- **Costo:** Gratuito   
 - **Link de descarga:** [https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US](https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US)
 - **Descargas:** 500,000+
 - **Ultima fecha de actualización:** 9 abril 2022
