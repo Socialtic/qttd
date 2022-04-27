@@ -66,9 +66,9 @@ Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.c4bc.ale
 - Teléfonos del Noroeste (Servidor donde está albergada la aplicación)
 
 ## Permisos
-**Según la Playstore:** 16 permisos, de los cuales 4 tienen dos subpermisos cada uno   
-**Según Exodus Privacy:** 22 permisos
-**Según prueba de uso:** 7 permisos que se piden de manera explícita
+- **Según la Playstore:** 16 permisos, de los cuales 4 tienen dos subpermisos cada uno.   
+- **Según Exodus Privacy:** 22 permisos.   
+- **Según prueba de uso:** 7 permisos que se piden de manera explícita.
 
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
