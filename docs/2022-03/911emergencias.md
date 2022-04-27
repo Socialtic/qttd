@@ -40,7 +40,11 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/gob.sesnsp.
 - Alestra (Servidor donde está albergada la aplicación)
 
 ## Permisos
-#### Número de permisos 
+- **Según la Playstore:** 17 permisos, de los cuales 2 tienen 2 subpermisos y 1 tiene 3 subpermisos.
+- **Según Exodus Privacy:** 24 permisos.
+- **Según prueba de uso:** 8 permisos que se piden de manera explícita.   
+
+*Consideramos un subpermiso como un permiso que se da dentro de otro permiso.*
 
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
