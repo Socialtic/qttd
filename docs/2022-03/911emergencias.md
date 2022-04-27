@@ -224,6 +224,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
   - Alergias y reacciones
   - Medicamentos actuales
   - Tipo de sangre   
+
 🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria
 
 
@@ -253,14 +254,14 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - El servidor 201.151.6.27 es el Host de esta aplicación. Todas las llamadas que se hacen a ese servidor están cifradas.
 - Cuando se hace una llamada al 911, se envía automáticamente la ubicación y el número de teléfono.
 - El reporte de incidente envía:
- - archivo
- - teléfono
- - Ubicación
- - Id de incidente
- - Estado de la república
- - Municipio
- - Descripción
- - Dirección
+  - archivo
+  - teléfono
+  - Ubicación
+  - Id de incidente
+  - Estado de la república
+  - Municipio
+  - Descripción
+  - Dirección
 
 - Además se asigna un folio al reporte que se puede revisar.
 - El botón de Alerta de Pánico envía:
