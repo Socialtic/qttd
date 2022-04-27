@@ -61,49 +61,60 @@ Te invitamos a realizar un uso adecuado de este servicio.
 
 Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.c4bc.alerta066m/latest/)
 
+## Empresas relacionadas con esta aplicación:
+- Google (Trackers y ubicación)
+- Teléfonos del Noroeste (Servidor donde está albergada la aplicación)
+
 ## Permisos
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
 
-- Ubicación
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589440-63853abc-5ae8-4677-b60e-f605577e9881.png):
+Ubicación
 
     - Ubicación aproximada (según la red)
     - Ubicación precisa (según el GPS y la red)
 
 
-- Teléfono
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589549-160b571e-067e-4a71-8000-31bce52a530b.png)
+Teléfono
 
     - Llamar directamente a números de teléfono
     - Leer la identidad y el estado del dispositivo
 
 
-- Fotos/datos multimedia/archivos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589563-392a213f-de5f-4f8e-8e59-4e0e2da106c5.png)
+Fotos/datos multimedia/archivos
 
     - Leer el contenido del dispositivo USB
     - Modificar o eliminar el contenido del almacenamiento USB
 
 
-- Almacenamiento
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589583-3643317c-7847-4567-bd85-bed17a4e5237.png)
+Almacenamiento
 
     - Leer el contenido del dispositivo USB
     - Modificar o eliminar el contenido del almacenamiento USB
 
-- Cámara
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589611-9dec40f8-a24a-4fa3-bdf8-922ffc380ce1.png)
+Cámara
 
     - Tomar fotografías y grabar videos
 
 
-- Micrófono
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589638-f18b4fc4-a4b2-40a7-b356-b894b848c459.png)
+Micrófono
 
     - Grabar audio
 
 
-- ID de dispositivo y datos de llamadas
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589662-61f0133f-2933-45d5-9789-fde06ef0785b.png)
+ID de dispositivo y datos de llamadas
 
     - Leer la identidad y el estado del dispositivo
 
 
-- Otro
+- ❔ Otro
 
     - Recibir datos desde Internet
     - Ver conexiones de red
@@ -116,10 +127,12 @@ Esta aplicación tiene acceso a:
     - Leer la configuración de servicio de Google
 
 #### Permisos según Exodus Privacy:
-- ACCESS_COARSE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589993-2aa5535d-fbb0-45a7-84b5-ad709cf3fcc0.png):exclamation:
+ACCESS_COARSE_LOCATION   
 _Access approximate location (network-based)_
 
-- ACCESS_FINE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590054-3a904660-1a3b-4967-bf4b-3f39c3fb59f6.png):exclamation:
+ACCESS_FINE_LOCATION   
 _Access precise location (GPS and network-based)_
 
 - ACCESS_NETWORK_STATE   
@@ -128,13 +141,16 @@ _View network connections_
 - ACCESS_NOTIFICATION_POLICY   
 _Access Do Not Disturb_
 
-- ANSWER_PHONE_CALLS   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590152-18dcfe36-f5d6-4d7a-87b0-1dc847770edb.png):exclamation:
+ANSWER_PHONE_CALLS   
 _Answer phone calls_
 
-- CALL_PHONE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590185-951a1268-6bd9-448c-b2ff-00ac08d9d377.png):exclamation:
+CALL_PHONE    
 _Directly call phone numbers_
 
-- CAMERA    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590237-49e9bf90-9c95-44ae-aea7-5cbecf02a35d.png):exclamation:
+CAMERA    
 _Take pictures and videos_
 
 - FOREGROUND_SERVICE    
@@ -146,19 +162,22 @@ _Have full network access_
 - MODIFY_AUDIO_SETTINGS    
 _Change your audio settings_
 
-- READ_EXTERNAL_STORAGE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590322-82cf5301-63b1-4ae9-858b-7e3bf648a9ed.png):exclamation:
+READ_EXTERNAL_STORAGE    
 _Read the contents of your SD card_
 
-- READ_PHONE_STATE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590348-1a1efafb-12c4-46c2-ac22-8540514a449d.png):exclamation:
+READ_PHONE_STATE    
 _Read phone status and identity_
 
 - RECEIVE_BOOT_COMPLETED    
 _Run at startup_
 
-- RECORD_AUDIO   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590598-3ec3dbf0-a00c-4e09-a1b7-9db7b4487f6b.png):exclamation:
+RECORD_AUDIO   
 _Record audio_
 
-- SYSTEM_ALERT_WINDOW   
+- :exclamation:SYSTEM_ALERT_WINDOW   
 _This app can appear on top of other apps_
 
 - VIBRATE   
@@ -167,7 +186,8 @@ _Control vibration_
 - WAKE_LOCK   
 _Prevent phone from sleeping_
 
-- WRITE_EXTERNAL_STORAGE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590732-a1dc116c-14a1-41c0-9d16-025d764f9d2b.png):exclamation:
+WRITE_EXTERNAL_STORAGE   
 _Modify or delete the contents of your SD card_
 
 - MAPS_RECEIVE   
@@ -178,31 +198,39 @@ _Modify or delete the contents of your SD card_
 
 - READ_GSERVICES    
 
-#### Permisos solicitados al usuario durante el uso de la aplicación
-*Antes de aceptarlos aparece una leyenda que informa al usuario que de no aceptarlos, la app no funcionará.*
+El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 
-- Tomar Fotos y Vídeos (!)
-- ubicación (!)
-- Grabar Audio (!)
-- Hacer y administart llamadas (!)
-- Acceso a Fotos y contenido multimedia (!)
-- Poner en modo silencioso (!) *Permiso especial*
-- Mostrar sobre otras apps (!) *Para la función de llamadas de extorsión*
+#### Permisos solicitados al usuario durante el uso de la aplicación
+*Antes de aceptarlos aparece una leyenda que informa al usuario que de no aceptarlos, la app no funcionará. Lasnotificaciones aparecen una tras otras solicitando los permisos*
+
+- 🔴 Acceso a tomar Fotos y Vídeos (Función de chat de emergencia)
+- 🔴 Acceso a ubicación (Llamada de emergencia y chat de emergencia)
+- 🔴 Acceso a grabar audio (Cuando se aprieta el botón de pánico, el celular se pone en modo silencioso y acepta una llamada que durará lo que dure la emergencia, mientras tanto se graba el audio)
+- 🔴 Acceso a realizar y administart llamadas (Para hacer llamadas al 911)
+- 🔴 Acceso a fotos y contenido multimedia (función de chat de emergencia)
+- 🔴 Acceso a poner en modo silencioso (Cuando se realiza una notificación de emergencia)
+- 🔴 Acceso a mostrar sobre otras apps (Función de llamadas de extorsión. Este es el único permiso que puede ser opcional si el celular no cuenta con esta función).
+
+🔴 Este ícono indica un permiso obligatorio
 
 ## Datos
 #### Datos solicitados al usuario durante el uso de la Aplicación
-- Número de tleono (!)
-- Correo Electrónico (!)
-- Nombre (!)
-- Apellido Pterno (!)
-- Apellido Materno
-- Municipio (!) *Sólo están disponibles los de Baja California*
-- Perfil Médico
- - Alergias a medicamentos
- - Alergias a alimentos
- - Padecimientos
- - Medicamentos
- - Información adicional
+- 🔴 Número de tleono
+- 🔴 Correo Electrónico
+- 🔴 Nombre
+- 🔴 Apellido Paterno
+- ⚪Apellido Materno
+- 🔴 Municipio *Sólo están disponibles los de Baja California*
+- ⚪ Perfil Médico
+  - Alergias a medicamentos
+  - Alergias a alimentos
+  - Padecimientos
+  - Medicamentos
+  - Información adicional   
+
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.
+⚪ Este ícono indica que estos datos son opcionales.
+
 
 
 #### Tabla de conexiones realizadas durante el uso de la aplicación
@@ -225,10 +253,12 @@ _Modify or delete the contents of your SD card_
 | 200.76.246.123 |                503 | Mexico        | Tijuana |      6332 | Telefonos del Noroeste, S.A. de C.V. |
 | 216.239.32.3   |                 17 | United States |         |     15169 | GOOGLE                               |
 
+#### Mapa de conexiones
+
 #### Otros datos recolectados
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por el tracker de Firebase. Este último asigna, a través de otro tracker, [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 
-- El servidor 066movilbc.seguridadbc.gob.mx con IP: 200.76.246.123 es el Host de la app. Todos los datos que el usuario debe introducir son guardados ahí. Las llamadas se hacen en texto plano, HTTP, lo que implica una brecha de seguridad enorme.Se pueden ver los siguientes datos:
+- El servidor 066movilbc.seguridadbc.gob.mx con IP: 200.76.246.123 es el Host de la app. Todos los datos que el usuario debe introducir son guardados ahí. Las llamadas se hacen en texto plano, HTTP, lo que implica una brecha de seguridad.Se pueden ver los siguientes datos en el http:
  - ID de usuario
  - Nuevo Equipo (si al acceder con un número ya registrado, se está accediendo desde otro equipo al original)
 Número de teléfono
@@ -250,7 +280,7 @@ Número de teléfono
 
 
 
-### Funciones notables
+### Funciones específicas de la aplicación
 - Tiene una función de activar el perfil de Seguridad Privada cuando el número registrado sea de un empresa de Seguridad Privada.
 - La función "Estadísticas" remite a la página [www.seguridadbc.gob.mx/ExtorsionTelefonica/engano.php](www.seguridadbc.gob.mx/ExtorsionTelefonica/engano.php) donde se pueden revisar los números denunciados por extorsión, las zonas de donde provienen y otros datos.
 - Función "Menores desaparecidos" permite el acceso a la base datos de menores desaparecidos en sus categorías de Alerta Amber, Regionales, Nacionales y casos resueltos.
@@ -258,7 +288,6 @@ Número de teléfono
 
 ### Notas
 - Dentro de la función "Perfil Médico", la función de Contactos (que son probablemente contactos de emergencia), cierra la app.
-- La función de números de extorsión se queda activa aunque uno cierre sesión en la aplicación, o la cierre.
+- La función de números de extorsión se queda activa aunque uno cierre sesión en la aplicación, o la cierre por completo.
 - No se probó la función chat por estar fuera del área de servicio.
-- No se probó el botón de violencia de género ni el botón de pánico.
-- El botón llamada 911 no sirve (¿Fuera del área?).
+- El botón llamada 911 no sirve, probablemente por estar fuera del área.
