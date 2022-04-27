@@ -43,44 +43,54 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.jpriskc
 
 ## Permisos
 
+- **Según la Playstore:** 12 permisos, de los cuales 4 tienen dos subpermisos cada uno.
+- **Según Exodus Privacy:** 15 permisos.
+- **Según prueba de uso:** 5 permisos que se piden de manera explícita.
+
 #### Permisos según la PlayStore:
 Esta aplicación puede acceder a:   
 
-- Contactos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629344-e744820c-f52d-4359-8238-ee3e3d1494b1.png)
+Contactos
 
     - Consultar tus contactos
 
 
-- Ubicación
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629369-d867e558-7e41-41ad-905c-4bbd24597e41.png)
+Ubicación
 
     - Ubicación aproximada (basada en red)
     - Ubicación precisa (basada en red y GPS)
 
 
-- Teléfono
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629391-9c779048-f477-4a4e-8155-d294f78daf7a.png)
+Teléfono
 
     - Llamar directamente a números de teléfono
     - Consultar la identidad y el estado del teléfono
 
 
-- Fotos/multimedia/archivos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629423-307f26bf-db54-459c-bbb4-50a58a0dd9a9.png)
+Fotos/multimedia/archivos
 
     - Leer el contenido de tu almacenamiento USB
     - Modificar o eliminar contenido del almacenamiento USB
 
 
-- Almacenamiento
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629440-2f7ca69b-d9ff-4f31-a627-ff03c2ad917f.png)
+Almacenamiento
 
     - Leer el contenido de tu almacenamiento USB
     - Modificar o eliminar contenido del almacenamiento USB
 
 
-- ID de dispositivo e información de llamada
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629468-d1fb02c1-f4ef-45c8-b316-fb5c1c420f04.png)
+ID de dispositivo e información de llamada
 
     - Consultar la identidad y el estado del teléfono
 
 
-- Otro
+- ❔ Otro
 
     - Recibir datos de Internet
     - Ver conexiones de red
@@ -91,16 +101,19 @@ Esta aplicación puede acceder a:
 
 #### Permisos según Exodus Privacy:
 
-- ACCESS_COARSE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629714-c564c696-d04f-481e-ab77-925c3cf74017.png):exclamation:
+ACCESS_COARSE_LOCATION   
 _Access approximate location (network-based)_
 
-- ACCESS_FINE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629745-d1c2e269-035c-4658-af7b-e5ce9ee36e75.png):exclamation:
+ACCESS_FINE_LOCATION   
 _Access precise location (GPS and network-based)_
 
 - ACCESS_NETWORK_STATE   
 _View network connections_
 
-- CALL_PHONE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629860-bb716424-e37b-48c9-8997-220361adf096.png):exclamation:
+CALL_PHONE   
 _Directly call phone numbers_
 
 - FOREGROUND_SERVICE   
@@ -109,10 +122,12 @@ _Run foreground service_
 - INTERNET   
 _Have full network access_
 
-- READ_CONTACTS   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629974-9e8550fc-d07d-4d06-9333-ae925b667a76.png):exclamation:
+READ_CONTACTS   
 _Read your contacts_
 
-- READ_PHONE_STATE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165629893-d3d776a8-479c-4cb8-b879-de5f80354066.png):exclamation:
+READ_PHONE_STATE   
 _Read phone status and identity_
 
 - VIBRATE   
@@ -121,7 +136,8 @@ _Control vibration_
 - WAKE_LOCK   
 _Prevent phone from sleeping_
 
-- WRITE_EXTERNAL_STORAGE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165630048-7a93b835-988c-4a7a-a46f-fb6c9022c5ff.png):exclamation:
+WRITE_EXTERNAL_STORAGE   
 _Modify or delete the contents of your SD card_
 
 - RECEIVE   
