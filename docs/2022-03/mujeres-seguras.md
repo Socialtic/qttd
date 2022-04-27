@@ -5,8 +5,8 @@ Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022
 Análisis Posteriores: 19 abril 2022   
 
 ## Descripción de la aplicación
-**Tipo:** Aplicación de emergencia para mujeres del estado de sonora
-**Costo:** Gratuito
+**Tipo:** Aplicación de emergencia para mujeres del estado de Sonora   
+**Costo:** Gratuito   
 **Link:** [https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura](https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura)   
 **Descargas:** 50,000+   
 **Fecha de actualización:** 7 Enero 2022   
