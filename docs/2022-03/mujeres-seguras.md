@@ -33,55 +33,69 @@ aunque no cuentes con datos móviles.
 ## Trackers identificados (mediante Exodus Privacy)   
 - [Google Firebase Analytics](https://firebase.google.com/)  
 
-Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/mx.gob.segobsonora.mujersegura/latest/).
+Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/mx.gob.segobsonora.mujersegura/latest/).   
+
+## Empresas relacionadas con esta aplicación:
+- Google (Trackers y ubicación)
+- Total Play Telecomunicaciones (Servidor donde está albergada la aplicación)
 
 ## Permisos   
+- **Según la Playstore:** 17 permisos, de los cuales 2 tienen 3 subpermisos y 3 tiene 2 subpermisos.
+- **Según Exodus Privacy:** 23 permisos.
+- **Según prueba de uso:** 3 permisos que se piden de manera explícita.   
 
 ### Permisos según la PlayStore:   
 Esta aplicación puede acceder a:   
-- Identidad
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633281-fdb9f280-7a44-4700-a6d0-d922770cc9ba.png)
+Identidad
 
     - Buscar cuentas en el dispositivo
 
 
-- Contactos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633301-50dd7758-728f-4712-87bb-929a38c8878f.png)
+Contactos
 
     - Buscar cuentas en el dispositivo
     - Consultar tus contactos
     - Modificar tus contactos
 
 
-- Ubicación
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633333-513671d5-e242-4806-8304-35398e0a543e.png)
+Ubicación
 
     - Ubicación aproximada (basada en red)
     - Ubicación precisa (basada en red y GPS)
     - Acceder a comandos de proveedor de ubicación adicional
 
 
-- Teléfono
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633354-61cfec0d-eed0-4743-a3ce-77d6b6f607b2.png)
+Teléfono
 
     - Llamar directamente a números de teléfono
     - Consultar la identidad y el estado del teléfono
 
 
-- Fotos/multimedia/archivos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633372-0f9e0633-a7b7-4cc6-a351-f5bb296edaa1.png)
+Fotos/multimedia/archivos
 
     - Leer el contenido de tu almacenamiento USB
     - Modificar o eliminar contenido del almacenamiento USB
 
 
-- Almacenamiento
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633400-30b453d5-c2d3-4636-b3b4-0d58ed16d4a9.png)
+Almacenamiento
 
     - Leer el contenido de tu almacenamiento USB
     - Modificar o eliminar contenido del almacenamiento USB
 
 
-- ID de dispositivo e información de llamada
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633428-a7974ac0-35bc-4a9a-af33-51105c19fb06.png)
+ID de dispositivo e información de llamada
 
     - Consultar la identidad y el estado del teléfono
 
 
-- Otro motivo
+- ❔Otro motivo
 
     - Recibir datos de Internet
     - Ver conexiones de red
@@ -95,10 +109,12 @@ Esta aplicación puede acceder a:
     - Activar y desactivar la sincronización
 
 ### Permisos según Exodus Privacy
-- ACCESS_COARSE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633656-c65474f6-4bc8-45de-bd8a-aa85ac4ab565.png):exclamation:
+ACCESS_COARSE_LOCATION   
 _Access approximate location (network-based)_
 
-- ACCESS_FINE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633681-1d06ca0d-a081-443e-b769-187ffa4731da.png):exclamation:
+ACCESS_FINE_LOCATION   
 _Access precise location (GPS and network-based)_
 
 - ACCESS_LOCATION_EXTRA_COMMANDS   
@@ -112,22 +128,26 @@ _View network connections_
 - BLUETOOTH   
 _Pair with Bluetooth devices_
 
-- CALL_PHONE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633739-d74113a2-5434-498a-8ca8-91f409cb4a58.png):exclamation:
+CALL_PHONE   
 _Directly call phone numbers_
 
 - FOREGROUND_SERVICE   
 _Run foreground service_
 
-- GET_ACCOUNTS   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633939-72746e16-3712-49db-98e9-1361b3c8e5c2.png):exclamation:
+GET_ACCOUNTS   
 _Find accounts on the device_
 
 - INTERNET   
 _Have full network access_
 
-- READ_CONTACTS   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633822-fbbd5595-eba4-4986-86d5-22dde56764b3.png):exclamation:
+READ_CONTACTS   
 _Read your contacts_
 
-- READ_PHONE_STATE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633781-f21454fe-b443-4474-9e7b-2d0f2f4cbdd5.png):exclamation:
+READ_PHONE_STATE   
 _Read phone status and identity_
 
 - READ_SYNC_SETTINGS   
@@ -142,10 +162,12 @@ _Control vibration_
 - WAKE_LOCK   
 _Prevent phone from sleeping_
 
-- WRITE_CONTACTS   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633878-4a01b325-f407-4b2e-a5ad-24a825596f5c.png):exclamation:
+WRITE_CONTACTS   
 _Modify your contacts_
 
-- WRITE_EXTERNAL_STORAGE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633992-4c5297ab-5c94-4211-8b6d-65c206db98e8.png):exclamation:
+WRITE_EXTERNAL_STORAGE   
 _Modify or delete the contents of your SD card_
 
 - WRITE_SYNC_SETTINGS    
@@ -155,27 +177,35 @@ _Toggle sync on and off_
 
 - BIND_GET_INSTALL_REFERRER_SERVICE   
 
-- ACTIVITY_RECOGNITION    
+- ACTIVITY_RECOGNITION   
+
+El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview).    
 
 
 ### Permisos solicitados al usuario durante el uso de la aplicación
-- Acceso a Llamadas telefónicas (Para llamar a los centros del ISM)
-- Acceso a Ubicación (!)
-- Acceso a contactos (Para la Red de Emergencias)
+- 🔵 Acceso a Llamadas telefónicas (Para llamar a los centros del ISM)
+- 🔴 Acceso a Ubicación (Para la fucnión de botón de pánico)
+- 🔵 Acceso a contactos (Para agregar contactos desde la libreta de direcciones de Google a la Red de Emergencias)   
+
+🔴 Este ícono indica un permiso obligatorio   
+🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 
 ## Datos
 
 ### Datos solicitados al usuario durante el uso de la aplicación
-- Nombre (!)
-- Apellido Paterno (!)
-- Apellido Materno
-- Número de teléfono (!)
-- Fecha de nacimiento (!)
-- Género
-- Discapacidad
-- Indígena o perteneciente a una etnia
-- Correo Electrónico
+- 🔴 Nombre (!)
+- 🔴 Apellido Paterno (!)
+- ⚪ Apellido Materno
+- 🔴 Número de teléfono (!)
+- 🔴 Fecha de nacimiento (!)
+- ⚪ Género
+- ⚪ Discapacidad
+- ⚪ Indígena o perteneciente a una etnia
+- ⚪ Correo Electrónico   
+
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
+⚪ Este ícono indica que estos datos son opcionales.
 
 
 ### Tabla de conexiones realizadas durante el uso de la aplicación
@@ -197,7 +227,7 @@ _Toggle sync on and off_
 ### Otros datos recolectados:
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por el tracker de Firebase. Este último asigna, a través de otro tracker, [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 
-- El servidor perteneciente a Total Play, es el host de la aplicación: servicios.sspsonora.gob.mx. Todas las comunicaciones están cifradas y es en este servidor donde se procesan las alertas de pánico. Estas son enviadas en formato JSON y cuentan con ID de alerta, un número de folio y la ubicación.
+- El servidor perteneciente a Total Play es el host de la aplicación: servicios.sspsonora.gob.mx. Todas las comunicaciones están cifradas y es en este servidor donde se procesan las alertas de pánico. Estas son enviadas en formato JSON y cuentan con ID de alerta, un número de folio y la ubicación.
 - En este servidor también se guardan los contactos de emergencia en formato JSON: id de contacto, nombre y teléfono.
 - En este servidor se guarda la información de contacto que proporciona el usuario.
 
