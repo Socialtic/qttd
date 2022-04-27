@@ -39,55 +39,64 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/gob.sesnsp.
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
 
-- Contactos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165579879-17d8b788-4724-462e-ada6-83ce36c84901.png)
+Contactos
 
  - Leer tus contactos
 
 
-- Ubicación
+- ![imagen](https://user-images.githubusercontent.com/102829552/165579998-81036bd9-9a08-44ab-b112-5f2130818a86.png)
+Ubicación
 
   - Ubicación precisa (según el GPS y la red)
 
 
-- SMS
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580048-96869d75-df89-42d4-a982-a84f4e66d41d.png)
+SMS
  - Enviar mensajes SMS
 
 
-- Teléfono
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580084-78763d1e-5ea8-456f-9a20-4a8b61b5d814.png)
+Teléfono
 
     - Llamar directamente a números de teléfono
     - Llamar directamente a cualquier número de teléfono
     - Leer la identidad y el estado del dispositivo
 
 
-- Fotos/datos multimedia/archivos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580129-5821c3c8-5d4c-46ef-874a-475ea23edf77.png)
+Fotos/datos multimedia/archivos
 
     - Leer el contenido del dispositivo USB
     - Modificar o eliminar el contenido del almacenamiento USB
 
 
-- Almacenamiento
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580155-3251b578-bdf7-4dfa-90b5-59e30355ee98.png)
+Almacenamiento
 
     - Leer el contenido del dispositivo USB
     - Modificar o eliminar el contenido del almacenamiento USB
 
 
-- Cámara
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580273-3cb49fd4-da9a-4436-8496-495849c18a6c.png)
+Cámara
 
     - Tomar fotografías y grabar videos
 
 
-- Micrófono
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580294-d8d25a97-84de-4d54-8694-e72c8a76a23a.png)
+Micrófono
 
     - Grabar audio
 
 
-- ID de dispositivo y datos de llamadas
+- ![imagen](https://user-images.githubusercontent.com/102829552/165580319-5d38b675-308e-4b4a-90d1-acf3c0d0b2fb.png)
+ID de dispositivo y datos de llamadas
 
     - Leer la identidad y el estado del dispositivo
 
 
-- Otro
+- :grey_question:Otro
 
     - Licencia completa para interactuar con los usuarios
     - Recibir datos desde Internet
@@ -100,7 +109,8 @@ Esta aplicación tiene acceso a:
 
 
 #### Permisos según Exodus Privacy:
- - ACCESS_FINE_LOCATION    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165581557-8141b0f8-80db-4cff-815f-20162b3484a9.png):exclamation:
+ACCESS_FINE_LOCATION    
  _Access precise location (GPS and network-based)_
 
 - ACCESS_NETWORK_STATE    
@@ -111,12 +121,14 @@ _Access Do Not Disturb_
 
 - ACTION_DIAL
 
-- CALL_PHONE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165581919-b6cea1a5-0699-496e-b474-105ee39850df.png):exclamation:
+CALL_PHONE    
 _Directly call phone numbers_
 
 - CALL_PRIVILEGED
 
-- CAMERA    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165582106-56430455-8642-4ad2-bc1b-cc2cab1b1fe1.png):exclamation:
+CAMERA    
 _Take pictures and videos_
 
 - COARSE_LOCATION
@@ -126,21 +138,26 @@ _Take pictures and videos_
 - INTERNET    
 _Have full network access_
 
-- READ_CONTACTS    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165582171-80ebdc45-3077-444d-b409-4d28d2cf9f7b.png):exclamation:
+READ_CONTACTS    
 _Read your contacts_
 
-- READ_EXTERNAL_STORAGE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165582293-a81e23fb-7111-4cbd-8241-17b81a685047.png):exclamation:
+READ_EXTERNAL_STORAGE    
 _read the contents of your SD card_
 
-- READ_PHONE_STATE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165581998-b01cbc57-fb5a-422b-938f-ee6e2a7cb2d8.png):exclamation:
+READ_PHONE_STATE    
 _read phone status and identity_
 
-- RECORD_AUDIO    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165582361-e4b13b8c-1fe1-4c1f-9ba1-fa056da293d9.png):exclamation:
+RECORD_AUDIO    
 _record audio_
 
 - RECORD_VIDEO
 
-- SEND_SMS    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165582449-da7da92c-31b8-48cd-b36d-1cd4d38b986d.png):exclamation:
+SEND_SMS    
 _send and view SMS messages_
 
 - SYSTEM_ALERT_WINDOW    
@@ -149,10 +166,11 @@ _This app can appear on top of other apps_
 - WAKE_LOCK    
 _prevent phone from sleeping_
 
-- WRITE_EXTERNAL_STORAGE    
+- ![imagen](https://user-images.githubusercontent.com/102829552/165582523-18a7e3dc-b4bd-45a4-8ab9-2b9bcf86ba35.png):exclamation:
+WRITE_EXTERNAL_STORAGE    
 _modify or delete the contents of your SD card_
 
-- WRITE_SETTINGS    
+- :exclamation:WRITE_SETTINGS    
 _modify system settings_
 
 - RECEIVE
@@ -163,6 +181,7 @@ _modify system settings_
 
 - C2D_MESSAGE
 
+El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 #### Permisos solicitados al usuario durante el uso de la aplicación
 - Acceso a Ubicación (!) (Si se niega, funciona en segundo plano)
 - Acceso a llamadas telefónicas (Para botón 911)
@@ -171,7 +190,7 @@ _modify system settings_
 - Acceso a Tomar Fotos y Video (En las notificaciones se puede adjuntar un archivo de foto o uno de viídeo)
 - Acceso a fotos, archivos multimedia y archivos (Para adjuntar los archivos en las notificaciones)
 - Acceso a "No molestar" (Cuando se aprieta el botón de pánico, el celular entra en modo no molestar)
-Acceso a SMS (Cuando se hace una notificación, se puede notificar de manera automática a la red de contactos)
+- Acceso a SMS (Cuando se hace una notificación, se puede notificar de manera automática a la red de contactos)
 
 
 ## Datos
