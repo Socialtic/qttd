@@ -68,8 +68,9 @@ Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.c4bc.ale
 ## Permisos
 - **Según la Playstore:** 16 permisos, de los cuales 4 tienen dos subpermisos cada uno.   
 - **Según Exodus Privacy:** 22 permisos.   
-- **Según prueba de uso:** 7 permisos que se piden de manera explícita.
+- **Según prueba de uso:** 7 permisos que se piden de manera explícita.   
 
+*Consideramos un subpermiso como un permiso que se da dentro de otro permiso.*
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
 
