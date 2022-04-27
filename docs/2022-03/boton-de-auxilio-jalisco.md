@@ -164,12 +164,12 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 🔴 Este ícono indica un permiso obligatorio
 ## Datos
 #### Datos solicitados al usuario durante el uso
-- 🔴 Nombre (!)
-- 🔴 Apellido Paterno (!)
+- 🔴 Nombre
+- 🔴 Apellido Paterno
 - ⚪ Apellido Materno
-- 🔴 Correo electrónico (!)
-- 🔴 Número de teléfono (!)
-- 🔴 Número de contacto (!)
+- 🔴 Correo electrónico
+- 🔴 Número de teléfono
+- 🔴 Número de contacto
 - ⚪ Riesgos o padecimientos
 - ⚪ Tipo de usuario (Incluye: particular, transporte público, transporte privado, escuela, tienda de conveniencia, nave industrial, otro).
 - ⚪ Puesto en caso de haber seleccionado alguna empresa en la pregunta anterior.
