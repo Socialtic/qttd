@@ -46,17 +46,36 @@ más seguros.
 - [Google Firebse Analytics](https://firebase.google.com/products/analytics)   
 - [Google Crashlytics](https://firebase.google.com/products/crashlytics/)
 
+## Empresas relacionadas con esta aplicación:
+- Google (Trackers y ubicación)
+- Radiomovil Dipsa (Servidor donde está albergada la aplicación) 
+- Twitter (Presente en la página web (la aplicación actúa como explorador) del aviso de privacidad)
+- Facebook (Presente en la página web (la aplicación actúa como explorador) del aviso de privacidad)
+- Cloudflarenet (presente en la página de seguridad ciudadana (la aplicación actúa como explorador))
+- Megacable (presente en la página de seguridad ciudadana (la aplicación actúa como explorador))
+- Sucuri-sec ((Presente en la página web (la aplicación actúa como explorador) del aviso de privacidad)
+- Akamai (No sabemos, probablemente actúa como CDN)
+- Edgecast (No sabemos)
+
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/net.garagecoders.deri/latest/).
 ## Permisos
+
+## Permisos
+- **Según la Playstore:** 6 permisos.   
+- **Según Exodus Privacy:** 8 permisos.   
+- **Según prueba de uso:** 1 permisos que se piden de manera explícita.   
+
+
 #### Permisos según la PlayStore:
 Esta aplicación puede acceder a:   
 
-- Ubicación
+- ![imagen](https://user-images.githubusercontent.com/102829552/165636531-601a9181-224f-4192-a993-12cfa6edfeae.png)
+Ubicación
 
     - Ubicación precisa (basada en red y GPS)
 
 
-- Otro motivo
+- ❔Otro motivo
 
     - Recibir datos de Internet
     - Ver conexiones de red
@@ -66,7 +85,8 @@ Esta aplicación puede acceder a:
 
 #### Permisos según Exodus Privacy
 
-- ACCESS_FINE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165636593-7837b2e7-38c5-46b1-9be8-6df060c5ee0c.png):exclamation:
+ACCESS_FINE_LOCATION   
 _Access precise location (GPS and network-based)_
 
 - ACCESS_NETWORK_STATE   
@@ -90,22 +110,27 @@ _Prevent phone from sleeping_
 
 
 #### Permisos solicitados al usuario durante el uso de la aplicación
-- Ubicación(!) (Se recopila aunque la app no se esté usando durante la incidencia reportada)
+- 🔴 Ubicación (Para el botón de pánico. Se recopila, según la documentación de la aplicación, aunque la app no se esté usando durante la incidencia reportada)   
+
+🔴 Este ícono indica un permiso obligatorio
 
 
 ## Datos
 #### Datos solicitados al usuario durante el uso de la aplicación
-- Nombre (!)
-- Apellido Paterno (!)
-- Apellido Materno
-- Correo Electrónico (!)
-- Dirección
-- Capacidad auditiva (CheckBox)
+- 🔴 Nombre (!)
+- 🔴 Apellido Paterno (!)
+- ⚪ Apellido Materno
+- 🔴 Correo Electrónico (!)
+- ⚪ Dirección
+- ⚪ Capacidad auditiva (CheckBox)
 Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contacto de emergencia:
-  - Nombre (!)
-  - Apellido Paterno (!)
-  - Teléfono (!)
-  - Dirección
+  - 🔴 Nombre (!)
+  - 🔴 Apellido Paterno (!)
+  - 🔴 Teléfono (!)
+  - ⚪ Dirección
+
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
+⚪ Este ícono indica que estos datos son opcionales.   
 
 #### Tabla de conexiones realizadas durante el uso de la Aplicación
 | Dirección IP    | Número de paquetes | País          | Ciudad             | Número AS | Organización AS                |
@@ -150,13 +175,13 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 - Las conexiones a [Sucuri-sec](https://sucuri.net/) son llamadas en HTTP. Es un servicio que revisa que las páginas web no tengan malware y estén seguras. Es prudente suponer que estas conexiones tienen que ver con la misma página del aviso de privacidad.
 - La conexión a Mega Cable es la página (en construcción) de la Secretaría de Seguridad Ciudadana. Esta conexión está en HTTP.
 
-### Funciones notables
+### Funciones específicas de la aplicación
 - Se puede revisar si un coche se encuentra en el corralón
 - Se pueden mandar quejas, sugerencias y felicitaiones a la Policía
 - Tiene las siguientes funciones que abren la instancia de llamada en Android:
- - Acompañamiento Bancario
- - Dudas sobre Infracciones
- - Grúa
+  - Acompañamiento Bancario
+  - Dudas sobre Infracciones
+  - Grúa
 - Página con dirección del Ayuntamiento de Puebla y otros datos.
 - Consulta del tabulador de Infracciones
 ### Notas
