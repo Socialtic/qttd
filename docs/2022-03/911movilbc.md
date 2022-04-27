@@ -5,8 +5,8 @@ Análisis dinámico (mediante captura de tráfico de red): 18 abril 2022
 Análisis posteriores:    
 
 ## Descripción de la aplicación:
-**Tipo:** Aplicación de emergencias de Baja California
-**Costo:** Gratuito
+**Tipo:** Aplicación de emergencias de Baja California   
+**Costo:** Gratuito   
 **Link:** [https://play.google.com/store/apps/details?id=com.c4bc.alerta066m&hl=es_MX&gl=US](https://play.google.com/store/apps/details?id=com.c4bc.alerta066m&hl=es_MX&gl=US)        
 **Descargas:** 50,000+  
 **Fecha de actualización:** 03 Diciembre 2021   
