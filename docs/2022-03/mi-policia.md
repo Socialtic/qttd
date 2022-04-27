@@ -34,28 +34,46 @@ ubicación de los Cuadrantes de la Ciudad de México.
 ## Trackers identificados (mediante Exodus Privacy)
 
 - **Esta aplicación no contiene trackers.**
-- **Enlace de Exodus Privacy:**
-    - [https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/](https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/)
+
+Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/)   
+
+## Empresas relacionadas con esta aplicación:
+- Google (Se envía información necesaria para el funcionamiento de la app, un ejemplo son conexiones a Playstore Google Services)
+- Uninet (Servidor donde está albergada documentación de la app)
+- Operbes (Se usa para hacer las *Denuncias ciudadanas*)
+- Amazon (Para la funcionalidad de Ubicación, está relacionada con la empresa Here)
+- Akamai (Se extraen visuales para los mapas)
 
 
 ## Permisos   
 
+- **Según la Playstore:** 9 permisos, de los cuales 3 tienen dos subpermisos cada uno.
+- **Según Exodus Privacy:** 9 permisos.
+- **Según prueba de uso:** 3 permisos que se piden de manera explícita.
 ### Permisos según la PlayStore:   
 
-- Cámara
-    - Tomar fotografías y grabar videos
-- Teléfono
-    - Llamar directamente a números de teléfono
-- Almacenamiento
-    - Modificar o eliminar el contenido del almacenamiento USB
-    - Leer el contenido del dispositivo USB
-- Ubicación
+- ![imagen](https://user-images.githubusercontent.com/102829552/165648944-144b0d59-f94f-4919-bf53-bb43dae4d448.png)
+Ubicación
     - Ubicación aproximada (según la red)
     - Ubicación precisa (según el GPS y la red)
-- Fotos/datos multimedia/archivos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165648984-56b0e31d-0d6a-4df4-ac1d-e1395108b2c2.png)
+Fotos/datos multimedia/archivos
     - Modificar o eliminar el contenido del almacenamiento USB
     - Leer el contenido del dispositivo USB
-- Otro
+- ![imagen](https://user-images.githubusercontent.com/102829552/165649002-61b19202-91a7-4078-8371-51c292d2bb65.png)
+Almacenamiento
+    - Modificar o eliminar el contenido del almacenamiento USB
+    - Leer el contenido del dispositivo USB
+- ![imagen](https://user-images.githubusercontent.com/102829552/165649031-08fb55ba-07d2-4fae-a655-1ba91f5a2196.png)
+Cámara
+    - Tomar fotografías y grabar videos
+- ![imagen](https://user-images.githubusercontent.com/102829552/165649048-74dc15ad-5c80-45ad-b13d-f9afdcb349e4.png)
+Teléfono
+    - Llamar directamente a números de teléfono
+
+
+
+- ❔Otro
     - Vincular con dispositivos Bluetooth
     - Ver conexiones de red
     - Controlar linterna
@@ -64,15 +82,19 @@ ubicación de los Cuadrantes de la Ciudad de México.
 ### Permisos según Exodus Privacy
 
 - ACCESS_BACKGROUND_LOCATION
-- 🗺️❗ ACCESS_COARSE_LOCATION
+- ![imagen](https://user-images.githubusercontent.com/102829552/165648633-88b7042c-4513-47c3-ae17-4388c8868c67.png):exclamation:
+ACCESS_COARSE_LOCATION
     - *Access approximate location (network-based)*
-- 📍❗ ACCESS_FINE_LOCATION   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165648645-f278bdda-f6a2-4eb9-9552-9ef31eb4959c.png):exclamation:
+ACCESS_FINE_LOCATION   
     - *Access precise location (GPS and network-based)*
 - ACCESS_NETWORK_STATE
     - *View network connections*
-- 📞❗ CALL_PHONE
+- ![imagen](https://user-images.githubusercontent.com/102829552/165648673-60d748f0-d68a-4d0d-89fd-81a91f1e1b55.png):exclamation:
+CALL_PHONE
     - *Directly call phone numbers*
-- 📷❗ CAMERA
+- ![imagen](https://user-images.githubusercontent.com/102829552/165648692-d271f923-a0bf-447c-ba49-4e49af730a75.png):exclamation:
+CAMERA
     - *Take pictures and videos*
 - FLASHLIGHT
 - FOREGROUND_SERVICE
@@ -80,28 +102,31 @@ ubicación de los Cuadrantes de la Ciudad de México.
 - INTERNET
     - *Have full network access*
 
-El icono ❗ indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
+El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 
 ### Permisos solicitados durante el uso de la aplicación
 
-- Acceso ubicación 🚨
-- Acceso a llamadas telefónicas (si se quiere realziar llamadas desde la aplicación)
-- Acceso a cámara (para escanear el número de placa del policía)
-- Acceso a Whatsapp (para la *Sección Policía Turística*)
+- 🔴 Acceso ubicación (para la función botón de pánico)
+- 🔵 Acceso a llamadas telefónicas (para realizar llamadas desde la aplicación)
+- 🔵 Acceso a cámara (para escanear el número de placa del policía)
+- *Puede acceder a Whatsapp para la *Sección Policía Turística. Aunque esto como tal no es un permiso*
 
-El icono 🚨 corresponde a un permiso no opcional.
+🔴 Este ícono indica un permiso obligatorio   
+🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
 
 ### Datos solicitados al usuario durante el uso de la aplicación
 
-- Para los reportes de Asistencia ciudadana:
-    - Nombre 🚨
-    - Apellido
-    - Número de contacto 🚨
-    - Correo Electrónico
+- ⚪ Para los reportes de Asistencia ciudadana:
+    - 🔴 Nombre 🚨
+    - ⚪ Apellido
+    - 🔴 Número de contacto 🚨
+    - ⚪ Correo Electrónico
 
-El icono 🚨 corresponde a un dato no opcional.
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
+⚪ Este ícono indica que estos datos son opcionales.
+
 
 ### Tabla de conexiones realizadas durante el uso de la aplicación
 
@@ -120,7 +145,6 @@ El icono 🚨 corresponde a un dato no opcional.
 | 142.250.217.138 |                 44 | United States |             |     15169 | GOOGLE                |
 | 172.217.14.78   |               2809 | United States |             |     15169 | GOOGLE                |
 | 172.217.14.110  |                 13 | United States |             |     15169 | GOOGLE                |
-| 187.207.40.94   |              56584 | Mexico        | Tlalpan     |      8151 | Uninet S.A. de C.V.   |
 | 189.240.234.174 |              15858 | Mexico        | Mexico City |      8151 | Uninet S.A. de C.V.   |
 | 201.140.100.130 |                145 | Mexico        | Tepic       |     18734 | Operbes, S.A. de C.V. |
 | 201.140.100.131 |                 52 | Mexico        | Tepic       |     18734 | Operbes, S.A. de C.V. |
