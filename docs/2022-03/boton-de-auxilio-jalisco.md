@@ -198,6 +198,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 142.251.40.46   |                  3 | United States |         |     15169 | GOOGLE                              |
 | 172.217.14.74   |                 33 | United States |         |     15169 | GOOGLE                              |
 
+## Mapa de conexiones
+
 
 #### Otros datos recolectados
 - *Error: androidx.multidex.MultideDexApplication relies on google play services. Por lo tanto no hubo conexiones a Google en los trackers. Sin embargo podemos suponer que al estar Firebase, sucede lo mismo que en las otras apps.*
