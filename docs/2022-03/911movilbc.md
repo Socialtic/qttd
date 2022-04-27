@@ -66,6 +66,10 @@ Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.c4bc.ale
 - Teléfonos del Noroeste (Servidor donde está albergada la aplicación)
 
 ## Permisos
+**Según la Playstore:** 16 permisos, de los cuales 4 tienen dos subpermisos cada uno   
+**Según Exodus Privacy:** 22 permisos
+**Según prueba de uso:** 7 permisos que se piden de manera explícita
+
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   
 
@@ -200,7 +204,7 @@ _Modify or delete the contents of your SD card_
 
 El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview). 
 
-#### Permisos solicitados al usuario durante el uso de la aplicación
+####  7 Permisos solicitados al usuario durante el uso de la aplicación
 *Antes de aceptarlos aparece una leyenda que informa al usuario que de no aceptarlos, la app no funcionará. Lasnotificaciones aparecen una tras otras solicitando los permisos*
 
 - 🔴 Acceso a tomar Fotos y Vídeos (Función de chat de emergencia)
@@ -228,7 +232,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
   - Medicamentos
   - Información adicional   
 
-🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
 ⚪ Este ícono indica que estos datos son opcionales.
 
 
