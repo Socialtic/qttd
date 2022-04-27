@@ -5,8 +5,8 @@ Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022
 Análisis posteriores:
 
 ## Descripción de la aplicación:
-**Tipo:** Aplicación de emergencias Nacional
-**Costo:** Gratuito
+**Tipo:** Aplicación de emergencias Nacional   
+**Costo:** Gratuito   
 **Link:** [https://play.google.com/store/apps/details?id=gob.sesnsp.emergencia911&hl=es](https://play.google.com/store/apps/details?id=gob.sesnsp.emergencia911&hl=es)   
 **Descargas:** 100,000+   
 **Fecha de actualización:** 17 Septiembre 2019  
