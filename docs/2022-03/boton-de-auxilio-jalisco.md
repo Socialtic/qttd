@@ -5,6 +5,8 @@ Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022
 Análisis posteriores:    
 
 ## Descripción de la aplicación:
+**Tipo:** Aplicación de emergencia del estado de Jalisco   
+**Costo:** Gratuito   
 **Link:** [https://play.google.com/store/apps/details?id=com.jpriskcorp.botonpanicoapp.jal](https://play.google.com/store/apps/details?id=com.jpriskcorp.botonpanicoapp.jal)      
 **Descargas:** 50,000+  
 **Fecha de actualización:** 13 Enero 2022
