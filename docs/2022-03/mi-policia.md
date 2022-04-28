@@ -168,6 +168,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
     - Coordenadas exactas de localización
 - Los servidores de Google contactados son necesarios para el funcionamiento de la aplicación. Recopilan información mínima y básica de funcionamiento.
 - Los servidores de Operbes se corresponden con la funcionalidad de *Asistencia Ciudadana*, que sirve para hacer denuncias.
+- En los servdiores de Operbes está la base de datos de policías de tránsito.
 - En los servidores de Uninet están guardados tanto el vídeo del alcoholímetro, como el PDF con el reglamento de tránsito.
 - El servidor de Akamai está directamente relacionado con el servicio de Here, y de ahí se extraen íconos y visuales.
 
