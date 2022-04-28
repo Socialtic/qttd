@@ -167,18 +167,22 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
     - Código postal
     - Coordenadas exactas de localización
 - Los servidores de Google contactados son necesarios para el funcionamiento de la aplicación. Recopilan información mínima y básica de funcionamiento.
-- Los servidores de Operbes se corresponden con la funcionalidad de *Asistencia Ciudadana*, que sirve para hacer denuncias.
-- En los servdiores de Operbes está la base de datos de policías de tránsito.
-- En los servidores de Uninet están guardados tanto el vídeo del alcoholímetro, como el PDF con el reglamento de tránsito.
+- Los servidores de Operbes se corresponden con la funcionalidad de búsqueda de policias y sus placas y empresas privadas
+- En los servidores de Uninet están guardados tanto el vídeo del alcoholímetro, como el PDF con el reglamento de tránsito. Se usa además para la denuncia ciudadana. Es el servidor de la Secretaría de Seguridad Ciudadana. 
 - El servidor de Akamai está directamente relacionado con el servicio de Here, y de ahí se extraen íconos y visuales.
 
 ## Funciones particulares de la aplicación:
 - Escaneo de placa de un policía para ver si tiene derecho a levantar infracciones de tránsito
 - Revisar por nombre o número de placa si un policía tiene el derecho a levantar infracciones de tránsito
-- Video explicativo sobre el funcionamiento del Alcoholímetro
+- Video explicativo sobre el funcionamiento del Alcoholímetro e información
 - Denuncias de *Asistencia Ciudadana*
 - Contacto con policía turística
 - PDF con el reglamento de tránsito
+- Se puede revisar si un vehículo se encuentra en el corralón
+- Se puede comprobar si una empresa de Seguridad Privada está inscrita al padrón
+- Acompañamiento a cuenthabientes
+- Buscar el cuadrante que le corresponde a uno según la dirección ingresada
+- Teléfono a la unidad de contacto del Secretario de Seguridad Pública de la CDMX
 ## Notas
 
 - La función de denuncia ciudadana no funcionó.
