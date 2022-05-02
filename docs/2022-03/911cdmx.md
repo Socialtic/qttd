@@ -1,14 +1,15 @@
 # 911 CDMX
 #### Fecha de análisis:
-Análisis estático: 30 marzo 2022
-Análisis dinámico OpenVPN:
+Análisis estático (mediante Exodus Privacy): 30 marzo 2022   
+Análisis dinámico (mediante captura de tráfico de red): 28 abril 2022   
 Análisis posteriores:
 
-**Link:** https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es       
-**Descargas:** 1,000,000+   
-**Fecha de actualización:** 22 Mayo 2020
-
 ## Descripción de la aplicación:
+**Tipo:** Aplicación de emergencias de la CDMX   
+**Costo:** Gratuito   
+**Link:** [https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es](https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es)       
+**Descargas:** 1,000,000+   
+**Fecha de actualización:** 22 Mayo 2020   
 **Versión:** 1.3.5   
 **Desarrollador:** https://www.c5.cdmx.gob.mx/   
 **Firma:** CAEPCCM    
@@ -17,116 +18,208 @@ Análisis posteriores:
 - https://www.c5.cdmx.gob.mx/terminos911cdmx    
 
 **Uso según la PlayStore:**       
-*La aplicación informática para el uso del Servicio de Atención de Llamadas de Emergencia 911 en dispositivos móviles Android, es un proyecto que el Gobierno de la Ciudad de México, a través del Centro de Comando, Control, Cómputo, Comunicaciones y Contacto Ciudadano de la Ciudad de México, desarrolló, implementó y opera, con el objeto de poner a disposición de la población en la Ciudad de México, una herramienta tecnológica que facilite solicitar auxilio a las autoridades locales, en caso de una emergencia.*
+~~~
+La aplicación informática para el uso del Servicio de Atención de Llamadas de
+Emergencia 911 en dispositivos móviles Android, es un proyecto que el Gobierno
+de la Ciudad de México, a través del Centro de Comando, Control, Cómputo,
+Comunicaciones y Contacto Ciudadano de la Ciudad de México, desarrolló, implementó
+y opera, con el objeto de poner a disposición de la población en la Ciudad
+de México, una herramienta tecnológica que facilite solicitar auxilio
+a las autoridades locales, en caso de una emergencia.
+~~~
 
-## Trackers (Análisis a través de [Exodus Privacy](https://exodus-privacy.eu.org/en/))
+## Trackers identificados (mediante Exodus Privacy)
 [Google Crashlytics](https://firebase.google.com/products/crashlytics)   
 [Google Firebse Analytics](https://firebase.google.com/products/analytics)
 
+Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.desarrollo.c5.app_066_android_2/latest/)   
+
+## Empresas relacionadas con esta aplicación
+- Google (trackers y ubicación)
+- Twitter (Función de notificaciones sobre temblores)
+- Uninet (Servidores donde está albergada la apliacación)
+- Edgecast (Servdior relacionado con Twitter)
+
 ## Permisos
+- **Según la Playstore:** 11 permisos, de los cuales 3 tienen dos subpermisos cada uno.   
+- **Según Exodus Privacy:** 14 permisos.   
+- **Según prueba de uso:** 7 permisos que se piden de manera explícita.
+
+*Consideramos un subpermiso como un permiso que se da dentro de otro permiso.*
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:
 
-Almacenamiento:
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589662-61f0133f-2933-45d5-9789-fde06ef0785b.png)ID de dispositivo y datos de llamadas
 
-      Leer el contenido del dispositivo USB    
-      Modificar o eliminar el contenido del almacenamiento USB   
+  - leer la identidad y el estado del dispositivo
 
-Fotos/datos multimedia/archivos:
 
-      Leer el contenido del dispositivo USB
-      Modificar o eliminar el contenido del almacenamiento USB
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589611-9dec40f8-a24a-4fa3-bdf8-922ffc380ce1.png) Fotos/datos multimedia/archivos
 
-Cámara:
+  - Leer el contenido del dispositivo USB
+  - modificar o eliminar el contenido del almacenamiento USB
 
-      Tomar fotografías y grabar videos
 
-ID de dispositivo y datos de llamadas:
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589611-9dec40f8-a24a-4fa3-bdf8-922ffc380ce1.png) Cámara
 
-      Leer la identidad y el estado del dispositivo
+  - Tomar fotografías y grabar videos
 
-Teléfono:
 
-      Llamar directamente a números de teléfono
-      Leer la identidad y el estado del dispositivo
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633301-50dd7758-728f-4712-87bb-929a38c8878f.png) Contactos
 
-Contactos:
+  - leer tus contactos
 
-      Leer tus contactos
 
-Ubicación:
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589563-392a213f-de5f-4f8e-8e59-4e0e2da106c5.png) Almacenamiento
 
-      Ubicación precisa (según el GPS y la red)
+  - Leer el contenido del dispositivo USB
+  - modificar o eliminar el contenido del almacenamiento USB
 
-Otro:
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589440-63853abc-5ae8-4677-b60e-f605577e9881.png)Ubicación
 
-      Recibir datos desde Internet
-      Ver conexiones de red
-      Acceso completo a la red
-      Impedir que el dispositivo entre en modo de suspensión
+  - ubicación precisa (según el GPS y la red)
+
+
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589549-160b571e-067e-4a71-8000-31bce52a530b.png)Teléfono
+
+  - leer la identidad y el estado del dispositivo
+  - Llamar directamente a números de teléfono
+
+
+- ❔Otro
+
+  - Recibir datos desde Internet
+  - Impedir que el dispositivo entre en modo de suspensión
+  - ver conexiones de red
+  - acceso completo a la red
+
+
 
 #### Permisos según Exodus Privacy:
-ACCESS_FINE_LOCATION   
-*Access precise location (GPS and network-based)*
+- ![imagen](https://user-images.githubusercontent.com/102829552/165589993-2aa5535d-fbb0-45a7-84b5-ad709cf3fcc0.png):exclamation:ACCESS_FINE_LOCATION   
+_Access precise location (GPS and network-based)_
 
-ACCESS_NETWORK_STATE   
-*View network connections*
+- ACCESS_NETWORK_STATE   
+_View network connections_
 
-ACCESS_NOTIFICATION_POLICY   
-*Access Do Not Disturb*
+- ACCESS_NOTIFICATION_POLICY   
+_Access Do Not Disturb_
 
-CALL_PHONE   
-*Directly call phone numbers*
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590152-18dcfe36-f5d6-4d7a-87b0-1dc847770edb.png):exclamation:CALL_PHONE   
+_Directly call phone numbers_
 
-CAMERA   
-*Take pictures and videos*
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590237-49e9bf90-9c95-44ae-aea7-5cbecf02a35d.png):exclamation:CAMERA   
+_Take pictures and videos_
 
-FOREGROUND_SERVICE   
-*Run foreground service*
+- FOREGROUND_SERVICE   
+_Run foreground service_
 
-INTERNET   
-*Have full network access*
+- INTERNET   
+_Have full network access_
 
-READ_CONTACTS   
-*read your contacts*
+- ![imagen](https://user-images.githubusercontent.com/102829552/165633822-fbbd5595-eba4-4986-86d5-22dde56764b3.png):exclamation:READ_CONTACTS   
+_read your contacts_
 
-READ_EXTERNAL_STORAGE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590322-82cf5301-63b1-4ae9-858b-7e3bf648a9ed.png):exclamation:READ_EXTERNAL_STORAGE   
 _read the contents of your SD card_
 
-READ_PHONE_STATE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590152-18dcfe36-f5d6-4d7a-87b0-1dc847770edb.png):exclamation:READ_PHONE_STATE   
 _read phone status and identity_
 
-WAKE_LOCK   
+- WAKE_LOCK   
 _prevent phone from sleeping_
 
-WRITE_EXTERNAL_STORAGE   
+- ![imagen](https://user-images.githubusercontent.com/102829552/165590322-82cf5301-63b1-4ae9-858b-7e3bf648a9ed.png):exclamation:WRITE_EXTERNAL_STORAGE   
 _modify or delete the contents of your SD card_
 
-RECEIVE
+- RECEIVE
 
-BIND_GET_INSTALL_REFERRER_SERVICE
+- BIND_GET_INSTALL_REFERRER_SERVICE
 
 #### Permisos solicitados durante el uso de la aplicación:
-- Acceso a ubicación (Se puede denegar, otorgar por una vez o mientras la app está en uso)
-- Acceso a llamadas telefónicas
+- 🔵 Acceso a ubicación (Notificación de temblores y llamdas de emergencia)
+- 🔵 Acceso a llamadas telefónicas (Llamadas de emergencia)
+- 🔵 Acceso a contactos (para agregar contactos en la *Red de emergencias* desde la libreta de direcciones de Google)
+
+🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
-#### Datos solicitados al usuario durante el uso
-- Número de celular (!) Se usa para verificar la instalación
-- Compañía telefónica
-- Nombre (!)
-- Apellido Paterno (!)
-- Apellido Materno (!)
-- Fecha de nacimiento
-- Correo electrónico (!)
-- Calle
-- Número
-- Colonia
-- Delegación
-- C.P.
+#### Datos solicitados al usuario durante el uso de la aplicación
+- 🔴 Número de celular
+- ⚪ Compañía telefónica
+- 🔴 Nombre
+- 🔴 Apellido Paterno
+- 🔴 Apellido Materno
+- ⚪ Fecha de nacimiento
+- 🔴 Correo electrónico (!)
+- ⚪ Calle
+- ⚪ Número
+- ⚪ Colonia
+- ⚪ Delegación
+- ⚪ C.P.
+- ⚪ Ficha de salud
+  - 🔴 Edad
+  - ⚪ Sexo
+  - ⚪ Tipo de sangre
+  - ⚪ Padecimiento
+  - 🔴 Enfermedad crónica
+  - 🔴 Alergias
+  - 🔴 Sumnistro de medicamentos
 
-#### Datos análisis dinámico con OpenVPN
+
+🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
+⚪ Este ícono indica que estos datos son opcionales.
+
+#### Tabla de conexiones realizadas durante el uso de la Aplicación
+| Dirección IP    | Paquetes | País          | Ciudad        | Número AS | Organización AS     |
+|-----------------|----------|---------------|---------------|-----------|---------------------|
+| 104.244.42.8    |      100 | United States |               |     13414 | TWITTER             |
+| 104.244.42.130  |      125 | United States |               |     13414 | TWITTER             |
+| 142.250.123.188 |        2 | United States |               |     15169 | GOOGLE              |
+| 142.250.190.3   |       20 | United States |               |     15169 | GOOGLE              |
+| 142.250.190.10  |        3 | United States |               |     15169 | GOOGLE              |
+| 142.250.190.42  |       92 | United States |               |     15169 | GOOGLE              |
+| 142.250.190.74  |      899 | United States |               |     15169 | GOOGLE              |
+| 142.250.190.78  |      478 | United States |               |     15169 | GOOGLE              |
+| 142.250.190.138 |       53 | United States |               |     15169 | GOOGLE              |
+| 142.250.191.170 |      144 | United States |               |     15169 | GOOGLE              |
+| 142.250.191.202 |       25 | United States |               |     15169 | GOOGLE              |
+| 142.250.191.206 |       34 | United States |               |     15169 | GOOGLE              |
+| 142.250.191.227 |        3 | United States |               |     15169 | GOOGLE              |
+| 142.250.191.238 |       38 | United States |               |     15169 | GOOGLE              |
+| 142.251.4.188   |       28 | United States |               |     15169 | GOOGLE              |
+| 142.251.16.92   |       22 | United States |               |     15169 | GOOGLE              |
+| 142.251.32.10   |      719 | United States |               |     15169 | GOOGLE              |
+| 172.217.1.106   |        6 | United States |               |     15169 | GOOGLE              |
+| 172.217.2.46    |       26 | United States |               |     15169 | GOOGLE              |
+| 187.174.224.151 |      178 | Mexico        | Mexicaltzingo |      8151 | Uninet S.A. de C.V. |
+| 189.247.22.77   |     2047 | Mexico        |               |      8151 | Uninet S.A. de C.V. |
+| 189.247.22.78   |     1431 | Mexico        |               |      8151 | Uninet S.A. de C.V. |
+| 189.247.22.81   |     1371 | Mexico        |               |      8151 | Uninet S.A. de C.V. |
+| 192.229.173.16  |       34 | United States |               |     15133 | EDGECAST            |
+
+#### Mapa de conexiones
+
 #### Otros datos y trackers
+- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización, por el tracker de Firebase y el de Crashlytics. Firebase asigna, a través de otro tracker, [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
+- Los servdiores de Twitter son contactados por la función de notificaciones sobre temblores.
+- El servidor de Edgecast está relacionado con Twitter
+- El servidor 189.174.224.151 de Uninet sirve para el registro de aplicación, las llamadas son en HTTP, es decir que no están cifradas. El registro, además de los datos de usuario recolecta el tipo de sistema operativo, un identificador de telefonía y el modelo del celular. Así mismo el token de autenticación y la llave, son mandados en texto plano.
+- En este mismo servidor, también en HTTP, se colectan los datos de los usuarios que uno agrega en la sección de la *Ficha de salud*, los datos del seguro que uno ingresa ahí mismo, y los propios datos médicos ingresados.
+- En el servidor arriba mencionado se mandan las modificaciones de las opciones de *Anuncios Públicos*, *Llamadas de extorsión* y *Alerta sísmica*. Además los datos de la *Red de contactos de emergencia*. Todo, siempre, eh HTTP.
+
+### Funciones específicas de la Aplicación
+- Alerta sísmica
+- Anuncios Públicos
+- Llamadas de extorsión
+- Widgets: chat de emergencia, llamada 911, llamada silenciosa
 
 ### Notas
-- El link a la página de Políticas de privacidad está mal
+- La Leyenda de tratamiento de datos debe ser aceptada de manera expresa.
+- El link a la página de Políticas de privacidad en la Playstore está mal.
+- Intentamos agregar un contacto a la red de emergencias pero no se pudo. Aunque el contacto tenía la aplicación instalada (requerimiento necesario), identificó que ese contacto no la tenía instalada.
+- Si el usuario instala la aplicación y luego la desinstala, no es posible volver a registrarse. Se tiene que hacer un restablecimiento de fábrica del celular para poder hacerlo.
+- El registro no siempre funciona a la primera, a veces hay que abrir y cerrar la aplicación varias veces.
+- El aviso de emergencia por chat no funcionó.
+- La función *Llamada silenciosa* simplemente abre una llamada a 911.
+- En un celular la función de localización no funcionó, en otro sí.
