@@ -45,7 +45,7 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.jpriskc
 
 ## Empresas relacionadas con esta aplicación:
 - Google (Trackers y ubicación)
-- Coeficiente comunicaciones (Servidor donde está albergada la aplicación)
+- Coeficiente comunicaciones (Servidor donde está almacenada la aplicación)
 
 ## Permisos
 
@@ -202,11 +202,13 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 
 #### Notas sobre datos recolectados
-- El servidor de Coeficiente Comunicaciones es el host de la app. Las llamadas a ese servidor se hacen en HTTP, tanto las de emergencia como las de registro, es decir que no están cifradas. Esto quiere decir que todos los datos que el usuario proporciona de manera de voluntaria se envían en texto plano al servidor de Coeficiente Comunicaciones.
-- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, AdMob y Tag manger. Firebase es una pltaforma que además incluye una serie de subtrackers: Crashlytics y Analytics. Este último está enfocado a marketing. Admob está enfocado a anuncios. TagManager puede ser usado para marketing, pero también es una herramienta para generar etiquetas en el código de una aplicación.
+- El servidor de Coeficiente Comunicaciones es el _Host_ de la app. Las llamadas a ese servidor se hacen en HTTP, tanto las de emergencia como las de registro, es decir que no están cifradas. Esto quiere decir que todos los datos que el usuario proporciona de manera de voluntaria se envían en texto plano al servidor de Coeficiente Comunicaciones.
 
+- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob. Firebase recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 
-#### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+- Los trackers [Crashlytics](https://firebase.google.com/docs/crashlytics) y [Analytics](https://firebase.google.com/docs/analytics) son dos subtrackers de Firebase. El primero tiene la función de mejorar la aplicación al mandar reportes de cierres inesperados de la apliación, el segundo otorga información sobre su uso, lo que no necesariamente es malo. Sin embargo AdMob es un tracker para mostrar banners de publicidad dentro de la aplicación mientras que TagManager es un tracker que permite etiquetar secciones de código.
+
+#### Tabla de relación entre permisos y funciones
 | Permisos   | Función relacionada  |
 |---|---|
 | ACCESS_COARSE_LOCATION  | Servicio de ubicación  |
@@ -225,15 +227,13 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | C2D_MESSAGE  | Push Notifications  |
 | MAPS_RECEIVE  | Permiso innecesario  |
 
+#### Funciones específicas de la aplicación
 - Tiene un botón "Prueba de Servicio" que permite verificar que todo funciona sin que se haga una llamada o notificación real de emergencia.
 - Incluye Auxilio Ciudadano (Policía); Bomberos; Médicos y llamada directa a 911.
 - Incluye botón de acceso rápido (3 toques seguidos del botón de apagado o bloqueo). Con esto, según la documentación, se hace un aviso de emergencia de manera automática. Como la prueba se hizo fuera de Jalisco, no pudimos probar esta funcionalidad.
 - Permite modificar los datos, la contraseña y darse de baja de la cuenta.
 ### Notas
 
-- Hay que aceptar los Términos de uso de manera expresa
-- Hay que aceptar el Aviso de Privacidad de manera expresa
-- Mandan un correo con un código para verificar la cuenta.
 - La aplicación no funciona si no se le concede el permiso de ubicación precisa.
 
 ### Conclusiones
