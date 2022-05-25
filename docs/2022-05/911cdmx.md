@@ -51,13 +51,13 @@ Esta aplicación tiene acceso a:
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589662-61f0133f-2933-45d5-9789-fde06ef0785b.png)ID de dispositivo y datos de llamadas
 
-  - leer la identidad y el estado del dispositivo
+  - Leer la identidad y el estado del dispositivo
 
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589611-9dec40f8-a24a-4fa3-bdf8-922ffc380ce1.png) Fotos/datos multimedia/archivos
 
   - Leer el contenido del dispositivo USB
-  - modificar o eliminar el contenido del almacenamiento USB
+  - Modificar o eliminar el contenido del almacenamiento USB
 
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589611-9dec40f8-a24a-4fa3-bdf8-922ffc380ce1.png) Cámara
@@ -67,22 +67,22 @@ Esta aplicación tiene acceso a:
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165633301-50dd7758-728f-4712-87bb-929a38c8878f.png) Contactos
 
-  - leer tus contactos
+  - Leer tus contactos
 
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589563-392a213f-de5f-4f8e-8e59-4e0e2da106c5.png) Almacenamiento
 
   - Leer el contenido del dispositivo USB
-  - modificar o eliminar el contenido del almacenamiento USB
+  - Modificar o eliminar el contenido del almacenamiento USB
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589440-63853abc-5ae8-4677-b60e-f605577e9881.png)Ubicación
 
-  - ubicación precisa (según el GPS y la red)
+  - Ubicación precisa (según el GPS y la red)
 
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589549-160b571e-067e-4a71-8000-31bce52a530b.png)Teléfono
 
-  - leer la identidad y el estado del dispositivo
+  - Leer la identidad y el estado del dispositivo
   - Llamar directamente a números de teléfono
 
 
@@ -90,8 +90,8 @@ Esta aplicación tiene acceso a:
 
   - Recibir datos desde Internet
   - Impedir que el dispositivo entre en modo de suspensión
-  - ver conexiones de red
-  - acceso completo a la red
+  - Ver conexiones de red
+  - Acceso completo a la red
 
 
 
@@ -137,9 +137,9 @@ _modify or delete the contents of your SD card_
 - BIND_GET_INSTALL_REFERRER_SERVICE
 
 #### Permisos solicitados durante el uso de la aplicación:
-- 🔵 Acceso a ubicación (Notificación de temblores y llamdas de emergencia)
-- 🔵 Acceso a llamadas telefónicas (Llamadas de emergencia)
-- 🔵 Acceso a contactos (para agregar contactos en la *Red de emergencias* desde la libreta de direcciones de Google)
+- 🔵 Acceso a ubicación 
+- 🔵 Acceso a llamadas telefónicas
+- 🔵 Acceso a contactos 
 
 🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
@@ -151,7 +151,7 @@ _modify or delete the contents of your SD card_
 - 🔴 Apellido Paterno
 - 🔴 Apellido Materno
 - ⚪ Fecha de nacimiento
-- 🔴 Correo electrónico (!)
+- 🔴 Correo electrónico
 - ⚪ Calle
 - ⚪ Número
 - ⚪ Colonia
@@ -201,12 +201,12 @@ _modify or delete the contents of your SD card_
 #### Mapa de conexiones
 
 #### Notas sobre datos recolectados
-- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización, por el tracker de Firebase y el de Crashlytics. Firebase asigna [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations) una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
+- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase y Crashlytics. Firebase asigna [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations) una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - Los servidores de Twitter son contactados por la función de notificaciones sobre temblores.
-- El servidor de Edgecast está relacionado con Twitter
-- El servidor 189.174.224.151 de Uninet sirve para el registro de aplicación, las llamadas son en HTTP, es decir que no están cifradas. El registro, además de los datos de usuario recolecta el tipo de sistema operativo, un identificador de telefonía y el modelo del celular. Así mismo el token de autenticación y la llave son mandados en texto plano.
-- En este mismo servidor, también en HTTP, se colectan los datos de los usuarios que uno agrega en la sección de la *Ficha de salud*, los datos del seguro que uno ingresa ahí mismo, y los propios datos médicos ingresados.
-- En el servidor arriba mencionado se mandan las modificaciones de las opciones de *Anuncios Públicos*, *Llamadas de extorsión* y *Alerta sísmica*. Además los datos de la *Red de contactos de emergencia*. Todo, siempre, en HTTP.
+- El servidor de Edgecast está relacionado con Twitter.
+- En el servidor 189.174.224.151 de Uninet sirve para el registro de los usuarios. Las llamadas a este servidor son en HTTP, es decir que no están cifradas. El registro en la aplicación, además de los datos de usuario recolecta el tipo de sistema operativo, un identificador de telefonía y el modelo del celular. Asimismo el token de autenticación y la llave son también mandados en texto plano.
+- En este mismo servidor, también en HTTP, se almacenan los datos de los usuarios que uno agrega en la sección de la *Ficha de salud*, los datos del seguro que uno ingresa ahí mismo, y los propios datos médicos ingresados.
+- En el servidor arriba mencionado se mandan las modificaciones de las opciones de servicios de *Anuncios Públicos*, *Llamadas de extorsión* y *Alerta sísmica*. Además los datos de la *Red de contactos de emergencia*. Todo, siempre, en HTTP.
 
 ### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
 
@@ -235,7 +235,7 @@ _modify or delete the contents of your SD card_
 ### Notas
 - La Leyenda de tratamiento de datos debe ser aceptada de manera expresa.
 - El link a la página de Políticas de privacidad en la Playstore está mal.
-- Intentamos agregar un contacto a la red de emergencias pero no se pudo. Aunque el contacto tenía la aplicación instalada (requerimiento necesario), identificó que ese contacto no la tenía instalada.
+- Intentamos agregar un contacto a la red de emergencias pero no se pudo. Aunque el contacto tenía la aplicación instalada (requerimiento necesario), la aplicación no identificó que ese contacto la tenía instalada.
 - Si el usuario instala la aplicación y luego la desinstala, no es posible volver a registrarse. Se tiene que hacer un restablecimiento de fábrica del celular para poder hacerlo.
 - El registro no siempre funciona a la primera, a veces hay que abrir y cerrar la aplicación varias veces.
 - El aviso de emergencia por chat no funcionó.
@@ -246,6 +246,6 @@ _modify or delete the contents of your SD card_
 
 - La aplicación hace las llamadas al servidor de Uninet en texto plano, es decir que no está cifrado. Todos los datos que el usuario otorga de manera voluntaria además de un identificador de telefonía, el sistema operativo, el modelo del celular y la llave y el token de autenticación, no están cifrados. Las llamadas de emergencia a través del botón de pánico, tampoco. Esto es un problema de seguridad mayúsculo.
 - La relación entre permisos y funciones es simétrica y no hay nada fuera de lo normal.
-- El uso de trackers no es excesivo, aunque nos preocupa la integración con Twitter en la información sísmica. No estamos seguros de que esto sea necesariamente un problema de privacidad, pero existe dicha posibilidad debido a las prácticas de rastreo agresivas que tiene esa empresa.
-- Hay varias funciones que no sirven o sirven a medias y está el _bug_ que niega la posibilidad de instalar la app dos veces en un mismo celular sin revertirlo a sus configuraciones de fábrica.
+- El uso de trackers no es excesivo, aunque nos preocupa la integración con Twitter en la información sísmica. No estamos seguros de que esto sea necesariamente un problema de privacidad, pero existe dicha posibilidad debido a las prácticas agresivas de rastreo que tiene esa empresa.
+- Hay varias funciones que no sirven o sirven a medias y está el _bug_ que niega la posibilidad de instalar la app dos veces en un mismo celular sin antes tener que revertirlo a sus configuraciones de fábrica.
    
