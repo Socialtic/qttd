@@ -170,12 +170,12 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 - La aplicación contacta a los servidores de google por tres razones: los mapas y la geolocalización; el archivo PDF de "Tabulador de multas e infracciones"; y por el tracker de Firebase (que incorpora el de Crashlytics). El tracker de Firebase, asigna través de [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - Las conexiones a Twitter y Facebook son trackers que tienen que ver con la página de información del aviso de Privacidad (En la cual no se muestra el aviso).
 - El servidor de Cloudflare está relacionado con la página en construcción de la Secretaría de seguridad ciudadana.
-- Los mensajes de quejas y felicitaciones van al servidor de RadioMóvil Dipsa. A esta [página](https://deridev.com/auth/login). También la función sobre revisar si un coche está en el corralón dirige a este servidor.
-- El servidor de RadioMóvil Dipasa es el host de la aplicación. Ahí se guardan todos los datos de registro.
+- Los mensajes de quejas y felicitaciones van al servidor de RadioMóvil Dipsa, a esta [página](https://deridev.com/auth/login). También la función sobre revisar si un coche está en el corralón dirige a este servidor.
+- El servidor de RadioMóvil Dipasa es el _Host_ de la aplicación. Ahí se guardan todos los datos de registro.
 - Las conexiones a [Sucuri-sec](https://sucuri.net/) son llamadas en HTTP. Es un servicio que revisa que las páginas web no tengan malware y estén seguras. Es prudente suponer que estas conexiones tienen que ver con la misma página del aviso de privacidad.
 - La conexión a Mega Cable es la página (en construcción) de la Secretaría de Seguridad Ciudadana. Esta conexión está en HTTP.
 
-### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+### Tabla de relación entre permisos y funciones
 
 | Permisos  | Funciones relacionadas  |
 |---|---|
@@ -188,6 +188,7 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 | RECEIVE  | Push Notifications  |
 | BIND_GET_INSTALL_REFERRER_SERVICE  | Tracker Firebase  |
 
+#### Funciones específicas de la aplicación
 - Se puede revisar si un coche se encuentra en el corralón
 - Se pueden mandar quejas, sugerencias y felicitaciones a la Policía
 - Tiene las siguientes funciones que abren la instancia de llamada en Android:
@@ -197,12 +198,12 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 - Página con dirección del Ayuntamiento de Puebla y otros datos.
 - Consulta del tabulador de Infracciones
 ### Notas
-- El link provisto por la PlayStore a la política de privacidad no es el correcto.
+- El link provisto por la PlayStore a la política de privacidad no es el correcto. Lo mismo con la redirección al aviso de privacidad dentro de la aplicación. 
 - Botón de auxilio no sirve por estar fuera de Puebla.
 
 ### Conclusiones
 
-- La relación entre permisos y funciones es simétrica con excepción del permiso _receive_boot_completed_ que le permite iniciarse a una aplicación de manera automática cuando se reinicia el teléfono, cosa que no sucede con esta app.
+- La relación entre permisos y funciones es simétrica con excepción del permiso _receive_boot_completed_ que permite que una aplicación se inicie de manera automática cuando se reinicia el teléfono, cosa que no sucede con esta app.
 - No tiene problemas flagrantes de seguridad.
 - Lo que nos preocupa un poco es que da acceso a varias páginas que tienen trackers de Facebook y Twitter. Páginas que, además que no deberían tener esos trackers ya que son del gobierno del estado de Puebla, pueden hacer que un usuario sea rastreado en su móvil al utilizar esta aplicación.
 - Tiene dos trackers, Firebase y su subtracker Firebase Analytics. Si bien, en el mejor de los casos, no deberían estar, tampoco es una aplicación que presenta trackers en exceso. 
