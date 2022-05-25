@@ -37,7 +37,7 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/mx.gob.sego
 
 ## Empresas relacionadas con esta aplicación:
 - Google (Trackers y ubicación)
-- Total Play Telecomunicaciones (Servidor donde está albergada la aplicación)
+- Total Play Telecomunicaciones (Servidor donde está almacenada la aplicación)
 
 ## Permisos   
 - **Según la Playstore:** 17 permisos, de los cuales 2 tienen 3 subpermisos y 3 tiene 2 subpermisos.
@@ -230,7 +230,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - En este servidor también se guardan los contactos de emergencia en formato JSON: id de contacto, nombre y teléfono.
 - En este servidor se guarda la información de contacto que proporciona el usuario.
 
-### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+### tabla de relación entre permisos y funciones
 
 | Permisos  | Función relacionada  |
 |---|---|
@@ -256,7 +256,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | BIND_GET_INSTALL_REFERRER_SERVICE  |  Firebase tracker  |
 | ACTIVITY_RECOGNITION  |No sabemos para qué se usa   |
 
-- Tiene la función de datos patrocinados (Si la persona no tiene datos, aun así puede hacer uso de la app). No está comprobado.
+####  Funciones específicas de la aplicación
+- Tiene la función de datos patrocinados (si la persona no tiene datos, aun así puede hacer uso de la app). No está comprobado.
 - Cuenta con contactos de red de confianza. Pueden ser agregados de manera manual o accediendo a la libreta de contactos de la cuenta de Google. Además estos contactos deben tener la app instalada. No está comprobado.
 - Tiene una función de Falsa Alarma.
 - Es opcional, pero se puede realizar una encuesta de violencia de pareja a la cual otorgan un resultado y una recomendación.
@@ -267,10 +268,9 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 ### Notas
 
 - La app está firmada por Google.
-- La app está conectada con el C5i.
-- Hay que aceptar de manera expresa el Aviso de Privacidad (está reducido).
+
 
 ### Conclusiones
-- En cuanto a los permisos que solicita la app, son muchos y no encontramos ninguna relación simétrica con las funciones que tiene la aplicación. _Access_location_extra_commands_ permite modificar y manipular el gps. El permiso de _authenticate_accounts_ permite, por ejemplo, crear cuentas en el dispositivo y ponerles passwords. Tampoco entendemos para qué sirve el permiso _get_accounts_ que permite identificar las diferentes cuentas del dispositivo. Creemos que no es necesario el permiso _write_contacts_ que permite modificar los datos de los contactos. Y tenemos casos similares con _read_sync_settings_, _receive_boot_complete_ (sirve para iniciar la app de manera automática cuando se reinicia el dispositivo), _write_external_storage_, _write_sync_settings_, y _activity_recognition_ (permite acceder a los sensores del dispositivo cuando los haya). No sabemos cómo funciona y si sirven los datos patrocinados, pero suponemos que tal vez alguno de estos permisos tenga que ver con ello, aún así, nos parece que esta app solicita permisos raros (por no estar presentes en las otras apps de botón de pánico) y excesivos.
+- En cuanto a los permisos que solicita la app, son muchos y no encontramos ninguna relación simétrica con las funciones que tiene la aplicación. _Access_location_extra_commands_ permite modificar y manipular el _gps_. El permiso de _authenticate_accounts_ permite, por ejemplo, crear cuentas en el dispositivo y ponerles passwords. Tampoco entendemos para qué sirve el permiso _get_accounts_ que permite identificar las diferentes cuentas del dispositivo. Creemos que no es necesario el permiso _write_contacts_ que permite modificar los datos de los contactos. Y tenemos casos similares con _read_sync_settings_, _receive_boot_complete_ (sirve para iniciar la app de manera automática cuando se reinicia el dispositivo), _write_external_storage_, _write_sync_settings_, y _activity_recognition_ (permite acceder a los sensores del dispositivo cuando los haya). No sabemos cómo funciona y si sirven los datos patrocinados, pero suponemos que tal vez alguno de estos permisos tenga que ver con ello, aún así, nos parece que esta app solicita permisos raros (por no estar presentes en las otras apps de botón de pánico) y excesivos.
 - En cuanto a datos, nos preocupa el hecho de que perfile personas en términos de si son indígenas o pertenecientes a alguna etnia. Este dato podría ser de ayuda y al mismo tiempo un dato particularmente peligroso.
 - No tiene fallas de seguridad flagrantes ni parece haber un uso excesivo de trackers (si bien podría, en el mejor de los casos,no haber ninguno).
