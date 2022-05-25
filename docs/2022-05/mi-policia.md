@@ -157,7 +157,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 ### Notas sobre datos recolectados:
 
-- Los servidores de Amazon contactados, son Host de una empresa llamada [Here](https://www.here.com/). Esta empresa, entre otras cosas, desarrolla una API que permite buscar lugares y dar información al respecto. En esta app eso es usado para la función *Localizar tu cuadrante*. Por la [documentación pública](https://developer.here.com/documentation/geocoder/dev_guide/topics/example-reverse-geocoding.html), sabemos que este servicio recolecta:
+- Los servidores de Amazon contactados, son _Host_ de una empresa llamada [Here](https://www.here.com/). Esta empresa, entre otras cosas, desarrolla una API que permite buscar lugares y dar información al respecto. En esta app eso es usado para la función *Localizar tu cuadrante*. Por la [documentación pública](https://developer.here.com/documentation/geocoder/dev_guide/topics/example-reverse-geocoding.html), sabemos que este servicio recolecta:
     - País
     - Estado
     - Ciudad
@@ -170,7 +170,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - En los servidores de Uninet están guardados tanto el vídeo del alcoholímetro, como el PDF con el reglamento de tránsito. Se usa además para la denuncia ciudadana. Es el servidor de la Secretaría de Seguridad Ciudadana.
 - El servidor de Akamai está directamente relacionado con el servicio de Here, y de ahí se extraen íconos y visuales.
 
-### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+### Tabla de relación entre permisos y funciones
 
 | Permisos  | Funciones relacionadas  |
 |---|---|
@@ -183,23 +183,23 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | FOREGROUND_SERVICE  | Botón de pánico  |
 | INTERNET  | Internet  |
 
+#### Funciones específicas de la aplicación
 - Escaneo de placa de un policía para ver si tiene derecho a levantar infracciones de tránsito
 - Revisar por nombre o número de placa si un policía tiene el derecho a levantar infracciones de tránsito
-- Video explicativo sobre el funcionamiento del Alcoholímetro e información
+- Video explicativo sobre el funcionamiento del Alcoholímetro e información general
 - Denuncias de *Asistencia Ciudadana*
 - Contacto con policía turística
 - PDF con el reglamento de tránsito
 - Se puede revisar si un vehículo se encuentra en el corralón
-- Se puede comprobar si una empresa de Seguridad Privada está inscrita al padrón
+- Se puede comprobar si una empresa de Seguridad Privada está inscrita en el padrón de la CDMX
 - Acompañamiento a cuentahabientes
-- Buscar el cuadrante que le corresponde a uno según la dirección ingresada
+- Buscar el cuadrante policial que le corresponde a uno según la dirección ingresada
 - Teléfono a la unidad de contacto del Secretario de Seguridad Pública de la CDMX
 
 ### Notas
 
 - La función de denuncia ciudadana no funcionó.
 - No hemos probado el escáner de placa policial en vivo.
-- Para el uso de la app hay que aceptar los *Términos y Condiones de Uso* junto con la *Política de Privacidad* de manera expresa.
 - La opción *Agenda de movilizaciones* descarga un PDF con la información del día.
 - Mientras la app está en uso, está activado el acceso a la ubicación en segundo plano.
 
