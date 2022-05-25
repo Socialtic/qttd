@@ -214,7 +214,7 @@ _modify or delete the contents of your SD card_
 |---|---|
 | ACCESS_FINE_LOCATION  | Servicio de ubicación  |
 | ACCESS_NETWORK_STATE  | Servicio de ubicación  |
-| ACCESS_NOTIFICATION_POLICY  |   |
+| ACCESS_NOTIFICATION_POLICY  | Alarma sísmica  |
 | CALL_PHONE  | Llamada 911  |
 | CAMERA  | Chat  |
 | FOREGROUND_SERVICE  | Botón de pánico  |
