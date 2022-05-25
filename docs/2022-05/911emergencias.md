@@ -253,11 +253,11 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 #### Notas sobre datos recolectados
 - Cuando se instala la app, se manda un identificador a Google.
-- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob. Este último recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
+- La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob. Firebase recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - Los trackers [Crashlytics](https://firebase.google.com/docs/crashlytics) y [Analytics](https://firebase.google.com/docs/analytics) son dos subtrackers de Firebase. El primero tiene la función de mejorar la aplicación al mandar reportes de cierres inesperados de la apliación, el segundo otorga información sobre su uso, lo que no necesariamente es malo. Sin embargo AdMob es un tracker para mostrar banners de publicidad dentro de la aplicación mientras que TagManager es un tracker que permite etiquetar secciones de código.
 - En el análisis no notamos envíos de datos más que de Tag Manager. Puede ser que los otros trackers, a pesar de estar presentes, tengan varias de sus funciones desactivadas o tengan temporizadores u otro tipo de activadores.
 - Se contacta el servidor clients4.google.com. No hay mucha información sobre este dominio y su utilidad. En este caso tiene que ver probablemente con algún tracker. Sabemos que se manda el sistema operativo y su versión, pero nada más.
-- El servidor 201.151.6.27 es el Host de esta aplicación. Todas las llamadas que se hacen a ese servidor están cifradas.
+- El servidor 201.151.6.27 de Alestra es el _Host_ de esta aplicación. Todas las llamadas que se hacen a ese servidor están cifradas.
 - Cuando se hace una llamada al 911, se envía automáticamente la ubicación y el número de teléfono.
 - El reporte de incidente envía:
   - archivo
@@ -312,4 +312,4 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - Esta app no tiene problemas flagrantes de seguridad.
 - Consideramos que hay un uso excesivo de trackers, en particular la presencia de Google AdMob.
 - La relación de permisos y funciones es bastante simétrica y el permiso _system_alert_window_ no resulta peligroso.
-- No se puede borrar ni recuperar el propio perfil. De tal manera que una vez desinstalada la aplicación, es imposible volver a instalarla a menos que se tenga un nuevo número de teléfono.
+- No se puede borrar ni recuperar el propio perfil, de tal manera que una vez desinstalada la aplicación, es imposible volver a instalarla a menos que se tenga un nuevo número de teléfono.
