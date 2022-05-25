@@ -208,7 +208,7 @@ _modify or delete the contents of your SD card_
 - En este mismo servidor, también en HTTP, se almacenan los datos de los usuarios que uno agrega en la sección de la *Ficha de salud*, los datos del seguro que uno ingresa ahí mismo, y los propios datos médicos ingresados.
 - En el servidor arriba mencionado se mandan las modificaciones de las opciones de servicios de *Anuncios Públicos*, *Llamadas de extorsión* y *Alerta sísmica*. Además los datos de la *Red de contactos de emergencia*. Todo, siempre, en HTTP.
 
-### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+### Tabla de relación entre permisos y funciones
 
 | Permisos  | Funciones relacionadas  |
 |---|---|
@@ -227,6 +227,7 @@ _modify or delete the contents of your SD card_
 | RECEIVE  | Push Notifications  |
 | BIND_GET_INSTALL_REFERRER_SERVICE  | Firebase Tracker  |
 
+#### Funciones específicas de la aplicación
 - Alerta sísmica
 - Anuncios Públicos
 - Llamadas de extorsión
