@@ -63,7 +63,7 @@ Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.c4bc.ale
 
 ## Empresas relacionadas con esta aplicación:
 - Google (Trackers y ubicación)
-- Teléfonos del Noroeste (Servidor donde está albergada la aplicación)
+- Teléfonos del Noroeste (Servidor donde está almacenada la aplicación)
 
 ## Permisos
 - **Según la Playstore:** 16 permisos, de los cuales 4 tienen dos subpermisos cada uno.   
@@ -266,7 +266,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 #### Notas sobre datos recolectados
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por el tracker de Firebase (en la nueva versión tenemos, además el tracker de AdMob). Firebase recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 Aquí la documentación al tracker de [AdMob](https://developers.google.com/admob/android/quick-start?hl=es)
-- El servidor 066movilbc.seguridadbc.gob.mx con IP: 200.76.246.123 es el Host de la app. Todos los datos que el usuario debe introducir son guardados ahí. Las llamadas se hacen en texto plano, HTTP, lo que implica una brecha de seguridad. Se pueden ver los siguientes datos (ademṕas de los proporcionados por el usuario) en el http:
+- El servidor 066movilbc.seguridadbc.gob.mx con IP: 200.76.246.123 es el _Host_ de la app. Todos los datos que el usuario debe introducir son guardados ahí. Las llamadas se hacen en texto plano, HTTP, lo que implica una brecha de seguridad enorme. Se pueden ver los siguientes datos (además de los proporcionados por el usuario) en las llamadas http:
    - ID de usuario
    - Nuevo Equipo (si al acceder con un número ya registrado, se está accediendo desde otro equipo al original)
 Número de teléfono
@@ -286,7 +286,7 @@ Número de teléfono
 
 
 
-### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+### Tabla de relación entre permisos y funciones
 
 | Permisos  | Función relacionada  |
 |---|---|
@@ -313,6 +313,7 @@ Número de teléfono
 | BIND_GET_INSTALL_REFERRER_SERVICE  | Permiso relacionado con el tracker de Firebase  |
 | READ_GSERVICES  | Servicio de ubicación  |
 
+#### Funciones específicas de la aplicación
 - Tiene una función de activar el perfil de Seguridad Privada cuando el número registrado sea de un empresa de Seguridad Privada.
 - La función "Estadísticas" remite a la página [www.seguridadbc.gob.mx/ExtorsionTelefonica/engano.php](www.seguridadbc.gob.mx/ExtorsionTelefonica/engano.php) donde se pueden revisar los números denunciados por extorsión, las zonas de donde provienen y otros datos.
 - Función "Menores desaparecidos" permite el acceso a la base datos de menores desaparecidos en sus categorías de Alerta Amber, Regionales, Nacionales y casos resueltos.
@@ -330,5 +331,5 @@ Número de teléfono
 - La relación entre permisos y funciones es simétrica salvo el permiso _maps_receive_ que ya no es necesario para el funcionamiento de google maps desde la versión 3.1.59 de Google Services.
 - Si bien ya es criticable que usen el tracker de Firebase, no se entiende por qué en la nueva versión (5.6.0) agregaron además el de AdMob. Un tracker que, según su propia definición, sirve para presentar _banners_ con publicidad dentro de la app.
 - Cuando se requiere reiniciar sesión, el número de activación es el mismo siempre. De tal manera que un actor malintencionado teniendo el número de teléfono y conociendo este número, podría acceder a la cuenta de otra persona.
-- Para reiniciar sesión solamente se requiere el número de teléfono y proporcionar un email (que no necesariamente tiene que ser con el que se registró un usuario nuevo), de tal manera que uno puede acceder a los datos de un usuario registrado sin mayor problema.  
+- Para reiniciar sesión solamente se requiere el número de teléfono y proporcionar un email (que no necesariamente tiene que ser con el que se registró un usuario), de tal manera que uno puede acceder a los datos de un usuario registrado sin mayor problema.  
 - A pesar que maneja datos sensibles (según la ley de Privacidad de datos de México), no pide en ningún momento aceptar de manera expresa la política de privacidad o los Términos de uso.  
