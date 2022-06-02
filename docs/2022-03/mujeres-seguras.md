@@ -1,20 +1,21 @@
 # Mujeres Seguras
-#### Fecha de análisis:
-Análisis estático (mediante Exodus Privacy): 12 abril 2022   
-Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022     
-Análisis Posteriores: 19 abril 2022   
+
+## Fecha de análisis:
+- Análisis estático (mediante Exodus Privacy): 12 abril 2022   
+- Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022     
+- Análisis Posteriores: 19 abril 2022   
 
 ## Descripción de la aplicación
-**Tipo:** Aplicación de emergencia para mujeres del estado de Sonora   
-**Costo:** Gratuito   
-**Link:** [https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura](https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura)   
-**Descargas:** 50,000+   
-**Fecha de actualización:** 7 Enero 2022   
-**Versión:** 2.0.0  
-**Desarrollador:** [https://mujeresseguras.sonora.gob.mx/](https://mujeresseguras.sonora.gob.mx/)    
-**Firma:** Android, Google Inc.   
-**Contacto:** sistema.estatal@sspsonora.gob.mx  
-**Condiciones de uso y Política de privacidad:**
+- **Tipo:** Aplicación de emergencia para mujeres del estado de Sonora   
+- **Costo:** Gratuito   
+- **Link:** [https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura](https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura)   
+- **Descargas:** 50,000+   
+- **Fecha de actualización:** 7 Enero 2022   
+- **Versión:** 2.0.0  
+- **Desarrollador:** [https://mujeresseguras.sonora.gob.mx/](https://mujeresseguras.sonora.gob.mx/)    
+- **Firma:** Android, Google Inc.   
+- **Contacto:** sistema.estatal@sspsonora.gob.mx  
+- **Condiciones de uso y Política de privacidad:**
 - [https://www.sonora.gob.mx/politica-de-uso.html](https://www.sonora.gob.mx/politica-de-uso.html)
 
 **Descripción en playstore:**   
