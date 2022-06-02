@@ -53,6 +53,8 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.jpriskc
 - **Según Exodus Privacy:** 15 permisos.
 - **Según prueba de uso:** 5 permisos que se piden de manera explícita.
 
+*Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
+
 #### Permisos según la PlayStore:
 Esta aplicación puede acceder a:   
 

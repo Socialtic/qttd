@@ -44,6 +44,8 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/mx.gob.sego
 - **Según Exodus Privacy:** 23 permisos.
 - **Según prueba de uso:** 3 permisos que se piden de manera explícita.   
 
+*Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
+
 ### Permisos según la PlayStore:   
 Esta aplicación puede acceder a:   
 - ![imagen](https://user-images.githubusercontent.com/102829552/165633281-fdb9f280-7a44-4700-a6d0-d922770cc9ba.png)
