@@ -45,7 +45,7 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/gob.sesnsp.
 - **Según Exodus Privacy:** 24 permisos.
 - **Según prueba de uso:** 8 permisos que se piden de manera explícita.   
 
-*Consideramos un subpermiso como un permiso que se da dentro de otro permiso.*
+*Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
 
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:   

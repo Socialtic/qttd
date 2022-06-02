@@ -1,51 +1,59 @@
 # 911 CDMX
-#### Fecha de análisis:
-Análisis estático (mediante Exodus Privacy): 30 marzo 2022   
-Análisis dinámico (mediante captura de tráfico de red): 28 abril 2022   
-Análisis posteriores:
+
+## Fecha de análisis:
+
+- **Análisis estático (mediante Exodus Privacy):** 30 marzo 2022   
+- **Análisis dinámico (mediante captura de tráfico de red):** 28 abril 2022   
+- **Análisis posteriores:**
 
 ## Descripción de la aplicación:
-**Tipo:** Aplicación de emergencias de la CDMX   
-**Costo:** Gratuito   
-**Link:** [https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es](https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es)       
-**Descargas:** 1,000,000+   
-**Fecha de actualización:** 22 Mayo 2020   
-**Versión:** 1.3.5   
-**Desarrollador:** https://www.c5.cdmx.gob.mx/   
-**Firma:** CAEPCCM    
-**Contacto:** ciudadsegura@cdmx.gob.mx   
-**Condiciones de uso y Política de privacidad:**  
-- https://www.c5.cdmx.gob.mx/terminos911cdmx    
 
-**Uso según la PlayStore:**       
+- **Tipo:** Aplicación de emergencias de la CDMX   
+- **Costo:** Gratuito   
+- **Link:** [https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es](https://play.google.com/store/apps/details?id=com.desarrollo.c5.app_066_android_2&hl=es)       
+- **Descargas:** 1,000,000+   
+- **Fecha de actualización:** 22 Mayo 2020   
+- **Versión:** 1.3.5   
+- **Desarrollador:** https://www.c5.cdmx.gob.mx/   
+- **Firma:** CAEPCCM    
+- **Contacto:** ciudadsegura@cdmx.gob.mx   
+- **Condiciones de uso y Política de privacidad:**  
+  - https://www.c5.cdmx.gob.mx/terminos911cdmx
+
+**Uso según la PlayStore:**
+
 ~~~
 La aplicación informática para el uso del Servicio de Atención de Llamadas de
 Emergencia 911 en dispositivos móviles Android, es un proyecto que el Gobierno
 de la Ciudad de México, a través del Centro de Comando, Control, Cómputo,
-Comunicaciones y Contacto Ciudadano de la Ciudad de México, desarrolló, implementó
-y opera, con el objeto de poner a disposición de la población en la Ciudad
-de México, una herramienta tecnológica que facilite solicitar auxilio
+Comunicaciones y Contacto Ciudadano de la Ciudad de México, desarrolló,
+implementó y opera, con el objeto de poner a disposición de la población en la
+Ciudad de México, una herramienta tecnológica que facilite solicitar auxilio
 a las autoridades locales, en caso de una emergencia.
 ~~~
 
 ## Trackers identificados (mediante Exodus Privacy)
-[Google Crashlytics](https://firebase.google.com/products/crashlytics)   
-[Google Firebase Analytics](https://firebase.google.com/products/analytics)
 
-Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.desarrollo.c5.app_066_android_2/latest/)   
+- [Google Crashlytics](https://firebase.google.com/products/crashlytics)   
+- [Google Firebase Analytics](https://firebase.google.com/products/analytics)
+
+Enlace a [reporte en Exodus Privacy](https://reports.exodus-privacy.eu.org/es/reports/com.desarrollo.c5.app_066_android_2/latest/)   
 
 ## Empresas relacionadas con esta aplicación
-- Google (trackers y ubicación)
+
+- Google (Trackers y ubicación)
 - Twitter (Función de notificaciones sobre temblores)
 - Uninet (Servidores donde está albergada la aplicación)
 - Edgecast (Servidor relacionado con Twitter)
 
 ## Permisos
-- **Según la Playstore:** 11 permisos, de los cuales 3 tienen dos subpermisos cada uno.   
+
+- **Según la Playstore:** 11 permisos, de los cuales 3 tienen dos subpermisos cada uno.  
 - **Según Exodus Privacy:** 14 permisos.   
 - **Según prueba de uso:** 7 permisos que se piden de manera explícita.
 
-*Consideramos un subpermiso como un permiso que se da dentro de otro permiso.*
+*Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
+
 #### Permisos según la PlayStore:
 Esta aplicación tiene acceso a:
 
@@ -137,9 +145,9 @@ _modify or delete the contents of your SD card_
 - BIND_GET_INSTALL_REFERRER_SERVICE
 
 #### Permisos solicitados durante el uso de la aplicación:
-- 🔵 Acceso a ubicación 
+- 🔵 Acceso a ubicación
 - 🔵 Acceso a llamadas telefónicas
-- 🔵 Acceso a contactos 
+- 🔵 Acceso a contactos
 
 🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
@@ -249,4 +257,3 @@ _modify or delete the contents of your SD card_
 - La relación entre permisos y funciones es simétrica y no hay nada fuera de lo normal.
 - El uso de trackers no es excesivo, aunque nos preocupa la integración con Twitter en la información sísmica. No estamos seguros de que esto sea necesariamente un problema de privacidad, pero existe dicha posibilidad debido a las prácticas agresivas de rastreo que tiene esa empresa.
 - Hay varias funciones que no sirven o sirven a medias y está el _bug_ que niega la posibilidad de instalar la app dos veces en un mismo celular sin antes tener que revertirlo a sus configuraciones de fábrica.
-   

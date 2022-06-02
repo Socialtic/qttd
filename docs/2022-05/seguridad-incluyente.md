@@ -198,7 +198,7 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 - Página con dirección del Ayuntamiento de Puebla y otros datos.
 - Consulta del tabulador de Infracciones
 ### Notas
-- El link provisto por la PlayStore a la política de privacidad no es el correcto. Lo mismo con la redirección al aviso de privacidad dentro de la aplicación. 
+- El link provisto por la PlayStore a la política de privacidad no es el correcto. Lo mismo con la redirección al aviso de privacidad dentro de la aplicación.
 - Botón de auxilio no sirve por estar fuera de Puebla.
 
 ### Conclusiones
@@ -206,4 +206,4 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 - La relación entre permisos y funciones es simétrica con excepción del permiso _receive_boot_completed_ que permite que una aplicación se inicie de manera automática cuando se reinicia el teléfono, cosa que no sucede con esta app.
 - No tiene problemas flagrantes de seguridad.
 - Lo que nos preocupa un poco es que da acceso a varias páginas que tienen trackers de Facebook y Twitter. Páginas que, además que no deberían tener esos trackers ya que son del gobierno del estado de Puebla, pueden hacer que un usuario sea rastreado en su móvil al utilizar esta aplicación.
-- Tiene dos trackers, Firebase y su subtracker Firebase Analytics. Si bien, en el mejor de los casos, no deberían estar, tampoco es una aplicación que presenta trackers en exceso. 
+- Tiene dos trackers, Firebase y su subtracker Firebase Analytics. Si bien, en el mejor de los casos, no deberían estar, tampoco es una aplicación que presenta trackers en exceso.

@@ -49,6 +49,9 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.moobky.
 - **Según la Playstore:** 9 permisos, de los cuales 3 tienen dos subpermisos cada uno.
 - **Según Exodus Privacy:** 9 permisos.
 - **Según prueba de uso:** 3 permisos que se piden de manera explícita.
+
+*Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
+
 ### Permisos según la PlayStore:   
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165648944-144b0d59-f94f-4919-bf53-bb43dae4d448.png)
@@ -207,4 +210,4 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 - Aplaudimos que sea la única aplicación analizada que no contiene trackers.
 - La relación entre permisos y funciones es exacta y tiene, en general pocos permisos en comparación con las funciones que tiene. Lo que nos hace creer que la implementación de los desarrolladores es particularmente buena en comparación con las otras aplicaciones.
-- Los permisos de la PlayStore no tienen una correlación directa con los encontrados por Exodus Privacy lo que no es alarmante, ya que los permisos en el código son menores a los que dice la PlayStore. 
+- Los permisos de la PlayStore no tienen una correlación directa con los encontrados por Exodus Privacy lo que no es alarmante, ya que los permisos en el código son menores a los que dice la PlayStore.
