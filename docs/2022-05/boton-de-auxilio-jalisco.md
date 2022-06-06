@@ -1,23 +1,26 @@
 # Botón de Auxilio Jalisco
-#### Fecha de análisis:
-Análisis estático (mediante Exodus Privacy): 12 abril 2022    
-Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022  
-Análisis posteriores:    
 
-## Descripción de la aplicación:
-**Tipo:** Aplicación de emergencia del estado de Jalisco   
-**Costo:** Gratuito   
-**Link:** [https://play.google.com/store/apps/details?id=com.jpriskcorp.botonpanicoapp.jal](https://play.google.com/store/apps/details?id=com.jpriskcorp.botonpanicoapp.jal)      
-**Descargas:** 50,000+  
-**Fecha de actualización:** 13 Enero 2022
-**Versión:**  94
-**Desarrollador:**  [https://c5jalisco.gob.mx/](https://c5jalisco.gob.mx/)  
-**Firma:**  riskcorp@yahoo.com.mx/C=US     
-**Contacto:**  operativaceinco@gmail.com   
-**Condiciones de uso y Política de privacidad:**  
-- [https://fge.jalisco.gob.mx/content/terminos-y-politicas-boton-de-panico](https://fge.jalisco.gob.mx/content/terminos-y-politicas-boton-de-panico)  
+## Fecha de análisis
 
-**Descripción en PlayStore**
+- **Análisis estático (mediante Exodus Privacy):** 12 abril 2022    
+- **Análisis dinámico (mediante análisis de tráfico de red):** 18 abril 2022  
+- **Análisis posteriores:**    
+
+## Descripción de la aplicación
+
+- **Tipo:** Aplicación de emergencia del estado de Jalisco   
+- **Costo:** Gratuito   
+- **Link:** [https://play.google.com/store/apps/details?id=com.jpriskcorp.botonpanicoapp.jal](https://play.google.com/store/apps/details?id=com.jpriskcorp.botonpanicoapp.jal)      
+- **Descargas:** 50,000+  
+- **Fecha de actualización:** 13 Enero 2022
+- **Versión:**  94
+- **Desarrollador:**  [https://c5jalisco.gob.mx/](https://c5jalisco.gob.mx/)  
+- **Firma:**  riskcorp@yahoo.com.mx/C=US     
+- **Contacto:**  operativaceinco@gmail.com   
+- **Condiciones de uso y Política de privacidad:**  
+  - [https://fge.jalisco.gob.mx/content/terminos-y-politicas-boton-de-panico](https://fge.jalisco.gob.mx/content/terminos-y-politicas-boton-de-panico)  
+
+- **Descripción en PlayStore**
 ~~~
 El Botón de Auxilio Jalisco es una aplicación para smartphones del Estado de Jalisco que
 permite que el usuario registrado pueda enviar una alerta inmediata al Centro de Coordinación,
@@ -35,6 +38,7 @@ Utiliza esta aplicación con responsabilidad.
 ~~~       
 
 ## Trackers identificados (mediante Exodus Privacy)
+
 - [Google Admob](https://admob.google.com/home/)  
 - [Google Analytics](https://marketingplatform.google.com/about/analytics/)   
 - [Google Crashlytics](https://firebase.google.com/products/crashlytics/)   
@@ -43,7 +47,8 @@ Utiliza esta aplicación con responsabilidad.
 
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.jpriskcorp.botonpanicoapp.jal/latest/).
 
-## Empresas relacionadas con esta aplicación:
+## Empresas relacionadas con esta aplicación
+
 - Google (Trackers y ubicación)
 - Coeficiente comunicaciones (Servidor donde está almacenada la aplicación)
 
@@ -55,7 +60,8 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.jpriskc
 
 *Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
 
-#### Permisos según la PlayStore:
+### Permisos según la PlayStore
+
 Esta aplicación puede acceder a:   
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165629344-e744820c-f52d-4359-8238-ee3e3d1494b1.png)
@@ -107,7 +113,7 @@ ID de dispositivo e información de llamada
     - Impedir que el dispositivo entre en modo de suspensión
     - Leer la configuración de los servicios de Google
 
-#### Permisos según Exodus Privacy:
+### Permisos según Exodus Privacy
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165629714-c564c696-d04f-481e-ab77-925c3cf74017.png):exclamation:
 ACCESS_COARSE_LOCATION   
@@ -158,7 +164,8 @@ _Modify or delete the contents of your SD card_
 
 El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview).
 
-#### Permisos solicitados durante el uso de la aplicación:
+### Permisos solicitados durante el uso de la aplicación
+
 - 🔴 Acceso a Ubicación
 - 🔴 Acceso a Contactos
 - 🔴 Acceso a Llamadas
@@ -166,8 +173,11 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - 🔴 Acceso a Estado del Teléfono
 
 🔴 Este ícono indica un permiso obligatorio
+
 ## Datos
-#### Datos solicitados al usuario durante el uso
+
+### Datos solicitados al usuario durante el uso
+
 - 🔴 Nombre
 - 🔴 Apellido Paterno
 - ⚪ Apellido Materno
@@ -182,7 +192,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 ⚪ Este ícono indica que estos datos son opcionales.
 
 
-#### Tabla de conexiones realizadas durante el uso de la aplicación
+### Tabla de conexiones realizadas durante el uso de la aplicación
+
 | Dirección IP    | Número de paquetes | País          | Ciudad  | Número AS | Organización AS                     |
 |-----------------|--------------------|---------------|---------|-----------|-------------------------------------|
 | 131.196.248.8   |                140 | Mexico        | Zapopan |    265524 | COEFICIENTE COMUNICACIONES SA DE CV |
@@ -200,17 +211,19 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 142.251.40.46   |                  3 | United States |         |     15169 | GOOGLE                              |
 | 172.217.14.74   |                 33 | United States |         |     15169 | GOOGLE                              |
 
-## Mapa de conexiones
+### Mapa de conexiones
 
 
-#### Notas sobre datos recolectados
+### Notas sobre datos recolectados
+
 - El servidor de Coeficiente Comunicaciones es el _Host_ de la app. Las llamadas a ese servidor se hacen en HTTP, tanto las de emergencia como las de registro, es decir que no están cifradas. Esto quiere decir que todos los datos que el usuario proporciona de manera de voluntaria se envían en texto plano al servidor de Coeficiente Comunicaciones.
 
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob. Firebase recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 
 - Los trackers [Crashlytics](https://firebase.google.com/docs/crashlytics) y [Analytics](https://firebase.google.com/docs/analytics) son dos subtrackers de Firebase. El primero tiene la función de mejorar la aplicación al mandar reportes de cierres inesperados de la apliación, el segundo otorga información sobre su uso, lo que no necesariamente es malo. Sin embargo AdMob es un tracker para mostrar banners de publicidad dentro de la aplicación mientras que TagManager es un tracker que permite etiquetar secciones de código.
 
-#### Tabla de relación entre permisos y funciones
+## Tabla de relación entre permisos y funciones
+
 | Permisos   | Función relacionada  |
 |---|---|
 | ACCESS_COARSE_LOCATION  | Servicio de ubicación  |
@@ -229,16 +242,19 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | C2D_MESSAGE  | Push Notifications  |
 | MAPS_RECEIVE  | Permiso innecesario  |
 
-#### Funciones específicas de la aplicación
+### Funciones específicas de la aplicación
+
 - Tiene un botón "Prueba de Servicio" que permite verificar que todo funciona sin que se haga una llamada o notificación real de emergencia.
 - Incluye Auxilio Ciudadano (Policía); Bomberos; Médicos y llamada directa a 911.
 - Incluye botón de acceso rápido (3 toques seguidos del botón de apagado o bloqueo). Con esto, según la documentación, se hace un aviso de emergencia de manera automática. Como la prueba se hizo fuera de Jalisco, no pudimos probar esta funcionalidad.
 - Permite modificar los datos, la contraseña y darse de baja de la cuenta.
-### Notas
+
+## Notas
 
 - La aplicación no funciona si no se le concede el permiso de ubicación precisa.
 
-### Conclusiones
+## Conclusiones
+
 - La cantidad de trackers presentes es demasiada. En particular la presencia de AdMob, que sirve para mostrar anuncios, no se explica.
 - Como las llamadas al servidor de Coeficiente Comunicaciones no están cifradas, tenemos un serio problema de seguridad, ya que los datos de perfil del usuario, y las llamadas de emergencia hechas por los botones de pánico, están en texto plano. También nos hace preguntarnos si los datos de los usuarios en el servidor están cifrados.
 - Nos queda la duda si, al darse un usuario de baja, los datos de dicho usuario se quedan o no almacenados. En todo caso, es la única app analizada que hasta ahora tiene esa función y, al darnos de baja, en efecto no pudimos reiniciar sesión con los datos originales.

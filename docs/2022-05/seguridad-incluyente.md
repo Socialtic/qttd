@@ -1,23 +1,26 @@
 # Seguridad Incluyente
-#### Fecha de análisis:
-Análisis estático (mediante Exodus Privacy): 12 abril 2022    
-Análisis dinámico (mediante captura de tráfico de red): 18 abril 2022    
-Análisis posteriores:    
 
-## Descripción de la aplicación:
-**Tipo:** Emergencias estado de Puebla   
-**Costo:** Gratis   
-**Link:** [https://play.google.com/store/apps/details?id=net.garagecoders.deri](https://play.google.com/store/apps/details?id=net.garagecoders.deri)       
-**Descargas:** 50,000+  
-**Fecha de actualización:** 19 Junio 2021
-**Versión:**  1.2.4.1  
-**Desarrollador:**  [http://200.92.215.35/](http://200.92.215.35/)    
-**Firma:**  [Garage Coders](https://www.garagecoders.net/)       
-**Contacto:**  magdalena.cuellar@pueblaciudadincluyente.gob.mx   
-**Condiciones de uso y Política de privacidad:**  
-- [https://gobiernoabierto.pueblacapital.gob.mx/avisos-de-privacidad/secretaria-de-seguridad-ciudadana/item/download/22003_a78fe1764c8000f8fc4e6354ac442e3e](https://gobiernoabierto.pueblacapital.gob.mx/avisos-de-privacidad/secretaria-de-seguridad-ciudadana/item/download/22003_a78fe1764c8000f8fc4e6354ac442e3e)
+## Fecha de análisis
 
-**Descripción en la PlayStore:**       
+- **Análisis estático (mediante Exodus Privacy):** 12 abril 2022    
+- **Análisis dinámico (mediante captura de tráfico de red):** 18 abril 2022    
+- **Análisis posteriores:**    
+
+## Descripción de la aplicación
+
+- **Tipo:** Emergencias estado de Puebla   
+- **Costo:** Gratis   
+- **Link:** [https://play.google.com/store/apps/details?id=net.garagecoders.deri](https://play.google.com/store/apps/details?id=net.garagecoders.deri)       
+- **Descargas:** 50,000+  
+- **Fecha de actualización:** 19 Junio 2021
+- **Versión:**  1.2.4.1  
+- **Desarrollador:**  [http://200.92.215.35/](http://200.92.215.35/)    
+- **Firma:**  [Garage Coders](https://www.garagecoders.net/)       
+- **Contacto:**  magdalena.cuellar@pueblaciudadincluyente.gob.mx   
+- **Condiciones de uso y Política de privacidad:**  
+  - [https://gobiernoabierto.pueblacapital.gob.mx/avisos-de-privacidad/secretaria-de-seguridad-ciudadana/item/download/22003_a78fe1764c8000f8fc4e6354ac442e3e](https://gobiernoabierto.pueblacapital.gob.mx/avisos-de-privacidad/secretaria-de-seguridad-ciudadana/item/download/22003_a78fe1764c8000f8fc4e6354ac442e3e)
+
+- **Descripción en la PlayStore:**       
 ~~~
 Aplicación de la Secretaría de Seguridad Ciudadana (SSC) del Municipio de Puebla, destinada a
 brindar atención oportuna ante situaciones que pongan en riesgo la integridad o patrimonio de las
@@ -46,7 +49,8 @@ más seguros.
 - [Google Firebase Analytics](https://firebase.google.com/products/analytics)   
 - [Google Crashlytics](https://firebase.google.com/products/crashlytics/)
 
-## Empresas relacionadas con esta aplicación:
+## Empresas relacionadas con esta aplicación
+
 - Google (Trackers y ubicación)
 - Radiomovil Dipsa (Servidor donde está guardada la aplicación)
 - Twitter (Presente en la página web (la aplicación actúa como explorador) del aviso de privacidad)
@@ -58,15 +62,16 @@ más seguros.
 - Edgecast (No sabemos)
 
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/net.garagecoders.deri/latest/).
-## Permisos
 
 ## Permisos
+
 - **Según la Playstore:** 6 permisos.   
 - **Según Exodus Privacy:** 8 permisos.   
 - **Según prueba de uso:** 1 permisos que se piden de manera explícita.   
 
 
-#### Permisos según la PlayStore:
+### Permisos según la PlayStore
+
 Esta aplicación puede acceder a:   
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165636531-601a9181-224f-4192-a993-12cfa6edfeae.png)
@@ -83,7 +88,7 @@ Ubicación
     - Ejecutarse al inicio
     - Impedir que el dispositivo entre en modo de suspensión
 
-#### Permisos según Exodus Privacy
+### Permisos según Exodus Privacy
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165636593-7837b2e7-38c5-46b1-9be8-6df060c5ee0c.png):exclamation:
 ACCESS_FINE_LOCATION   
@@ -109,14 +114,17 @@ _Prevent phone from sleeping_
 - BIND_GET_INSTALL_REFERRER_SERVICE   
 
 
-#### Permisos solicitados al usuario durante el uso de la aplicación
+### Permisos solicitados al usuario durante el uso de la aplicación
+
 - 🔴 Ubicación (Para el botón de pánico. Se recopila, según la documentación de la aplicación, aunque la app no se esté usando durante la incidencia reportada)   
 
 🔴 Este ícono indica un permiso obligatorio
 
 
 ## Datos
-#### Datos solicitados al usuario durante el uso de la aplicación
+
+### Datos solicitados al usuario durante el uso de la aplicación
+
 - 🔴 Nombre (!)
 - 🔴 Apellido Paterno (!)
 - ⚪ Apellido Materno
@@ -132,7 +140,8 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
 ⚪ Este ícono indica que estos datos son opcionales.   
 
-#### Tabla de conexiones realizadas durante el uso de la Aplicación
+### Tabla de conexiones realizadas durante el uso de la Aplicación
+
 | Dirección IP    | Número de paquetes | País          | Ciudad             | Número AS | Organización AS                |
 |-----------------|--------------------|---------------|--------------------|-----------|--------------------------------|
 | 72.247.96.120   |                312 | United States | Los Angeles        |     16625 | AKAMAI-AS                      |
@@ -166,7 +175,10 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 | 200.92.215.35   |                366 | Mexico        | Puebla City        |     13999 | Mega Cable, S.A. de C.V.       |
 | 216.239.32.3    |                 78 | United States |                    |     15169 | GOOGLE                         |
 
-#### Otros datos recolectados
+### Mapa de conexiones
+
+### Notas sobre datos recolectados
+
 - La aplicación contacta a los servidores de google por tres razones: los mapas y la geolocalización; el archivo PDF de "Tabulador de multas e infracciones"; y por el tracker de Firebase (que incorpora el de Crashlytics). El tracker de Firebase, asigna través de [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - Las conexiones a Twitter y Facebook son trackers que tienen que ver con la página de información del aviso de Privacidad (En la cual no se muestra el aviso).
 - El servidor de Cloudflare está relacionado con la página en construcción de la Secretaría de seguridad ciudadana.
@@ -175,7 +187,7 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 - Las conexiones a [Sucuri-sec](https://sucuri.net/) son llamadas en HTTP. Es un servicio que revisa que las páginas web no tengan malware y estén seguras. Es prudente suponer que estas conexiones tienen que ver con la misma página del aviso de privacidad.
 - La conexión a Mega Cable es la página (en construcción) de la Secretaría de Seguridad Ciudadana. Esta conexión está en HTTP.
 
-### Tabla de relación entre permisos y funciones
+## Tabla de relación entre permisos y funciones
 
 | Permisos  | Funciones relacionadas  |
 |---|---|
@@ -188,7 +200,8 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
 | RECEIVE  | Push Notifications  |
 | BIND_GET_INSTALL_REFERRER_SERVICE  | Tracker Firebase  |
 
-#### Funciones específicas de la aplicación
+### Funciones específicas de la aplicación
+
 - Se puede revisar si un coche se encuentra en el corralón
 - Se pueden mandar quejas, sugerencias y felicitaciones a la Policía
 - Tiene las siguientes funciones que abren la instancia de llamada en Android:
@@ -197,11 +210,13 @@ Cuando se marca la checkbox de discapacidad auditiva, permite agregar un contact
   - Grúa
 - Página con dirección del Ayuntamiento de Puebla y otros datos.
 - Consulta del tabulador de Infracciones
-### Notas
+
+## Notas
+
 - El link provisto por la PlayStore a la política de privacidad no es el correcto. Lo mismo con la redirección al aviso de privacidad dentro de la aplicación.
 - Botón de auxilio no sirve por estar fuera de Puebla.
 
-### Conclusiones
+## Conclusiones
 
 - La relación entre permisos y funciones es simétrica con excepción del permiso _receive_boot_completed_ que permite que una aplicación se inicie de manera automática cuando se reinicia el teléfono, cosa que no sucede con esta app.
 - No tiene problemas flagrantes de seguridad.

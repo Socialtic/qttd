@@ -1,12 +1,12 @@
 # 911 CDMX
 
-## Fecha de análisis:
+## Fecha de análisis
 
 - **Análisis estático (mediante Exodus Privacy):** 30 marzo 2022   
 - **Análisis dinámico (mediante captura de tráfico de red):** 28 abril 2022   
 - **Análisis posteriores:**
 
-## Descripción de la aplicación:
+## Descripción de la aplicación
 
 - **Tipo:** Aplicación de emergencias de la CDMX   
 - **Costo:** Gratuito   
@@ -20,7 +20,7 @@
 - **Condiciones de uso y Política de privacidad:**  
   - https://www.c5.cdmx.gob.mx/terminos911cdmx
 
-**Uso según la PlayStore:**
+- **Uso según la PlayStore:**
 
 ~~~
 La aplicación informática para el uso del Servicio de Atención de Llamadas de
@@ -54,7 +54,8 @@ Enlace a [reporte en Exodus Privacy](https://reports.exodus-privacy.eu.org/es/re
 
 *Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
 
-#### Permisos según la PlayStore:
+### Permisos según la PlayStore
+
 Esta aplicación tiene acceso a:
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589662-61f0133f-2933-45d5-9789-fde06ef0785b.png)ID de dispositivo y datos de llamadas
@@ -103,7 +104,8 @@ Esta aplicación tiene acceso a:
 
 
 
-#### Permisos según Exodus Privacy:
+### Permisos según Exodus Privacy
+
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589993-2aa5535d-fbb0-45a7-84b5-ad709cf3fcc0.png):exclamation:ACCESS_FINE_LOCATION   
 _Access precise location (GPS and network-based)_
 
@@ -144,7 +146,8 @@ _modify or delete the contents of your SD card_
 
 - BIND_GET_INSTALL_REFERRER_SERVICE
 
-#### Permisos solicitados durante el uso de la aplicación:
+### Permisos solicitados durante el uso de la aplicación
+
 - 🔵 Acceso a ubicación
 - 🔵 Acceso a llamadas telefónicas
 - 🔵 Acceso a contactos
@@ -152,7 +155,9 @@ _modify or delete the contents of your SD card_
 🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
-#### Datos solicitados al usuario durante el uso de la aplicación
+
+### Datos solicitados al usuario durante el uso de la aplicación
+
 - 🔴 Número de celular
 - ⚪ Compañía telefónica
 - 🔴 Nombre
@@ -178,7 +183,8 @@ _modify or delete the contents of your SD card_
 🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
 ⚪ Este ícono indica que estos datos son opcionales.
 
-#### Tabla de conexiones realizadas durante el uso de la Aplicación
+### Tabla de conexiones realizadas durante el uso de la Aplicación
+
 | Dirección IP    | Paquetes | País          | Ciudad        | Número AS | Organización AS     |
 |-----------------|----------|---------------|---------------|-----------|---------------------|
 | 104.244.42.8    |      100 | United States |               |     13414 | TWITTER             |
@@ -206,9 +212,10 @@ _modify or delete the contents of your SD card_
 | 189.247.22.81   |     1371 | Mexico        |               |      8151 | Uninet S.A. de C.V. |
 | 192.229.173.16  |       34 | United States |               |     15133 | EDGECAST            |
 
-#### Mapa de conexiones
+### Mapa de conexiones
 
-#### Notas sobre datos recolectados
+### Notas sobre datos recolectados
+
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase y Crashlytics. Firebase asigna [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations) una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - Los servidores de Twitter son contactados por la función de notificaciones sobre temblores.
 - El servidor de Edgecast está relacionado con Twitter.
@@ -216,7 +223,7 @@ _modify or delete the contents of your SD card_
 - En este mismo servidor, también en HTTP, se almacenan los datos de los usuarios que uno agrega en la sección de la *Ficha de salud*, los datos del seguro que uno ingresa ahí mismo, y los propios datos médicos ingresados.
 - En el servidor arriba mencionado se mandan las modificaciones de las opciones de servicios de *Anuncios Públicos*, *Llamadas de extorsión* y *Alerta sísmica*. Además los datos de la *Red de contactos de emergencia*. Todo, siempre, en HTTP.
 
-### Tabla de relación entre permisos y funciones
+## Tabla de relación entre permisos y funciones
 
 | Permisos  | Funciones relacionadas  |
 |---|---|
@@ -235,13 +242,15 @@ _modify or delete the contents of your SD card_
 | RECEIVE  | Push Notifications  |
 | BIND_GET_INSTALL_REFERRER_SERVICE  | Firebase Tracker  |
 
-#### Funciones específicas de la aplicación
+### Funciones específicas de la aplicación
+
 - Alerta sísmica
 - Anuncios Públicos
 - Llamadas de extorsión
 - Widgets: chat de emergencia, llamada 911, llamada silenciosa
 
-### Notas
+## Notas
+
 - La Leyenda de tratamiento de datos debe ser aceptada de manera expresa.
 - El link a la página de Políticas de privacidad en la Playstore está mal.
 - Intentamos agregar un contacto a la red de emergencias pero no se pudo. Aunque el contacto tenía la aplicación instalada (requerimiento necesario), la aplicación no identificó que ese contacto la tenía instalada.
@@ -251,7 +260,7 @@ _modify or delete the contents of your SD card_
 - La función *Llamada silenciosa* simplemente abre una llamada a 911.
 - En un celular la función de localización no funcionó, en otro sí.
 
-### Conclusiones
+## Conclusiones
 
 - La aplicación hace las llamadas al servidor de Uninet en texto plano, es decir que no está cifrado. Todos los datos que el usuario otorga de manera voluntaria además de un identificador de telefonía, el sistema operativo, el modelo del celular y la llave y el token de autenticación, no están cifrados. Las llamadas de emergencia a través del botón de pánico, tampoco. Esto es un problema de seguridad mayúsculo.
 - La relación entre permisos y funciones es simétrica y no hay nada fuera de lo normal.

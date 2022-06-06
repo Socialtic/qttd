@@ -7,6 +7,7 @@
 - **Análisis Posteriores:** -
 
 ## Descripción de la aplicación
+
 - **Tipo:** Aplicación de emergencias de la CDMX   
 - **Costo:** Gratuito   
 - **Link de descarga:** [https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US](https://play.google.com/store/apps/details?id=com.moobky.MiPolicia&hl=es_MX&gl=US)
@@ -36,7 +37,8 @@ ubicación de los Cuadrantes de la Ciudad de México.
 
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.moobky.MiPolicia/latest/)   
 
-## Empresas relacionadas con esta aplicación:
+## Empresas relacionadas con esta aplicación
+
 - Google (Se envía información necesaria para el funcionamiento de la app, un ejemplo son conexiones a Playstore Google Services)
 - Uninet (Servidor donde está albergada documentación de la app)
 - Operbes (Se usa para hacer las *Denuncias ciudadanas*)
@@ -52,7 +54,7 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.moobky.
 
 *Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
 
-### Permisos según la PlayStore:   
+### Permisos según la PlayStore   
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165648944-144b0d59-f94f-4919-bf53-bb43dae4d448.png)
 Ubicación
@@ -158,7 +160,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 *Pendiente*
 
-### Notas sobre datos recolectados:
+### Notas sobre datos recolectados
 
 - Los servidores de Amazon contactados, son _Host_ de una empresa llamada [Here](https://www.here.com/). Esta empresa, entre otras cosas, desarrolla una API que permite buscar lugares y dar información al respecto. En esta app eso es usado para la función *Localizar tu cuadrante*. Por la [documentación pública](https://developer.here.com/documentation/geocoder/dev_guide/topics/example-reverse-geocoding.html), sabemos que este servicio recolecta:
     - País
@@ -173,7 +175,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - En los servidores de Uninet están guardados tanto el vídeo del alcoholímetro, como el PDF con el reglamento de tránsito. Se usa además para la denuncia ciudadana. Es el servidor de la Secretaría de Seguridad Ciudadana.
 - El servidor de Akamai está directamente relacionado con el servicio de Here, y de ahí se extraen íconos y visuales.
 
-### Tabla de relación entre permisos y funciones
+## Tabla de relación entre permisos y funciones
 
 | Permisos  | Funciones relacionadas  |
 |---|---|
@@ -186,7 +188,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | FOREGROUND_SERVICE  | Botón de pánico  |
 | INTERNET  | Internet  |
 
-#### Funciones específicas de la aplicación
+### Funciones específicas de la aplicación
+
 - Escaneo de placa de un policía para ver si tiene derecho a levantar infracciones de tránsito
 - Revisar por nombre o número de placa si un policía tiene el derecho a levantar infracciones de tránsito
 - Video explicativo sobre el funcionamiento del Alcoholímetro e información general
@@ -199,14 +202,14 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - Buscar el cuadrante policial que le corresponde a uno según la dirección ingresada
 - Teléfono a la unidad de contacto del Secretario de Seguridad Pública de la CDMX
 
-### Notas
+## Notas
 
 - La función de denuncia ciudadana no funcionó.
 - No hemos probado el escáner de placa policial en vivo.
 - La opción *Agenda de movilizaciones* descarga un PDF con la información del día.
 - Mientras la app está en uso, está activado el acceso a la ubicación en segundo plano.
 
-### Conclusiones
+## Conclusiones
 
 - Aplaudimos que sea la única aplicación analizada que no contiene trackers.
 - La relación entre permisos y funciones es exacta y tiene, en general pocos permisos en comparación con las funciones que tiene. Lo que nos hace creer que la implementación de los desarrolladores es particularmente buena en comparación con las otras aplicaciones.

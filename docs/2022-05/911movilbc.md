@@ -1,23 +1,26 @@
 # 911MóvilBC
-#### Fecha de análisis:
-Análisis estático (mediante Exodus Privacy): 12 abril 2022    
-Análisis dinámico (mediante captura de tráfico de red): 18 abril 2022    
-Análisis posteriores: 20 mayo 2022   
 
-## Descripción de la aplicación:
-**Tipo:** Aplicación de emergencias de Baja California   
-**Costo:** Gratuito   
-**Link:** [https://play.google.com/store/apps/details?id=com.c4bc.alerta066m&hl=es_MX&gl=US](https://play.google.com/store/apps/details?id=com.c4bc.alerta066m&hl=es_MX&gl=US)        
-**Descargas:** 50,000+  
-**Fecha de actualización:** 03 Diciembre 2021/19 abril 2022   
-**Versión:**  5.5.14/5.6.0  
-**Desarrollador:**  [http://www.seguridadbc.gob.mx/](http://www.seguridadbc.gob.mx/)  
-**Firma:**  C4       
-**Contacto:**  911movilbc@seguridadbc.gob.mx   
-**Condiciones de uso y Política de privacidad:**  
-- [http://www.seguridadbc.gob.mx/contenidos/movilpp.php](http://www.seguridadbc.gob.mx/contenidos/movilpp.php)  
+## Fecha de análisis
 
-**Descripción en la PlayStore:**       
+- **Análisis estático (mediante Exodus Privacy):** 12 abril 2022    
+- **Análisis dinámico (mediante captura de tráfico de red):** 18 abril 2022    
+- **Análisis posteriores:** 20 mayo 2022   
+
+## Descripción de la aplicación
+
+- **Tipo:** Aplicación de emergencias de Baja California   
+- **Costo:** Gratuito   
+- **Link:** [https://play.google.com/store/apps/details?id=com.c4bc.alerta066m&hl=es_MX&gl=US](https://play.google.com/store/apps/details?id=com.c4bc.alerta066m&hl=es_MX&gl=US)        
+- **Descargas:** 50,000+  
+- **Fecha de actualización:** 03 Diciembre 2021/19 abril 2022   
+- **Versión:**  5.5.14/5.6.0  
+- **Desarrollador:**  [http://www.seguridadbc.gob.mx/](http://www.seguridadbc.gob.mx/)  
+- **Firma:**  C4       
+- **Contacto:**  911movilbc@seguridadbc.gob.mx   
+- **Condiciones de uso y Política de privacidad:**  
+  - [http://www.seguridadbc.gob.mx/contenidos/movilpp.php](http://www.seguridadbc.gob.mx/contenidos/movilpp.php)  
+
+- **Descripción en la PlayStore:**       
 ~~~
 Por sus funcionalidades y casos de éxito es GANADORA DE RECONOCIMIENTOS ESTATALES Y NACIONALES:
 
@@ -55,23 +58,28 @@ Ejemplos de uso de la herramienta:
 
 Te invitamos a realizar un uso adecuado de este servicio.
 ~~~
+
 ## Trackers identificados (mediante Exodus Privacy)
 
 - [Google Firebse Analytics](https://firebase.google.com/products/analytics)
 - [Google Admob](https://admob.google.com/home/) _5.6.0_
 Enlace a [reporte](https://reports.exodus-privacy.eu.org/es/reports/com.c4bc.alerta066m/latest/)
 
-## Empresas relacionadas con esta aplicación:
+## Empresas relacionadas con esta aplicación
+
 - Google (Trackers y ubicación)
 - Teléfonos del Noroeste (Servidor donde está almacenada la aplicación)
 
 ## Permisos
+
 - **Según la Playstore:** 16 permisos, de los cuales 4 tienen dos subpermisos cada uno.   
 - **Según Exodus Privacy:** 22 permisos.   
 - **Según prueba de uso:** 7 permisos que se piden de manera explícita.   
 
 *Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
-#### Permisos según la PlayStore:
+
+### Permisos según la PlayStore
+
 Esta aplicación tiene acceso a:   
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589440-63853abc-5ae8-4677-b60e-f605577e9881.png):
@@ -131,7 +139,8 @@ ID de dispositivo y datos de llamadas
     - Impedir que el dispositivo entre en modo de suspensión
     - Leer la configuración de los servicios de Google
 
-#### Permisos según Exodus Privacy:
+### Permisos según Exodus Privacy
+
 - ![imagen](https://user-images.githubusercontent.com/102829552/165589993-2aa5535d-fbb0-45a7-84b5-ad709cf3fcc0.png):exclamation:
 ACCESS_COARSE_LOCATION   
 _Access approximate location (network-based)_
@@ -205,7 +214,8 @@ _Modify or delete the contents of your SD card_
 
 El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview).
 
-####  Permisos solicitados al usuario durante el uso de la aplicación
+### Permisos solicitados al usuario durante el uso de la aplicación
+
 *Antes de aceptarlos aparece una leyenda que informa al usuario que de no aceptarlos, la app no funcionará. Lasnotificaciones aparecen una tras otras solicitando los permisos*
 
 - 🔴 Acceso a tomar Fotos y Vídeos
@@ -219,7 +229,9 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 🔴 Este ícono indica un permiso obligatorio
 
 ## Datos
-#### Datos solicitados al usuario durante el uso de la Aplicación
+
+### Datos solicitados al usuario durante el uso de la Aplicación
+
 - 🔴 Número de teléfono
 - 🔴 Correo Electrónico
 - 🔴 Nombre
@@ -241,7 +253,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 
 
-#### Tabla de conexiones realizadas durante el uso de la aplicación
+### Tabla de conexiones realizadas durante el uso de la aplicación
+
 | Dirección IP   | Número de paquetes | País          | Ciudad  | Número AS | Organización AS                      |
 |----------------|--------------------|---------------|---------|-----------|--------------------------------------|
 | 142.250.68.10  |                 88 | United States |         |     15169 | GOOGLE                               |
@@ -261,9 +274,10 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 200.76.246.123 |                503 | Mexico        | Tijuana |      6332 | Telefonos del Noroeste, S.A. de C.V. |
 | 216.239.32.3   |                 17 | United States |         |     15169 | GOOGLE                               |
 
-#### Mapa de conexiones
+### Mapa de conexiones
 
-#### Notas sobre datos recolectados
+### Notas sobre datos recolectados
+
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por el tracker de Firebase (en la nueva versión tenemos, además el tracker de AdMob). Firebase recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 Aquí la documentación al tracker de [AdMob](https://developers.google.com/admob/android/quick-start?hl=es)
 - El servidor 066movilbc.seguridadbc.gob.mx con IP: 200.76.246.123 es el _Host_ de la app. Todos los datos que el usuario debe introducir son guardados ahí. Las llamadas se hacen en texto plano, HTTP, lo que implica una brecha de seguridad enorme. Se pueden ver los siguientes datos (además de los proporcionados por el usuario) en las llamadas http:
@@ -285,8 +299,7 @@ Número de teléfono
 - La página [www.seguridad.gob.mx](www.seguridad.gob.mx), en la cual están las funciones de "Estadísticas", "Desaparición de menores" y "Qué hacer", a veces está cifrada con HTTPS, y a veces no.  
 
 
-
-### Tabla de relación entre permisos y funciones
+## Tabla de relación entre permisos y funciones
 
 | Permisos  | Función relacionada  |
 |---|---|
@@ -313,19 +326,21 @@ Número de teléfono
 | BIND_GET_INSTALL_REFERRER_SERVICE  | Permiso relacionado con el tracker de Firebase  |
 | READ_GSERVICES  | Servicio de ubicación  |
 
-#### Funciones específicas de la aplicación
+### Funciones específicas de la aplicación
+
 - Tiene una función de activar el perfil de Seguridad Privada cuando el número registrado sea de un empresa de Seguridad Privada.
 - La función "Estadísticas" remite a la página [www.seguridadbc.gob.mx/ExtorsionTelefonica/engano.php](www.seguridadbc.gob.mx/ExtorsionTelefonica/engano.php) donde se pueden revisar los números denunciados por extorsión, las zonas de donde provienen y otros datos.
 - Función "Menores desaparecidos" permite el acceso a la base datos de menores desaparecidos en sus categorías de Alerta Amber, Regionales, Nacionales y casos resueltos.
 - La función "Qué hacer" remite a una serie de guías de la página de la Secretaria de Seguridad Ciudadana.
 
-### Notas
+## Notas
+
 - Dentro de la función "Perfil Médico", la función de Contactos (que son probablemente contactos de emergencia), cierra la app.
 - La función de números de extorsión se queda activa aunque uno cierre sesión en la aplicación, o la cierre por completo.
 - No se probó la función chat por estar fuera del área de servicio, lo mismo con el botón de pánico, la llamada a 911 y el _botón violeta_. Sin embargo sabemos que estas se hacen en HTTP y no HTTPS.
 - No se probó la función Apoyo a cuenthabiente ya que sólo está disponible en Tijuana.
 
-### Conclusiones
+## Conclusiones
 
 - La aplicación tiene un problema de seguridad enorme al no cifrar las comunicaciones entre el usuario y el servidor _host_ de la app. Esto, además, implica la pregunta obvia de si los datos que almacenan de los usuarios están cifrados o no y quién tiene acceso a ellos.
 - La relación entre permisos y funciones es simétrica salvo el permiso _maps_receive_ que ya no es necesario para el funcionamiento de google maps desde la versión 3.1.59 de Google Services.

@@ -1,23 +1,26 @@
-# Mujeres Seguras
-#### Fecha de análisis:
-Análisis estático (mediante Exodus Privacy): 12 abril 2022   
-Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022     
-Análisis Posteriores: 19 abril 2022   
+# Mujeres Segura
+
+## Fecha de análisis
+
+- **Análisis estático (mediante Exodus Privacy):** 12 abril 2022   
+- **Análisis dinámico (mediante análisis de tráfico de red):** 18 abril 2022     
+- **Análisis Posteriores:** 19 abril 2022   
 
 ## Descripción de la aplicación
-**Tipo:** Aplicación de emergencia para mujeres del estado de Sonora   
-**Costo:** Gratuito   
-**Link:** [https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura](https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura)   
-**Descargas:** 50,000+   
-**Fecha de actualización:** 7 Enero 2022   
-**Versión:** 2.0.0  
-**Desarrollador:** [https://mujeresseguras.sonora.gob.mx/](https://mujeresseguras.sonora.gob.mx/)    
-**Firma:** Android, Google Inc.   
-**Contacto:** sistema.estatal@sspsonora.gob.mx  
-**Condiciones de uso y Política de privacidad:**
-- [https://www.sonora.gob.mx/politica-de-uso.html](https://www.sonora.gob.mx/politica-de-uso.html)
 
-**Descripción en playstore:**   
+- **Tipo:** Aplicación de emergencia para mujeres del estado de Sonora   
+- **Costo:** Gratuito   
+- **Link:** [https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura](https://play.google.com/store/apps/details?id=mx.gob.segobsonora.mujersegura)   
+- **Descargas:** 50,000+   
+- **Fecha de actualización:** 7 Enero 2022   
+- **Versión:** 2.0.0  
+**Desarrollador:** [https://mujeresseguras.sonora.gob.mx/](https://mujeresseguras.sonora.gob.mx/)    
+- **Firma:** Android, Google Inc.   
+- **Contacto:** sistema.estatal@sspsonora.gob.mx  
+- **Condiciones de uso y Política de privacidad:**
+  - [https://www.sonora.gob.mx/politica-de-uso.html](https://www.sonora.gob.mx/politica-de-uso.html)
+
+- **Descripción en playstore:**   
 ~~~
 Aplicación móvil para las mujeres con el objetivo de erradicar la violencia de género, que contiene
 botón de ayuda en caso de encontrarse en riesgo dentro del Estado de Sonora.
@@ -30,23 +33,27 @@ Ademas cuenta con el servicio de datos patrocinados que te permitirá utilizar e
 aunque no cuentes con datos móviles.
 ~~~  
 
-## Trackers identificados (mediante Exodus Privacy)   
+## Trackers identificados (mediante Exodus Privacy)  
+
 - [Google Firebase Analytics](https://firebase.google.com/)  
 
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/mx.gob.segobsonora.mujersegura/latest/).   
 
-## Empresas relacionadas con esta aplicación:
+## Empresas relacionadas con esta aplicación
+
 - Google (Trackers y ubicación)
 - Total Play Telecomunicaciones (Servidor donde está almacenada la aplicación)
 
 ## Permisos   
+
 - **Según la Playstore:** 17 permisos, de los cuales 2 tienen 3 subpermisos y 3 tiene 2 subpermisos.
 - **Según Exodus Privacy:** 23 permisos.
 - **Según prueba de uso:** 3 permisos que se piden de manera explícita.   
 
 *Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
 
-### Permisos según la PlayStore:   
+### Permisos según la PlayStore
+
 Esta aplicación puede acceder a:   
 - ![imagen](https://user-images.githubusercontent.com/102829552/165633281-fdb9f280-7a44-4700-a6d0-d922770cc9ba.png)
 Identidad
@@ -111,6 +118,7 @@ ID de dispositivo e información de llamada
     - Activar y desactivar la sincronización
 
 ### Permisos según Exodus Privacy
+
 - ![imagen](https://user-images.githubusercontent.com/102829552/165633656-c65474f6-4bc8-45de-bd8a-aa85ac4ab565.png):exclamation:
 ACCESS_COARSE_LOCATION   
 _Access approximate location (network-based)_
@@ -185,6 +193,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 
 ### Permisos solicitados al usuario durante el uso de la aplicación
+
 - 🔵 Acceso a Llamadas telefónicas
 - 🔴 Acceso a Ubicación
 - 🔵 Acceso a contactos  
@@ -196,6 +205,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 ## Datos
 
 ### Datos solicitados al usuario durante el uso de la aplicación
+
 - 🔴 Nombre
 - 🔴 Apellido Paterno
 - ⚪ Apellido Materno
@@ -226,13 +236,14 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 187.189.158.27  |                136 | Mexico        | Navojoa |     22884 | TOTAL PLAY TELECOMUNICACIONES SA DE CV |
 
 
-### Notas sobre datos recolectados:
+### Notas sobre datos recolectados
+
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por el tracker de Firebase. Este último asigna, a través de otro tracker, [firebaseinstallations](https://firebase.google.com/docs/reference/android/com/google/firebase/installations/FirebaseInstallations), una id particular a la instalación de la app. De ahí recolecta, a través de app-measurement.com toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - El servidor perteneciente a Total Play es el host de la aplicación: servicios.sspsonora.gob.mx. Todas las comunicaciones están cifradas y es en este servidor donde se procesan las alertas de pánico. Estas son enviadas en formato JSON y cuentan con ID de alerta, un número de folio y la ubicación.
 - En este servidor también se guardan los contactos de emergencia en formato JSON: id de contacto, nombre y teléfono.
 - En este servidor se guarda la información de contacto que proporciona el usuario.
 
-### tabla de relación entre permisos y funciones
+## tabla de relación entre permisos y funciones
 
 | Permisos  | Función relacionada  |
 |---|---|
@@ -258,7 +269,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | BIND_GET_INSTALL_REFERRER_SERVICE  |  Firebase tracker  |
 | ACTIVITY_RECOGNITION  |No sabemos para qué se usa   |
 
-####  Funciones específicas de la aplicación
+###  Funciones específicas de la aplicación
+
 - Tiene la función de datos patrocinados (si la persona no tiene datos, aun así puede hacer uso de la app). No está comprobado.
 - Cuenta con contactos de red de confianza. Pueden ser agregados de manera manual o accediendo a la libreta de contactos de la cuenta de Google. Además estos contactos deben tener la app instalada. No está comprobado.
 - Tiene una función de Falsa Alarma.
@@ -267,12 +279,13 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 - Acceso a un violentómetro.
 
 
-### Notas
+## Notas
 
 - La app está firmada por Google.
 
 
-### Conclusiones
+## Conclusiones
+
 - En cuanto a los permisos que solicita la app, son muchos y no encontramos ninguna relación simétrica con las funciones que tiene la aplicación. _Access_location_extra_commands_ permite modificar y manipular el _gps_. El permiso de _authenticate_accounts_ permite, por ejemplo, crear cuentas en el dispositivo y ponerles passwords. Tampoco entendemos para qué sirve el permiso _get_accounts_ que permite identificar las diferentes cuentas del dispositivo. Creemos que no es necesario el permiso _write_contacts_ que permite modificar los datos de los contactos. Y tenemos casos similares con _read_sync_settings_, _receive_boot_complete_ (sirve para iniciar la app de manera automática cuando se reinicia el dispositivo), _write_external_storage_, _write_sync_settings_, y _activity_recognition_ (permite acceder a los sensores del dispositivo cuando los haya). No sabemos cómo funciona y si sirven los datos patrocinados, pero suponemos que tal vez alguno de estos permisos tenga que ver con ello, aún así, nos parece que esta app solicita permisos raros (por no estar presentes en las otras apps de botón de pánico) y excesivos.
 - En cuanto a datos, nos preocupa el hecho de que perfile personas en términos de si son indígenas o pertenecientes a alguna etnia. Este dato podría ser de ayuda y al mismo tiempo un dato particularmente peligroso.
 - No tiene fallas de seguridad flagrantes ni parece haber un uso excesivo de trackers (si bien podría, en el mejor de los casos,no haber ninguno).

@@ -1,25 +1,27 @@
 # 9-1-1 Emergencias
 
-## Fechas de análisis:
-- Análisis estático (mediante Exodus Privacy): 30 marzo 2022    
-- Análisis dinámico (mediante análisis de tráfico de red): 18 abril 2022    
-- Análisis posteriores:
+## Fechas de análisis
 
-## Descripción de la aplicación:
-**Tipo:** Aplicación de emergencias Nacional   
-**Costo:** Gratuito   
-**Link:** [https://play.google.com/store/apps/details?id=gob.sesnsp.emergencia911&hl=es](https://play.google.com/store/apps/details?id=gob.sesnsp.emergencia911&hl=es)   
-**Descargas:** 100,000+   
-**Fecha de actualización:** 17 Septiembre 2019  
-**Versión:** 2.0   
-**Desarrollador:** [https://www.gob.mx/911](https://www.gob.mx/911)   
-**Firma:** Secretariado, CNI, SEGOB   
-**Contacto:** sesnpcni@gmail.com       
-**Política de privacidad:**   
-- [https://www.gob.mx/911/es/articulos/app-9-1-1-emergencias?idiom=es](https://www.gob.mx/911/es/articulos/app-9-1-1-emergencias?idiom=es)
-- [https://www.gob.mx/911/documentos/aviso-de-privacidad-de-la-app-9-1-1-emergencia](https://www.gob.mx/911/documentos/aviso-de-privacidad-de-la-app-9-1-1-emergencia)
+- **Análisis estático (mediante Exodus Privacy):** 30 marzo 2022    
+- **Análisis dinámico (mediante análisis de tráfico de red):** 18 abril 2022    
+- **Análisis posteriores:**
 
-**Descripción en PlayStore:**   
+## Descripción de la aplicación
+
+- **Tipo:** Aplicación de emergencias Nacional   
+- **Costo:** Gratuito   
+- **Link:** [https://play.google.com/store/apps/details?id=gob.sesnsp.emergencia911&hl=es](https://play.google.com/store/apps/details?id=gob.sesnsp.emergencia911&hl=es)   
+- **Descargas:** 100,000+   
+- **Fecha de actualización:** 17 Septiembre 2019  
+- **Versión:** 2.0   
+- **Desarrollador:** [https://www.gob.mx/911](https://www.gob.mx/911)   
+- **Firma:** Secretariado, CNI, SEGOB   
+- **Contacto:** sesnpcni@gmail.com       
+- **Política de privacidad:**   
+  - [https://www.gob.mx/911/es/articulos/app-9-1-1-emergencias?idiom=es](https://www.gob.mx/911/es/articulos/app-9-1-1-emergencias?idiom=es)
+  - [https://www.gob.mx/911/documentos/aviso-de-privacidad-de-la-app-9-1-1-emergencia](https://www.gob.mx/911/documentos/aviso-de-privacidad-de-la-app-9-1-1-emergencia)
+
+- **Descripción en PlayStore:**   
 ~~~
 La APP 9-1-1 es la aplicación móvil que ofrece un servicio nacional a través del cual la población
 puede reportar una situación de emergencia desde cualquier ubicación del país, favoreciendo una
@@ -27,7 +29,9 @@ mejor atención al minimizar el tiempo de respuesta, ya que de manera automátic
 la ubicación y el nombre del usuario, utilizando la información proporcionada por el dispositivo
 móvil.*
 ~~~~
+
 ## Trackers identificados (mediante Exodus Privacy)
+
 - [Google Admob](https://admob.google.com/home/) (Incluye Admob Mediation y Google DoubleClick)   
 - [Google Analytics](https://marketingplatform.google.com/about/analytics/)   
 - [Google Crashlytics](https://firebase.google.com/products/crashlytics/)   
@@ -37,6 +41,7 @@ móvil.*
 Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/gob.sesnsp.emergencia911/latest/).
 
 ## Empresas relacionadas con esta aplicación
+
 - Google (Trackers y servicio de ubicación)
 - Alestra (Servidor donde está guardada la aplicación)
 
@@ -47,7 +52,8 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/es/reports/gob.sesnsp.
 
 *Consideramos un subpermiso a aquel que se autoriza de manera secundaria al permitir otro permiso. Ejemplo, si permites acceso a tu red y en consecuencia tambien se da acceso a tu ubicación por red.*
 
-#### Permisos según la PlayStore:
+### Permisos según la PlayStore
+
 Esta aplicación tiene acceso a:   
 
 - ![imagen](https://user-images.githubusercontent.com/102829552/165579879-17d8b788-4724-462e-ada6-83ce36c84901.png)
@@ -119,7 +125,8 @@ ID de dispositivo y datos de llamadas
     - Leer la configuración de servicio de Google
 
 
-#### Permisos según Exodus Privacy:
+### Permisos según Exodus Privacy
+
 - ![imagen](https://user-images.githubusercontent.com/102829552/165581557-8141b0f8-80db-4cff-815f-20162b3484a9.png):exclamation:
 ACCESS_FINE_LOCATION    
  _Access precise location (GPS and network-based)_
@@ -193,7 +200,9 @@ _modify system settings_
 - C2D_MESSAGE
 
 El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los [niveles de protección de Google](https://developer.android.com/guide/topics/permissions/overview).
-#### Permisos solicitados al usuario durante el uso de la aplicación
+
+### Permisos solicitados al usuario durante el uso de la aplicación
+
 - 🔴 Acceso a Ubicación (Si se niega, funciona en segundo plano)
 - 🔵 Acceso a llamadas telefónicas
 - 🔵 Acceso a Contactos
@@ -207,7 +216,9 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
+
 ### Datos solicitados al usuario durante el uso de la aplicación
+
 - 🔴 Número de celular
 - 🔴 Compañia telefónica
 - 🔴 Nombre
@@ -234,7 +245,8 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 ⚪ Este ícono indica que estos datos son opcionales.
 
 
-#### Tabla de conexiones realizadas durante el uso de la aplicación
+### Tabla de conexiones realizadas durante el uso de la aplicación
+
 | Dirección IP    | Número de paquetes | País          | Ciudad                | Número AS | Organización AS             |
 |-----------------|--------------------|---------------|-----------------------|-----------|-----------------------------|
 |  64.233.185.120 |                 19 | United States |                       |     15169 | GOOGLE                      |
@@ -249,10 +261,11 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 142.251.40.46   |                 26 | United States |                       |     15169 | GOOGLE                      |
 | 201.151.6.27    |                234 | Mexico        | Mineral de la Reforma |     11172 | Alestra, S. de R.L. de C.V. |
 
-#### Mapa de conexiones
+### Mapa de conexiones
 
 
-#### Notas sobre datos recolectados
+### Notas sobre datos recolectados
+
 - Cuando se instala la app, se manda un identificador a Google.
 - La aplicación contacta a los servidores de google por dos razones: los mapas y la geolocalización y por los trackers de Firebase, Analytics, Crashlytics, Tag Manager y Admob. Firebase recolecta toda una serie de eventos realizados en la aplicación. Aquí los enlaces a todos los eventos y datos que, de manera estándar se recolectan [1](https://support.google.com/firebase/answer/9234069?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [2](https://support.google.com/firebase/answer/9268042?hl=en&ref_topic=6317484&visit_id=637859685880636053-1936242821&rd=1), [3](https://support.google.com/firebase/answer/7029846?hl=en&ref_topic=7029512).
 - Los trackers [Crashlytics](https://firebase.google.com/docs/crashlytics) y [Analytics](https://firebase.google.com/docs/analytics) son dos subtrackers de Firebase. El primero tiene la función de mejorar la aplicación al mandar reportes de cierres inesperados de la apliación, el segundo otorga información sobre su uso, lo que no necesariamente es malo. Sin embargo AdMob es un tracker para mostrar banners de publicidad dentro de la aplicación mientras que TagManager es un tracker que permite etiquetar secciones de código.
@@ -276,7 +289,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
   - Ubicación
   - Teléfono
 
-### Funciones específicas de la aplicación y tabla de relación entre permisos y funciones
+## Tabla de relación entre permisos y funciones
 
 | permisos  | Funciones relacionadas  |
 |---|---|
@@ -305,10 +318,14 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | ACTION_MANAGE_WRITE_SETTINGS  | Para bajar la luminosidad de la pantalla en un 80% en una llamada de botón de pánico  |
 | C2D_MESSAGE  | Push Notifications  |
 
-### Notas
+### Funciones específicas de la aplicación
+- N/A
+
+## Notas
+
 - El número de teléfono se guarda y queda asociado a un usuario. Sin embargo, para recuperar el propio perfil, deberían mandar un código vía email, pero nunca llega.
 
-### Conclusiones
+## Conclusiones
 
 - Esta app no tiene problemas flagrantes de seguridad.
 - Consideramos que hay un uso excesivo de trackers, en particular la presencia de Google AdMob.
