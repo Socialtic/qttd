@@ -1,17 +1,23 @@
 # Análisis de aplicaciones
 
-En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped. Una máquina virtual es correr jaja
+En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped. Una máquina virtual es, en palabras sencillas, una computadora dentro de otra computadora. Esto nos permite, por ejemplo, correr Linux sobre Windows (o viceversa) y, además, agrega una serie de beneficios de seguridad. 
 
 ## Captura de paquetes de red
 
 1. En el celular (preferentemente con una ROM como LineageOS) desinstalar y deshabilitar todas las aplicaciones no necesarias pues esto nos permitirá tener menos "ruido" en la captura de tráfico
+
 2. Instalar las aplicaciones que se quiere analizar
+
 3. En la máquina virtual inicializar `tshark` en la interfaz correspondiente
+   
    ```bash
    sudo tshark -i enp0s3 -w /tmp/nombre.pcap
    ```
+   
    La interfaz de escucha es la misma que la de nuestra IP local
+
 4. Conectar el celular a la VPN a través de OpenVPN
+
 5. Explorar la aplicación para generar tráfico
 
 ## Transferencia del archivo PCAP al huésped
