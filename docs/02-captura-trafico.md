@@ -1,6 +1,6 @@
 # Análisis de aplicaciones
 
-En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped. Una máquina virtual es...
+En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped. Una máquina virtual es correr jaja
 
 ## Captura de paquetes de red
 
