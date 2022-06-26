@@ -1,6 +1,6 @@
 # Análisis de aplicaciones
 
-En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped. Una máquina virtual es, en palabras sencillas, una computadora dentro de otra computadora. Esto nos permite, por ejemplo, correr Linux sobre Windows (o viceversa) y, además, agrega una serie de beneficios de seguridad. 
+En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped. Una máquina virtual es, en palabras sencillas, una computadora dentro de otra computadora. Esto nos permite, por ejemplo, correr Linux sobre Windows (o viceversa) y, además, agrega una serie de beneficios de seguridad. En esta máquina virtual vamos a correr el sistema operativo Ubuntu server, que es la versión para servidor del conocido sistema operativo basado en Linux. Luego, vamos a instalar OpenVPN, lo que nos va a permitir tener nuestra propia red privada virtual (VPN), con lo cual seremos capaces de capturar el tráfico de nuestro teléfono. La idea es conectar el teléfono a nuestra red privada virtual y en esa red, correr otro programa que se llama Tshark, que nos permitirá capturar el tráfico de red (los datos que envía y recibe nuestro teléfono) para luego poder analizarlos. 
 
 ## Captura de paquetes de red
 
