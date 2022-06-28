@@ -6,7 +6,34 @@ En esta primera sección crearemos el laboratorio de análisis de aplicaciones m
 
 ## Prerrequisitos
 
-Nos enfocaremos en crear una máquina virtual que será el servidor de datos, donde capturaremos el tráfico de red. Los prerrequisitos son los siguientes:
+Lo primero que tenemos que hacer es instalar el software necesario para poder crear una máquina virtual. Una máquina virtual es, sencillamente, una computadora dentro de otra computadora. Esto nos permite, por ejemplo, correr el sistema operativo Linux en Windows (o viceversa) y, además, agrega una serie de beneficios de seguridad. 
+
+Es la manera más sencilla de construir nuestro laboratorio de análisis sin tener que modificar la instalación de nuestro sistema operativo principal y además permite hacerlo en MacOS, Windows o Linux. Debemos notar que en este tutorial nos enfocaremos en Windows y Linux, porque los que escriben no tienen acceso a una computadora Mac. 
+
+Para poder crear una máquina virtual, se pueden usar varios programas, aquí recomendamos el uso de VirtualBox o de VMWare. (Para MacOs existe VMWare Fusion y Parallels). Los dos son gratuitos, aunque VMWare tiene una versión de paga. 
+
+Si el sistema operativo de base es Linux, recomendamos utilizar VirtualBox, si es Windows, VMWare. Esto por cuestiones de estabilidad y fluidez. 
+
+Hay varias maneras de instalar los prerequisitos. En cada momento diremos las ventajas y desventajas de cada método y dejaremos links a tutoriales.
+
+- Paso número 1: Instalar el servidor de las máquinas virtuales: VMWare o VirtualBox. 
+    - Para instalar en Ubuntu o Linux Mint (Sistema operativo de base) ir a la consola y escribir:    
+    ``` 
+    sudo apt update
+    ```
+    Este comando sirve para actualizar desde internet la información de los paquetes que se quieren instalar y las fuentes desde donde se van a instalar. Básicamente permite saber qué paquetes están desactualizados y evita que uno instlae un paquete "viejo". Es importante usar este comando siempre antes de instalar nada nuevo. El comando sudo nos da privilegios temporales de administrador. En linux, por seguridad, hay comandos que no se pueden ejecutar con los permisos que tiene un usuario corriente.
+    
+    - Luego, con el siguiente comando instalar VirtualBox:
+    ```
+    sudo apt install virtualbox
+    ```
+
+
+
+Dejamos aquí los links a guías de instalación de los prerequisitos:
+
+
+
 
 1. Ubuntu o Linux Mint instalado en nuestra computadora
     - [Guía de instalación](https://linuxmint-installation-guide.readthedocs.io/en/latest/) de Linux Mint
