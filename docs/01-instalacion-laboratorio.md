@@ -8,7 +8,7 @@ En esta primera sección crearemos el laboratorio de análisis de aplicaciones m
 
 Lo primero que tenemos que hacer es instalar el software necesario para poder crear una máquina virtual. Una máquina virtual es, sencillamente, una computadora dentro de otra computadora. Esto nos permite, por ejemplo, correr el sistema operativo Linux en Windows (o viceversa) y, además, agrega una serie de beneficios de seguridad. 
 
-Es la manera más sencilla de construir nuestro laboratorio de análisis sin tener que modificar la instalación de nuestro sistema operativo principal y además permite hacerlo en MacOS, Windows o Linux. Debemos notar que en este tutorial nos enfocaremos en Windows y Linux, porque los que escriben no tienen acceso a una computadora Mac. 
+Es la manera más sencilla de construir nuestro laboratorio de análisis sin tener que modificar la instalación de nuestro sistema operativo principal y además permite hacerlo en MacOS, Windows o Linux. Debemos notar que en este tutorial nos enfocaremos en Windows y Linux.
 
 Para poder crear una máquina virtual, se pueden usar varios programas, aquí recomendamos el uso de VirtualBox o de VMWare. (Para MacOs existe VMWare Fusion y Parallels). Los dos son gratuitos, aunque VMWare tiene una versión de paga. 
 
@@ -16,17 +16,53 @@ Si el sistema operativo de base es Linux, recomendamos utilizar VirtualBox, si e
 
 Hay varias maneras de instalar los prerequisitos. En cada momento diremos las ventajas y desventajas de cada método y dejaremos links a tutoriales.
 
-- Paso número 1: Instalar el servidor de las máquinas virtuales: VMWare o VirtualBox. 
-    - Para instalar en Ubuntu o Linux Mint (Sistema operativo de base) ir a la consola y escribir:    
+- Paso 1a: Instalar el servidor de máquinas virtuales VirtualBox en Ubuntu. 
+    - Para instalar virtualbox en Ubuntu (o cualquier sistema basado en Ubuntu como, Linux Mint, Linux Lite, Kubuntu, Lubuntu, etc.) ir a la consola y escribir: 
+   
     ``` 
-    sudo apt update
+    sudo add-apt-repository multiverse && sudo apt-get update
     ```
-    Este comando sirve para actualizar desde internet la información de los paquetes que se quieren instalar y las fuentes desde donde se van a instalar. Básicamente permite saber qué paquetes están desactualizados y evita que uno instlae un paquete "viejo". Es importante usar este comando siempre antes de instalar nada nuevo. El comando sudo nos da privilegios temporales de administrador. En linux, por seguridad, hay comandos que no se pueden ejecutar con los permisos que tiene un usuario corriente.
+    El primer comando *add-apt-repository multiverse* activa el repositorio de programas *multiverse* en Ubuntu. Esto lo que hace es permitir que, desde ese repositorio, se instalen programas.   
+
+    El segundo comando, *sudo apt update*, sirve para actualizar desde internet la información de los paquetes que se quieren instalar y las fuentes desde donde se van a instalar. Básicamente permite saber qué paquetes están desactualizados y evita que uno instale un paquete "viejo". 
     
-    - Luego, con el siguiente comando instalar VirtualBox:
+    Es importante usar este comando siempre antes de instalar nada nuevo. El comando *sudo* nos da privilegios temporales de administrador. En linux, por seguridad, hay comandos que no se pueden ejecutar con los permisos que tiene un usuario corriente.
+    
+    ![multiverse_y_update](./img/multiverse-y-update.png)
+    - Luego, con el siguiente comando instalaremos VirtualBox:
     ```
-    sudo apt install virtualbox
+    $ sudo apt install virtualbox
     ```
+    Este comando descargará los paquetes necesarios de instalación y ejecutará todos los procesos necesarios. En algún moento dirá si quiere continuar. Dar enter.
+
+    ![continuar](./img/continuar.png) 
+
+    Para ejecutar VirtualBox, poner el siguiente comando en la consola. 
+    ~~~
+    $ virtualbox
+    ~~~
+
+- Paso 1b: Instalar el servidor de máquinas virtuales VMWare en Windows.
+    - Descargar el archivo ejectuable desde este [enlace](https://customerconnect.vmware.com/en/downloads/details?downloadGroup=WKST-PLAYER-1623-NEW&productId=1039&rPId=85399).
+
+    ![descarga](./img/descargaVMWare.png)
+    - Ir a la carpeta de descargas y dar doble click al archivo. Seguir las instrucciones de instalación.
+
+
+- Paso 2a: Creación de una máquina virtual con Ubuntu en VirtualBox.
+*Dejamos aquí el [link](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#2-create-a-new-virtual-machine) al tutorial proporcionado por Ubuntu*. 
+    - En resumen hay que hacer lo siguiente:
+        - Bajar una imagen de Ubuntu desde este [link](https://ubuntu.com/download/desktop)
+        ![ubuntudownload](./img/ubuntudownload.png)
+        - Ejecutar VirtualBox
+        - Crear una máquina virtual. 
+
+
+
+
+
+
+
 
 
 
