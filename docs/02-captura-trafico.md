@@ -1,13 +1,5 @@
 # Análisis de aplicaciones
-
-En esta sección mostraremos cómo capturar los paquetes de red desde una máquina virtual a la cual le instalaremos el servidor VPN, para posteriormente analizarlos desde la máquina huésped.   
-
-  
- 
- En esta máquina virtual vamos a correr el sistema operativo Linux Lite (que está basado en Ubuntu). La razón es que consume menos recursos computacionales que Ubuntu, lo cual lo hace mejor para una máquina virtual. En todo caso, la mayoría de los problemas que puedan aparecer, se pueden resolver como si de Ubuntu se tratara.    
-
-Luego vamos a instalar el servidor de OpenVPN, lo que nos va a permitir tener nuestra propia red privada virtual (VPN), con lo cual seremos capaces de capturar el tráfico de nuestro teléfono.  
-
+En esta sección mostraremos cómo capturar los paquetes de red de un celular desde una máquina virtual. Al celular le instalamos el cliente de WireGuard y a la máquina virtual le instalamos el servidor VPN WireGuard. 
 La idea es conectar el teléfono a nuestra red privada virtual y en esa red correr otro programa que se llama Tshark, que nos permitirá capturar el tráfico de red (los datos que envía y recibe nuestro teléfono) para luego poder analizarlos.
 
 Como última nota, Tshark es la versión de línea de comandos de Wireshark. Utilizamos este programa porque resulta más rápido y cómodo para la captura de paquetes. En todo caso, si tenemos Wireshark instalado, también tenemos Tshark instalado.
