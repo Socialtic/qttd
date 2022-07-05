@@ -178,10 +178,12 @@ Por motivos de facilidad, instalaremos WireGuard a través de un *script* (una s
 Antes de instalar WireGuard en el Ubuntu de nuestra máquina virtual, tenemos que instalarlo en nuestro celular Android. 
  
 - Entramos a la PlayStore, ponemos WireGuard en la barra de búsqueda y le damos **Instalar**. 
+![playstore](./img/WireguardPlaystore.jpg)
 
 - Cuando finalice, le damos **Abrir**.
  
 - Nos aparece la siguiente pantalla. Por lo mientras, dejamos el celular ahí. 
+![idle](./img/idlewireguard.jpg)
 
 - Ir a la terminal de Ubuntu (Todo lo que sigue se hace dentro la máquina virtual). Para esto, dar click en el recuadro de la esquina inferior izquierda y luego en el ícono de la terminal.
 ![consola](./img/ubuntuterminal.png)
@@ -294,11 +296,15 @@ Recomendamos dejar la dirección sugerida y dar **enter**.
 
 - Ahora nos aparecerá un código QR en la pantalla. (Si no se ve completo, expandir la terminal).
 ![qr](./img/qr.png)
-    - Agarrar el celular y dar click en el signo de + y luego en **Escanear código QR**. 
+    - Agarrar el celular y dar click en el signo de + y luego en **Escanear desde código QR**. 
+    ![escanear](./img/escanear.jpg)
+
     - Aceptar el permiso de Fotos y Videos
     - Rellenar nombre (puede ser el que sea)
     - Click en **Crear Tunel**
     - Conectar apretando en el círculo.
+
+    - Aceptar la **Solicitud de conexión**
 
 Listo, ya estamos conectados a nuestro servidor WireGuard. De ahora en adelante, todo el tráfico de red que mandemos y recibamos desde internet, pasará antes por nuestro servidor. Esto, por supuesto, nos permitirá capturarlo y analizarlo. 
 
