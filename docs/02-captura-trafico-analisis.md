@@ -136,7 +136,7 @@ Ahora bien, para analizar las diferentes direcciones IP que hay en nuestro archi
 
 Esto abrirá una ventana donde aparecerán filtradas la lista de direcciones IP contactadas y, además, datos sobre ellas. (Para esto pusimos las bases de datos de MaxMind). Aquí una explicación de las diferentes columnas:
 
- - **Address**: dirección IP
+- **Address**: dirección IP
 - **Packets**: número total de paquetes enviados y recibidos
 - **Bytes**: la cantidad de información enviada y recibida
 - **Tx Packets**: número de paquetes enviados desde esa IP
