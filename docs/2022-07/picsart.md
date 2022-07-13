@@ -355,13 +355,15 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 *Mediante Wireshark*
 
 ### Otros datos recolectados:
-
+- Si las fotos que uno sube tienen metadatos, como por ejemplo, geolocalización, esta información se mantiene en las fotos y puede ser revisada con los programas adecuados.
+- Hay una opción que permite pedir que no se venda la información personal.
+- Hay una opción que permite borrar todos los datos compartidos en la plataforma. (No queda claro si, al cerrar una cuenta, esto se hace de manera automática).
 
 
 
 ## Funciones particulares de la aplicación:
-*Describir funciones inusuales en contraste con las demás aplicaciones similares*
+
 
 ## Notas
+ - Hay ciertas imágenes como los *backgrounds*, *flares* y otras más que son descaragadas via HTTP sin cifrado desde la dirección: 162.159.137.44. Aquí se encuentra almacenado parte del servicio de Picsart. La otra dirección donde se encuentran elementos de Picsart es 162.159.136.44, en la cual no existen conexiones en HTTP. Probablemente esto no represente ningún problema de seguridad para el usuario, o al menos es mínimo. 
 
-*Descripción sobre bugs encontrados, fallas de seguridad y otras cosas*
