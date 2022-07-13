@@ -200,45 +200,154 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 ### Permisos solicitados durante el uso de la aplicación
 
-- 🔴 a
-- 🔵 b
-- 🔵 c
+- 🔵 Acceso a Fotos y Multimedia 
+- 🔵 Acceso a tomar fotos y grabar video
+- 🔵 Acceso a contactos
 
-🔴 Este ícono indica un permiso obligatorio   
 🔵 Este ícono indica un permiso opcional pero se pierde una funcionalidad particular
 
 ## Datos
 
 ### Datos solicitados al usuario durante el uso de la aplicación
 
-- ⚪ Para los reportes de Asistencia ciudadana:
-    - 🔴 a
-    - ⚪ b
-    - 🔴 c
+- Acceso con cuenta de Gmail
     
-
-🔴 Este ícono indica que se debe ingresar este dato de manera obligatoria.   
-⚪ Este ícono indica que estos datos son opcionales.
 
 
 ### Tabla de conexiones realizadas durante el uso de la aplicación
-*Ejemplo*
+| Dirección       | País          | Ciudad            | Organización AS             | Tracker u otro dominio relacionado   |
+|-----------------|---------------|-------------------|-----------------------------|--------------------------------------|
+| 3.81.199.43     | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 3.92.86.254     | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 3.122.16.67     | Germany       | Frankfurt am Main | AMAZON-02                   | Liftoff.io                           |
+|   3.208.189.253 | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 3.212.28.173    | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 3.222.119.96    | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 3.223.109.10    | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 3.225.24.165    | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 18.205.69.218   | United States | Ashburn           | AMAZON-AES                  | Inmobi                               |
+|  18.232.172.203 | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 18.233.123.55   | United States | Ashburn           | AMAZON-AES                  | Liftoff.io                           |
+| 20.121.107.72   | United States | Tappahannock      | MICROSOFT-CORP-MSN-AS-BLOCK | inmobi                               |
+|  20.127.253.174 | United States | Tappahannock      | MICROSOFT-CORP-MSN-AS-BLOCK |                                      |
+| 20.232.79.34    | United States | Tappahannock      | MICROSOFT-CORP-MSN-AS-BLOCK | Inmobi                               |
+|  20.241.168.219 | United States | Tappahannock      | MICROSOFT-CORP-MSN-AS-BLOCK | Inmobi                               |
+| 23.54.238.36    | Mexico        | Querétaro         | AKAMAI-AS                   | Inner-Active                         |
+| 23.76.126.164   | Mexico        | Querétaro         | AKAMAI-AS                   | Applovin                             |
+| 23.200.36.145   | Mexico        | Querétaro         | Akamai International B.V.   | cdn inner-active                     |
+|  23.208.100.203 | Mexico        | Querétaro         | AKAMAI-AS                   | Pinterest                            |
+| 31.13.93.19     | United States | Dallas            | FACEBOOK                    |                                      |
+| 31.13.93.35     | United States | Dallas            | FACEBOOK                    |                                      |
+|  34.102.147.136 | United States | Kansas City       | GOOGLE-CLOUD-PLATFORM       | tpbid.com                            |
+| 34.110.179.88   | United States | Kansas City       | GOOGLE                      | AppLovin                             |
+| 34.149.159.73   | United States | Kansas City       | GOOGLE                      | AppLovin                             |
+|  34.160.119.165 | United States | Kansas City       | GOOGLE                      | Applovin                             |
+|  34.160.254.144 | United States | Kansas City       | GOOGLE                      | Applovin                             |
+| 34.199.91.89    | United States | Ashburn           | AMAZON-AES                  | OneMobile                            |
+| 34.199.229.95   | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+|  34.202.248.102 | United States | Ashburn           | AMAZON-AES                  | Inmobi                               |
+|  34.235.193.137 | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 35.169.96.9     | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 35.186.249.72   | United States | Kansas City       | GOOGLE                      | impactradius                         |
+| 35.190.88.7     | United States | Kansas City       | GOOGLE                      | Bugsnag                              |
+|  35.211.114.141 | United States | North Charleston  | GOOGLE                      | Bidswitch                            |
+|  35.227.249.185 | United States | Kansas City       | GOOGLE                      | AppLovin                             |
+| 35.244.142.80   | United States | Kansas City       | GOOGLE                      | CDN Google                           |
+|  44.194.157.104 | United States | Ashburn           | AMAZON-AES                  | Ethyca                               |
+| 44.195.110.74   | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 52.1.104.29     | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 52.6.57.99      | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 52.19.18.85     | Ireland       | Dublin            | AMAZON-02                   | Appsflyer                            |
+| 52.23.53.44     | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 52.71.36.138    | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 52.71.203.235   | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 52.72.51.64     | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 52.72.173.134   | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 52.86.235.143   | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 52.186.42.194   | United States | Tappahannock      | MICROSOFT-CORP-MSN-AS-BLOCK |                                      |
+|  52.203.198.154 | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 52.206.223.22   | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 52.213.22.211   | Ireland       | Dublin            | AMAZON-02                   | Appsflyer                            |
+| 52.218.65.91    | Ireland       | Dublin            | AMAZON-02                   |                                      |
+| 54.72.99.35     | Ireland       | Dublin            | AMAZON-02                   | Appsflyer                            |
+| 54.81.29.137    | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 54.85.39.89     | United States | Ashburn           | AMAZON-AES                  | Inner-active                         |
+| 54.145.159.41   | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+|  54.145.216.251 | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 54.156.28.194   | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 54.159.196.8    | United States | Ashburn           | AMAZON-AES                  |                                      |
+|  54.163.162.174 | United States |                   | AMAZON-AES                  |                                      |
+| 54.174.225.73   | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 54.209.101.53   | United States | Ashburn           | AMAZON-AES                  | VerizonAds                           |
+| 54.211.91.135   | United States | Ashburn           | AMAZON-AES                  |                                      |
+| 65.9.149.14     | United States |                   | AMAZON-02                   | Appsflyer                            |
+| 65.9.149.15     | United States |                   | AMAZON-02                   |                                      |
+| 65.9.149.17     | United States |                   | AMAZON-02                   | Branch                               |
+| 65.9.149.21     | United States |                   | AMAZON-02                   | Appsflyer                            |
+| 65.9.149.29     | United States |                   | AMAZON-02                   | Appsflyer                            |
+| 65.9.149.43     | United States |                   | AMAZON-02                   | Appsflyer                            |
+| 65.9.149.45     | United States |                   | AMAZON-02                   | Liftoff.io                           |
+| 65.9.149.56     | United States |                   | AMAZON-02                   | Appsflyer                            |
+| 65.9.149.57     | United States |                   | AMAZON-02                   |                                      |
+| 65.9.149.66     | United States |                   | AMAZON-02                   | Appsflyer                            |
+| 65.9.149.75     | United States |                   | AMAZON-02                   | Branch                               |
+| 65.9.149.81     | United States |                   | AMAZON-02                   | Branch                               |
+| 65.9.149.127    | United States |                   | AMAZON-02                   | Branch                               |
+| 65.9.149.129    | United States |                   | AMAZON-02                   | Appsflyer                            |
+|  66.225.218.141 | United States |                   | SERVERCENTRAL               | picsart.com                          |
+|  66.225.218.143 | United States |                   | SERVERCENTRAL               |                                      |
+| 69.16.175.42    | United States |                   | STACKPATH-CDN               | Bttrack                              |
+| 69.147.65.251   | United States |                   | YAHOO-CHA                   | VerizonAds                           |
+| 69.147.65.252   | United States |                   | YAHOO-CHA                   | VerizonAds                           |
+|  69.173.144.153 | Germany       | Frankfurt am Main | RUBICONPROJECT              | Magnite.com Formerly Project Rubicon |
+| 74.6.138.192    | United States | Lockport          | YAHOO-BF1                   | Yahoo Ad Manager                     |
+| 104.16.148.64   |               |                   | CLOUDFLARENET               | CookieLaw                            |
+| 104.18.41.98    |               |                   | CLOUDFLARENET               | OneTrust:privacy, geolocation        |
+| 107.178.251.134 | United States | Kansas City       | GOOGLE                      |                                      |
+| 116.202.116.222 | Germany       |                   | Hetzner Online GmbH         | lm5v                                 |
+| 142.250.65.98   | United States |                   | GOOGLE                      | Google Doubleclick                   |
+| 142.250.65.99   | United States |                   | GOOGLE                      | Google Statis Ads                    |
+| 142.250.65.142  | United States |                   | GOOGLE                      | Google Analytics                     |
+| 142.250.115.188 | United States |                   | GOOGLE                      |                                      |
+| 142.251.33.234  | United States |                   | GOOGLE                      |                                      |
+| 142.251.34.13   | United States |                   | GOOGLE                      | Google Accounts                      |
+| 142.251.34.34   | United States |                   | GOOGLE                      | Google ads                           |
+| 142.251.34.130  | United States |                   | GOOGLE                      |                                      |
+| 142.251.34.131  | United States |                   | GOOGLE                      | Google statics                       |
+| 142.251.34.138  | United States |                   | GOOGLE                      |                                      |
+| 142.251.34.170  | United States |                   | GOOGLE                      | Googleapis                           |
+| 142.251.34.173  | United States |                   | GOOGLE                      | Google Accounts                      |
+| 142.251.34.200  | United States |                   | GOOGLE                      | Google TagManager                    |
+| 142.251.34.226  | United States |                   | GOOGLE                      |                                      |
+| 142.251.34.228  | United States |                   | GOOGLE                      | Google.com                           |
+| 142.251.34.234  | United States |                   | GOOGLE                      | Googleapis                           |
+| 142.251.116.156 | United States |                   | GOOGLE                      | Doubleclick                          |
+| 151.101.0.84    | United States |                   | FASTLY                      | Braze/Pinterest                      |
+| 151.101.1.208   | United States |                   | FASTLY                      | Braze                                |
+| 151.139.128.11  | United States |                   | STACKPATH-CDN               | tpbid.com                            |
+| 152.195.55.192  | United States |                   | EDGECAST                    |                                      |
+| 157.240.19.19   | United States | Dallas            | FACEBOOK                    |                                      |
+| 157.240.19.35   | United States | Dallas            | FACEBOOK                    |                                      |
+| 157.240.25.1    | Mexico        | Querétaro City    | FACEBOOK                    |                                      |
+| 157.240.25.13   | Mexico        | Querétaro City    | FACEBOOK                    |                                      |
+| 162.159.136.44  |               |                   | CLOUDFLARENET               | picsart                              |
+| 162.159.137.44  |               |                   | CLOUDFLARENET               | picsart                              |
+| 172.217.2.131   | United States |                   | GOOGLE                      | Google.com.mx                        |
+| 172.217.2.138   | United States |                   | GOOGLE                      |                                      |
+| 172.217.2.142   | United States |                   | GOOGLE                      | play-fe.googleapis.com               |
+| 172.217.3.130   | United States |                   | GOOGLE                      | pagead2.googlesyndication.com        |
+| 172.217.15.3    | United States |                   | GOOGLE                      | beacons.gvt2.com                     |
+| 172.217.15.19   | United States |                   | GOOGLE                      | googlehosted.com                     |
+| 185.151.204.51  | United States |                   | Adjust GmbH                 | Applovin                             |
+| 189.247.217.163 | Mexico        |                   | Akamai International B.V.   | Appsflyer                            |
+| 192.132.33.46   | United States |                   | BIDTELLECT                  | Bttrack                              |
+| 199.232.210.110 | United States |                   | FASTLY                      |                                      |
+| 205.185.216.10  | United States |                   | STACKPATH-CDN               | inmobi/Highwinds                     |
+| 205.185.216.42  | United States |                   | STACKPATH-CDN               | Inmobi/Highwinds                     |
+| 216.239.36.54   | United States |                   | GOOGLE                      | Google Drive Functions               |
+| 216.239.38.178  | United States |                   | GOOGLE                      | Google Analytics                     |
 
-| Dirección IP    | Número de Paquetes | País          | Ciudad/Zona | Organización AS       |
-|-----------------|--------------------|---------------|-------------|-----------------------|
-| 52.36.74.154    |                 25 | United States | Boardman    | AMAZON-02             |
-| 52.38.74.42     |                  6 | United States | Boardman    | AMAZON-02             |
-| 52.88.155.1     |                 22 | United States | Boardman    | AMAZON-02             |
-| 52.89.181.193   |                 19 | United States | Boardman    | AMAZON-02             |
-| 104.110.129.127 |                 25 | United States | Los Angeles | AKAMAI-AS             |
-| 142.250.72.138  |                 20 | United States |             | GOOGLE                |
-| 142.250.101.188 |                  8 | United States |             | GOOGLE                |
-| 142.250.188.227 |                 15 | United States |             | GOOGLE                |
-| 142.250.189.10  |                 38 | United States |             | GOOGLE                |
-| 142.250.207.67  |                 27 | United States |             | GOOGLE                |
-| 142.250.217.138 |                 44 | United States |             | GOOGLE                |
-| 172.217.14.78   |               2809 | United States |             | GOOGLE                |
-| 172.217.14.110  |                 13 | United States |             | GOOGLE                |
+
 
 
 ### Mapa de conexiones realizadas durante el uso de la aplicación
@@ -247,7 +356,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 
 ### Otros datos recolectados:
 
-*Datos extras recolectados. Descripción de los datos recolectados y su relación con las empresas. Por ejemplo: dónde está guardada la aplicación, tal cuál servidor para qué sriven, etc.* 
+
 
 
 ## Funciones particulares de la aplicación:
