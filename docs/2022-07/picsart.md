@@ -485,6 +485,8 @@ Otros archivos de audio|Funciones de la app|
         - Google Crashlytics
         - Facebook
     - :bangbang:Servicios de terceros para marketing o publicidad (léase trackers).
+
+    El ícono :bangbang: denota, lo que creemos que es algo importante a tomar en cuenta sobre la privacidad del usuario.
         
 
 
