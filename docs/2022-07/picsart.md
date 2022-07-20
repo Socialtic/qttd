@@ -112,27 +112,27 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/en/reports/269334/) de
 **Es importante recalcar que los datos a los que puede acceder la aplicación son deducidos del análisis estático de la App. Además, muchos de estos procesos pueden estar ofuscados, de tal manera que no podemos saber a quién corresponde dicho proceso. De ahí que lo más probable es esta información esté incompleta**
 
 ## Empresas relacionadas con esta aplicación:
-- AppLovin Corporation, Adjust
-- AppsFlyer.Inc
-- Branch
-- Braze
+- [AppLovin Corporation](https://www.applovin.com/) 
+- [AppsFlyer.Inc](https://www.appsflyer.com/)
+- [Branch](https://branch.io/))
+- [Braze](https://www.braze.com/)
 - [SmartBear](https://smartbear.com/company/about-us/) --> Bugsnag
-- Facebook
+- [Meta](https://about.facebook.com/ltam/meta/) --> Facebook
 - [Digital Turbine](https://www.digitalturbine.com/about/), [Appreciate](https://appreciate.mobi/)(DSP) --> Fyber
-- Google
+- [Google] (https://about.google/intl/ALL_mx/) --> [Alphabet](https://abc.xyz/)
 - [IAB Tech Lab](https://iabtechlab.com/) --> IAB OpenMeasurement
-- [Inmobi](https://www.inmobi.com/)
-- [VK](https://vk.company/en/company/about/) --> myTarget. VK es además una red social basada en Rusia. 
+- [Inmobi](https://www.inmobi.com/) - Publicidad
+- [VK](https://vk.company/en/company/about/) --> myTarget. VK es además una [red social](https://vk.com/about) basada en Rusia. 
 - [Media Games Invest](https://mgi.group/) dueña de [Verve Group](https://verve.com/) --> Smaato
 - [Apollo Global Management](https://www.apollo.com/) dueño de [Yahoo Inc.](https://www.yahooinc.com/) que fue comprada y vendida por Verizon, empresa que todavía tiene un porcentaje accionario --> Verizon Ads
 - [Liftoff.io/Vungle](https://liftoff.io/company/about-us/)
-- Cloudflare - Data Storage
-- HighWinds - CDN
-- Amazon - Data Storage
-- Microsoft - Data Storage 
-- Akamai - CDN
-- Fastly - CDN
-- Stackpath - CDN
+- [Cloudflare](https://www.cloudflare.com/es-es/) - Data Storage
+- [HighWinds](https://www.cdnoverview.com/cdn/highwinds/) - CDN
+- [Amazon](https://www.aboutamazon.com/) - Data Storage
+- [Microsoft](hhttps://www.microsoft.com/es-mx/about) - Data Storage 
+- [Akamai](https://www.akamai.com/es) - CDN
+- [Fastly](https://www.fastly.com/es/) - CDN
+- [Stackpath](https://www.stackpath.com/) - CDN
 - [Edg.io](https://edg.io/) - CDN (Antes era de Verizon, luego de Yahoo, y luego fue comprado por Limelight)
 - [Bidswitch](https://www.bidswitch.com/) - DSP
 - [Impact](https://impact.com/) - Partner solutions
@@ -141,23 +141,22 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/en/reports/269334/) de
 - [Magnite](https://www.magnite.com/) - SSP
 - [OneTrust](https://www.onetrust.com/) - Privacy
 - [Hetzner](https://www.hetzner.com/) - Data Storage
-- LoopMe(https://loopme.com/about/) - DSP
+- [LoopMe](https://loopme.com/about/) - DSP
 
-Servicios que puede conectar el usuario:
-- Google
-- Facebook
-- Instagram
-- Dropbox 
-- Youtube 
-- Facebook Messenger 
-- Snapchat 
-- LINE 
-- WeChat  
-- QQ 
-- TikTok 
-- VK 
-- Color (picsart) 
-- KAKAO
+### Provedores de servicios de terceros para pagos, identificación y redes sociales:
+- [Google] (https://about.google/intl/ALL_mx/) --> Alphabet
+- [Youtube](https://about.youtube/) --> Alphabet
+- [Instagram](https://instagram.com) --> Meta
+- [Facebook](https://facebook.com) --> Meta
+- [Facebook Messenger](https://www.messenger.com/) --> Meta
+- [Dropbox](https://www.dropbox.com/es/about) 
+- [Snapchat](https://www.snapchat.com/es-MX) 
+- [LINE](https://line.me/en/) - Mensajería (Revisar [Line Corporation](https://en.wikipedia.org/wiki/Line_Corporation))
+- [WeChat](https://www.wechat.com/es/) --> [Tencent](https://www.tencent.com/en-us/)  
+- [QQ](https://im.qq.com/index) --> [Tencent](https://www.tencent.com/en-us/) 
+- [TikTok](https://www.tiktok.com/about?lang=es) --> [ByteDance](https://www.bytedance.com/en/)
+- [VK](https://vk.com/about) 
+- [KAKAO](https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=en) --> [KAKAO Corporation](https://www.kakaocorp.com/page/) 
 
 
 
@@ -387,7 +386,7 @@ El icono :exclamation: indica un nivel 'Peligroso' o 'Especial' de acuerdo a los
 | 216.239.36.54   | United States |                   | GOOGLE                      |                |
 | 216.239.38.178  | United States |                   | GOOGLE                      |                      |
 
-
+**Pudimos conocer para qué se usan muchos de los servidores porque esta aplicación no tiene implementado el protoclo TLS over DNS, que normalmente cifra las llamadas que se hacen al servidor DNS**
 
 
 ### Mapa de conexiones realizadas durante el uso de la aplicación

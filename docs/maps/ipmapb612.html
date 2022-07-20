@@ -1,0 +1,2625 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<title>Wireshark: IP Location Map</title>
+<link rel="stylesheet" href="file:///usr/share/javascript/leaflet/leaflet.css">
+<link rel="stylesheet" href="file:///usr/share/javascript/leaflet/MarkerCluster.Default.css">
+<link rel="stylesheet" href="file:///usr/share/javascript/leaflet/MarkerCluster.css">
+<!--
+<link rel="stylesheet" href="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.css"
+    integrity="sha512-wgiKVjb46JxgnGNL6xagIy2+vpqLQmmHH7fWD/BnPzouddSmbRTf6xatWIRbH2Rgr2F+tLtCZKbxnhm5Xz0BcA=="
+    crossorigin="">
+-->
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+#map {
+    height: 100%;
+}
+.file-picker-enabled #map, #file-picker-container {
+    display: none;
+}
+.file-picker-enabled #file-picker-container {
+    display: block;
+    margin: 2em;
+}
+.range-control {
+    padding: 3px 5px;
+    color: #333;
+    background: #fff;
+    opacity: .5;
+}
+.range-control:hover { opacity: 1; }
+.range-control-label { padding-right: 3px; }
+.range-control-input { padding: 0; width: 130px; }
+.range-control-input, .range-control-label { vertical-align: middle; }
+</style>
+<script src="file:///usr/share/javascript/leaflet/leaflet.js"></script>
+<script src="file:///usr/share/javascript/leaflet/leaflet.markercluster.js"></script>
+<!--
+<script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"
+    integrity="sha512-ovh6EqS7MUI3QjLWBM7CY8Gu8cSM5x6vQofUMwKGbHVDPSAS2lmNv6Wq5es5WCz1muyojQxcc8rA3CvVjD2Z+A=="
+    crossorigin=""></script>
+-->
+<script>
+var map;
+
+function sortIpKey(v) {
+    if (/\./.test(v)) {
+        // Assume IPv4. Convert 192.0.2.34 -> 192.000.002.034 for alpha sort.
+        return v.replace(/\b\d\b/g, '00$&').replace(/\b\d{2}\b/g, '0$&');
+    } else {
+        // Assume IPv6. We won't handle :: correctly. Hope for the best.
+        return v;
+    }
+}
+
+function escapeHtml(text) {
+    if (!text) return '';
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function sanitizeHtml(text) {
+    // Handle legacy data containing <div class="geoip_property">...</div>
+    // (since Wireshark 2.0) or <br/> (before v1.99.0-rc1-1781-g7e63805708).
+    text = text
+        .replace(/<div[^>]*>/g, '')
+        .replace(/<\/div>|<br\/>/g, '\n')
+        .replace(/&#39;/g, "'");
+    return escapeHtml(text).replace(/\n/g, '<br>');
+}
+
+var RangeControl = L.Control.extend({
+    options: {
+        // @option label: String = 'Speed:'
+        // The HTML text to be displayed next to the slider.
+        label: '',
+        title: '',
+
+        min: 0,
+        max: 100,
+        value: 0,
+
+        // @option onChange: Function = *
+        // A `Function` that is called on slider value changes.
+        // Called with two arguments, the new and previous range value.
+    },
+    onAdd: function(map) {
+        var className = 'range-control';
+        var container = L.DomUtil.create('div', className + ' leaflet-bar');
+        L.DomEvent.disableClickPropagation(container);
+        var label = L.DomUtil.create('label', className + '-label', container);
+        var labelText = L.DomUtil.create('span', className + '-label', label);
+        labelText.title = this.options.title;
+        labelText.innerHTML = this.options.label;
+        var input = L.DomUtil.create('input', className + '-input', label);
+        this._input = input;
+        input.type = 'range';
+        input.min = this.options.min;
+        input.max = this.options.max;
+        this._lastValue = input.valueAsNumber = this.options.value;
+        L.DomEvent.on(input, 'change', this._onInputChange, this);
+        return container;
+    },
+    _onInputChange: function(ev) {
+        var value = this._input.valueAsNumber;
+        if (value !== this._lastValue) {
+            if (this.options.onChange) {
+                this.options.onChange(value, this._lastValue);
+            }
+            this._lastValue = value;
+        }
+    }
+});
+
+var rangeControl = function(options) {
+    return new RangeControl(options);
+};
+
+function loadGeoJSON(obj) {
+    'use strict';
+    if (map) map.remove();
+    map = L.map('map');
+    var tileServer = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    L.tileLayer(tileServer, {
+        minZoom: 2,
+        maxZoom: 16,
+        subdomains: 'abcd',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+    L.control.scale().addTo(map);
+
+    // Measurement tool, useful for investigating accuracy-related issues.
+    if (L.control.measure) {
+        L.control.measure({
+            primaryLengthUnit: 'kilometers',
+            secondaryLengthUnit: 'miles'
+        }).addTo(map);
+    }
+
+    var geoJson = L.geoJSON(obj, {
+        pointToLayer: function(feature, latlng) {
+            // MaxMind databases use km for accuracy, but they always use
+            // 50, 100, 200 or 1000. That is too course, so ignore it and use a
+            // fixed 1km radius.
+            // See https://gitlab.com/wireshark/wireshark/-/issues/14693#note_400735005
+            return L.circle(latlng, {radius: 1e3});
+        },
+        onEachFeature: function(feature, layer) {
+            var props = feature.properties;
+            var title, lines = [];
+            if (props.title && props.description) {
+                title = escapeHtml(props.title);
+                lines.push(sanitizeHtml(props.description));
+            } else {
+                title = escapeHtml(props.ip);
+                if (props.autonomous_system_number) {
+                    var line = 'AS: ' + props.autonomous_system_number;
+                    line += ' (' + props.autonomous_system_organization + ')';
+                    lines.push(escapeHtml(line));
+                }
+                if (props.city) {
+                    lines.push(escapeHtml('City: ' + props.city));
+                }
+                if (props.country) {
+                    lines.push(escapeHtml('Country: ' + props.country));
+                }
+                if ('packets' in props) {
+                    lines.push(escapeHtml('Packets: ' + props.packets));
+                }
+                if ('bytes' in props) {
+                    lines.push(escapeHtml('Bytes: ' + props.bytes));
+                }
+            }
+            if (title) {
+                layer.bindTooltip(title, {
+                    offset: [10, 0],
+                    direction: 'right',
+                    sticky: true
+                });
+            }
+            if (title && lines.length) {
+                layer.bindPopup('<b>' + title + '</b><br>' + lines.join('<br>'));
+            }
+        }
+    });
+
+    map.on('zoomend', function() {
+        // Ensure that the circles are clearly visible even when zoomed out.
+        // Larger values will increase the size of the circle.
+        var visibleZoomLevel = 9;
+        var radius = 1e3;
+        if (map.getZoom() < visibleZoomLevel) {
+            // Enlarge radius to ensure it is easy to select.
+            radius *= map.getZoomScale(visibleZoomLevel, map.getZoom());
+        }
+        geoJson.eachLayer(function(layer) {
+            layer.setRadius(radius);
+        });
+    });
+
+    // Cluster nearby/overlapping nodes by default.
+    var clusterGroup = L.markerClusterGroup({
+        zoomToBoundsOnClick: false,
+        spiderfyOnMaxZoom: false,
+        maxClusterRadius: 10
+    });
+    clusterGroup.addTo(map).addLayer(geoJson);
+    map.fitWorld().fitBounds(clusterGroup.getBounds());
+
+    // Summarize nodes within the cluster.
+    clusterGroup.on('clustermouseover', function(ev) {
+        // More addresses will be stripped.
+        var cutoff = 30;
+        var cluster = ev.propagatedFrom;
+        var addresses = cluster.getAllChildMarkers().map(function(marker) {
+            return marker.getTooltip().getContent();
+        });
+        addresses.sort(function(a, b) {
+            a = sortIpKey(a);
+            b = sortIpKey(b);
+            return a === b ? 0 : (a < b ? -1 : 1);
+        });
+        var deleted = addresses.splice(cutoff).length;
+        var title = addresses.join('<br>');
+        if (deleted) {
+            title += '<br>(and ' + deleted + ' more)';
+        }
+        cluster.bindTooltip(title, {
+            offset: [10, 0],
+            direction: 'right',
+            sticky: true,
+            opacity: 0.8
+        }).openTooltip();
+    }).on('clustermouseout', function(ev) {
+        ev.propagatedFrom.unbindTooltip();
+    }).on('clusterclick', function(ev) {
+        ev.propagatedFrom.spiderfy();
+    });
+
+    // Provide an option to disable clustering
+    rangeControl({
+        label: 'Cluster radius:',
+        title: 'Control merging of nearby nodes. Set to the minimum to disable merges.',
+        min: 0,
+        max: 100,
+        value: clusterGroup.options.maxClusterRadius,
+        onChange: function(value, oldValue) {
+            // Apply new radius: remove map, clear markers and finally add new.
+            clusterGroup.options.maxClusterRadius = value;
+            clusterGroup.remove().clearLayers().addTo(map);
+            // Value 0: clustering is disabled, the map is directly used.
+            geoJson.remove().addTo(value === 0 ? map : clusterGroup);
+        }
+    }).addTo(map);
+}
+
+function showError(msg) {
+    document.getElementById('error-message').textContent = msg;
+    document.body.classList.add('file-picker-enabled');
+}
+
+function loadData(data) {
+    'use strict';
+    var html_match, what, error;
+    var reOldHtml = /^ *var endpoints = (\{[\s\S]+? *\});$/m;
+    // Complicated regex to support html-minifier.
+    var reNewHtml = /<script[^>]+id="?ipmap-data"?(?: [^>]*)?>\s*(\{[\S\s]+?\})\s*<\/script>/;
+    if ((html_match = reNewHtml.exec(data))) {
+        // Match new ipmap.html file.
+        what = 'new ipmap.html';
+        data = html_match[1];
+    } else if ((html_match = reOldHtml.exec(data))) {
+        // Match old ipmap.html file
+        what = 'old ipmap.html';
+        var text = html_match[1].replace(/'/g, '"');
+        text = text.replace(/ class="geoip_property"/g, '');
+        data = text.replace(/\/\/ Start endpoint list.*/, '');
+    } else if (/^\s*\{[\s\S]+\}\s*$/.test(data)) {
+        // Assume GeoJSON (.json) file.
+        what = 'GeoJSON file';
+    } else {
+        what = 'unknown file';
+        error = 'Unrecognized file contents';
+    }
+    if (!error) {
+        try {
+            loadGeoJSON(JSON.parse(data));
+            return true;
+        } catch (e) {
+            error = e;
+        }
+    }
+    var msg = 'Failed to load map data from ' + what + ': ' + error;
+    msg += '; data was: ' + data.substring(0, 120);
+    if (data.length > 100) msg += '... (' + data.length + ' bytes)';
+    showError(msg);
+}
+
+(function() {
+    'use strict';
+    function loadFromUrl(url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function() {
+            if (xhr.status !== 200) {
+                showError('Failed to retrieve ' + url + ': ' + xhr.status + ' ' + xhr.statusText);
+                return;
+            }
+            loadData(xhr.responseText);
+        };
+        xhr.onerror = function() {
+            showError('Failed to retrieve ' + url + ': ' + xhr.status + ' ' + xhr.statusText);
+        };
+        xhr.send(null);
+    }
+
+    addEventListener('load', function() {
+        // Note: FileReader and classList do not work with IE9 or older.
+        var fileSelector = document.getElementById('file-picker');
+        fileSelector.addEventListener('change', function() {
+            if (!fileSelector.files.length) {
+                return;
+            }
+            document.body.classList.remove('file-picker-enabled');
+            var reader = new FileReader();
+            reader.onload = function() {
+                if (!loadData(reader.result)) {
+                    document.body.classList.add('file-picker-enabled');
+                }
+            };
+            reader.onerror = function() {
+                showError('Failed to read file.');
+            };
+            reader.readAsText(fileSelector.files[0]);
+        });
+
+        // Force file picker when the "file" URL is given.
+        var url = location.search.match(/[?&]url=([^&]*)/);
+        if (url) {
+            url = decodeURIComponent(url[1]);
+            if (url) {
+                loadFromUrl(url);
+            } else {
+                showError('');
+            }
+            return;
+        }
+
+        var data = document.getElementById('ipmap-data');
+        if (data) {
+            loadData(data.textContent);
+        } else {
+            showError('');
+        }
+    });
+}());
+</script>
+<div id="file-picker-container">
+<label>Select an ipmap.html or GeoJSON .json file as created by Wireshark.<br>
+<input type="file" id="file-picker" accept=".json,.html"></label>
+<p id="error-message"></p>
+</div>
+<div id="map"></div>
+<!--
+    Wireshark will append a script tag (id="ipmap-data" type="application/json")
+    below, containing a GeoJSON object. If missing, then a file picker will be
+    displayed which can be useful during development.
+-->
+<script id="ipmap-data" type="application/json">
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "8.8.4.4",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 1691,
+        "bytes": 396826
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "13.110.28.10",
+        "autonomous_system_number": 14340,
+        "autonomous_system_organization": "SALESFORCE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 46,
+        "bytes": 36849
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.68989999999999,
+          35.689300000000003
+        ]
+      },
+      "properties": {
+        "ip": "18.182.170.114",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "city": "Tokyo",
+        "country": "Japan",
+        "radius": 1000,
+        "packets": 62,
+        "bytes": 14134
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.854500000000002,
+          37.927300000000002
+        ]
+      },
+      "properties": {
+        "ip": "20.232.76.225",
+        "autonomous_system_number": 8075,
+        "autonomous_system_organization": "MICROSOFT-CORP-MSN-AS-BLOCK",
+        "city": "Tappahannock",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 76,
+        "bytes": 20818
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "23.76.138.99",
+        "autonomous_system_number": 16625,
+        "autonomous_system_organization": "AKAMAI-AS",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 1014,
+        "bytes": 1086177
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "23.200.40.209",
+        "autonomous_system_number": 20940,
+        "autonomous_system_organization": "Akamai International B.V.",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 309,
+        "bytes": 182565
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "23.208.100.38",
+        "autonomous_system_number": 16625,
+        "autonomous_system_organization": "AKAMAI-AS",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 73,
+        "bytes": 20127
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "23.208.104.208",
+        "autonomous_system_number": 16625,
+        "autonomous_system_organization": "AKAMAI-AS",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 30,
+        "bytes": 7887
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "23.212.174.162",
+        "autonomous_system_number": 16625,
+        "autonomous_system_organization": "AKAMAI-AS",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 25,
+        "bytes": 7642
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.3879,
+          20.587900000000001
+        ]
+      },
+      "properties": {
+        "ip": "31.13.89.19",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Querétaro City",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 109,
+        "bytes": 31967
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.3879,
+          20.587900000000001
+        ]
+      },
+      "properties": {
+        "ip": "31.13.89.26",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Querétaro City",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 585,
+        "bytes": 469941
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.3879,
+          20.587900000000001
+        ]
+      },
+      "properties": {
+        "ip": "31.13.89.35",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Querétaro City",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 68,
+        "bytes": 23920
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.3879,
+          20.587900000000001
+        ]
+      },
+      "properties": {
+        "ip": "31.13.89.63",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Querétaro City",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 2840,
+        "bytes": 3169485
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.3879,
+          20.587900000000001
+        ]
+      },
+      "properties": {
+        "ip": "31.13.89.174",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Querétaro City",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 304,
+        "bytes": 153264
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.797700000000006,
+          32.776899999999998
+        ]
+      },
+      "properties": {
+        "ip": "31.13.93.35",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Dallas",
+        "country": "United States",
+        "radius": 20,
+        "packets": 180,
+        "bytes": 61031
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.577799999999996,
+          39.102699999999999
+        ]
+      },
+      "properties": {
+        "ip": "34.96.102.137",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "city": "Kansas City",
+        "country": "United States",
+        "radius": 20,
+        "packets": 200,
+        "bytes": 125983
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.577799999999996,
+          39.102699999999999
+        ]
+      },
+      "properties": {
+        "ip": "35.186.218.215",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "city": "Kansas City",
+        "country": "United States",
+        "radius": 20,
+        "packets": 27,
+        "bytes": 9583
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.577799999999996,
+          39.102699999999999
+        ]
+      },
+      "properties": {
+        "ip": "35.227.198.107",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "city": "Kansas City",
+        "country": "United States",
+        "radius": 20,
+        "packets": 28,
+        "bytes": 8090
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.248099999999994,
+          38.658299999999997
+        ]
+      },
+      "properties": {
+        "ip": "47.252.28.90",
+        "autonomous_system_number": 45102,
+        "autonomous_system_organization": "Alibaba US Technology Co., Ltd.",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 43,
+        "bytes": 16337
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.248099999999994,
+          38.658299999999997
+        ]
+      },
+      "properties": {
+        "ip": "47.253.7.77",
+        "autonomous_system_number": 45102,
+        "autonomous_system_organization": "Alibaba US Technology Co., Ltd.",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 72,
+        "bytes": 22874
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.7257,
+          45.823399999999999
+        ]
+      },
+      "properties": {
+        "ip": "52.218.137.59",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "city": "Boardman",
+        "country": "United States",
+        "radius": 20,
+        "packets": 228,
+        "bytes": 135920
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.490300000000005,
+          39.046900000000001
+        ]
+      },
+      "properties": {
+        "ip": "54.208.111.182",
+        "autonomous_system_number": 14618,
+        "autonomous_system_organization": "AMAZON-AES",
+        "city": "Ashburn",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 48,
+        "bytes": 17818
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.14",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 108,
+        "bytes": 35409
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.17",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 72,
+        "bytes": 29896
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.21",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 28,
+        "bytes": 10644
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.29",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 35,
+        "bytes": 14071
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.33",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 33,
+        "bytes": 9576
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.37",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 28,
+        "bytes": 9484
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.43",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 122,
+        "bytes": 48478
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.56",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 101,
+        "bytes": 30821
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.57",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 31,
+        "bytes": 9198
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.61",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 16,
+        "bytes": 7331
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.63",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 25,
+        "bytes": 11198
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.66",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 62,
+        "bytes": 23179
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.91",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 124,
+        "bytes": 104810
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.116",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 34,
+        "bytes": 10611
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.149.124",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 394,
+        "bytes": 310784
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "65.9.156.31",
+        "autonomous_system_number": 16509,
+        "autonomous_system_organization": "AMAZON-02",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 46,
+        "bytes": 31091
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "69.16.175.10",
+        "autonomous_system_number": 20446,
+        "autonomous_system_organization": "STACKPATH-CDN",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 71,
+        "bytes": 46419
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "69.192.113.120",
+        "autonomous_system_number": 16625,
+        "autonomous_system_organization": "AKAMAI-AS",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 106,
+        "bytes": 76476
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "74.119.118.149",
+        "autonomous_system_number": 19750,
+        "autonomous_system_organization": "AS-CRITEO",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 36,
+        "bytes": 13661
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "74.119.118.155",
+        "autonomous_system_number": 19750,
+        "autonomous_system_organization": "AS-CRITEO",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 58,
+        "bytes": 26536
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "104.26.1.109",
+        "autonomous_system_number": 13335,
+        "autonomous_system_organization": "CLOUDFLARENET",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 12,
+        "bytes": 3863
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.577799999999996,
+          39.102699999999999
+        ]
+      },
+      "properties": {
+        "ip": "107.178.251.134",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "city": "Kansas City",
+        "country": "United States",
+        "radius": 20,
+        "packets": 51,
+        "bytes": 16444
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.106",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 142,
+        "bytes": 40937
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.110",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 206,
+        "bytes": 121319
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.129",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 135,
+        "bytes": 73178
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.130",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 77,
+        "bytes": 38337
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.131",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 20,
+        "bytes": 11015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.138",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 24,
+        "bytes": 5111
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.65.142",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 49,
+        "bytes": 34422
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.114.155",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 62,
+        "bytes": 19501
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.250.114.188",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 18,
+        "bytes": 1404
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.33.226",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 59,
+        "bytes": 41138
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.33.227",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 28,
+        "bytes": 8016
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.2",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 57,
+        "bytes": 23202
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.42",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 89,
+        "bytes": 71018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.46",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 34,
+        "bytes": 24293
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.129",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 76,
+        "bytes": 50375
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.130",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 505,
+        "bytes": 344108
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.131",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 34,
+        "bytes": 9441
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.142",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 98,
+        "bytes": 35273
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.162",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 91,
+        "bytes": 50581
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.164",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 73,
+        "bytes": 22250
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.174",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 34,
+        "bytes": 11538
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.194",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 34,
+        "bytes": 10446
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.195",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 33,
+        "bytes": 8508
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.196",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 24,
+        "bytes": 4001
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.206",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 59,
+        "bytes": 20148
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.226",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 46,
+        "bytes": 17015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.227",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 38,
+        "bytes": 21945
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.34.234",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 55,
+        "bytes": 19912
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.35.2",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 78,
+        "bytes": 34385
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "142.251.35.3",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 19,
+        "bytes": 2964
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.68950000000001,
+          35.689700000000002
+        ]
+      },
+      "properties": {
+        "ip": "147.92.184.222",
+        "autonomous_system_number": 38631,
+        "autonomous_system_organization": "LINE Corporation",
+        "country": "Japan",
+        "radius": 500,
+        "packets": 21,
+        "bytes": 7070
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.68950000000001,
+          35.689700000000002
+        ]
+      },
+      "properties": {
+        "ip": "147.92.191.184",
+        "autonomous_system_number": 38631,
+        "autonomous_system_organization": "LINE Corporation",
+        "country": "Japan",
+        "radius": 500,
+        "packets": 29,
+        "bytes": 13638
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.797700000000006,
+          32.776899999999998
+        ]
+      },
+      "properties": {
+        "ip": "157.240.19.35",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Dallas",
+        "country": "United States",
+        "radius": 20,
+        "packets": 31,
+        "bytes": 11787
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.797700000000006,
+          32.776899999999998
+        ]
+      },
+      "properties": {
+        "ip": "157.240.19.63",
+        "autonomous_system_number": 32934,
+        "autonomous_system_organization": "FACEBOOK",
+        "city": "Dallas",
+        "country": "United States",
+        "radius": 20,
+        "packets": 188,
+        "bytes": 60230
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.62569999999999,
+          10.821999999999999
+        ]
+      },
+      "properties": {
+        "ip": "162.62.82.90",
+        "autonomous_system_number": 132203,
+        "autonomous_system_organization": "Tencent Building, Kejizhongyi Avenue",
+        "city": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "radius": 20,
+        "packets": 318,
+        "bytes": 111904
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.62569999999999,
+          10.821999999999999
+        ]
+      },
+      "properties": {
+        "ip": "162.62.82.193",
+        "autonomous_system_number": 132203,
+        "autonomous_system_organization": "Tencent Building, Kejizhongyi Avenue",
+        "city": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "radius": 20,
+        "packets": 291,
+        "bytes": 80573
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.2.142",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 141,
+        "bytes": 89230
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.3.130",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 79,
+        "bytes": 53220
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.3.138",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 44,
+        "bytes": 10894
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.3.142",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 24,
+        "bytes": 11641
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.15.2",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 66,
+        "bytes": 20924
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.15.8",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 637,
+        "bytes": 626738
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "172.217.15.14",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 240,
+        "bytes": 121207
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "175.158.0.169",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 109,
+        "bytes": 33890
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.849999999999994,
+          20.850000000000001
+        ]
+      },
+      "properties": {
+        "ip": "184.28.210.184",
+        "autonomous_system_number": 16625,
+        "autonomous_system_organization": "AKAMAI-AS",
+        "city": "Querétaro",
+        "country": "Mexico",
+        "radius": 20,
+        "packets": 119,
+        "bytes": 69780
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.0564,
+          55.712299999999999
+        ]
+      },
+      "properties": {
+        "ip": "185.167.166.41",
+        "autonomous_system_number": 198622,
+        "autonomous_system_organization": "Adform A/S",
+        "country": "Denmark",
+        "radius": 200,
+        "packets": 61,
+        "bytes": 40510
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.036200000000001,
+          52.239400000000003
+        ]
+      },
+      "properties": {
+        "ip": "185.184.10.30",
+        "autonomous_system_number": 203690,
+        "autonomous_system_organization": "Rtb House S.A.",
+        "country": "Poland",
+        "radius": 200,
+        "packets": 58,
+        "bytes": 17585
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.011099999999999,
+          19.437100000000001
+        ]
+      },
+      "properties": {
+        "ip": "189.247.40.33",
+        "autonomous_system_number": 8151,
+        "autonomous_system_organization": "Uninet S.A. de C.V.",
+        "country": "Mexico",
+        "radius": 1000,
+        "packets": 36,
+        "bytes": 9174
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.011099999999999,
+          19.437100000000001
+        ]
+      },
+      "properties": {
+        "ip": "189.247.217.24",
+        "autonomous_system_number": 20940,
+        "autonomous_system_organization": "Akamai International B.V.",
+        "country": "Mexico",
+        "radius": 1000,
+        "packets": 33400,
+        "bytes": 39552907
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.011099999999999,
+          19.437100000000001
+        ]
+      },
+      "properties": {
+        "ip": "189.247.217.51",
+        "autonomous_system_number": 20940,
+        "autonomous_system_organization": "Akamai International B.V.",
+        "country": "Mexico",
+        "radius": 1000,
+        "packets": 94860,
+        "bytes": 108797586
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.011099999999999,
+          19.437100000000001
+        ]
+      },
+      "properties": {
+        "ip": "189.247.217.144",
+        "autonomous_system_number": 20940,
+        "autonomous_system_organization": "Akamai International B.V.",
+        "country": "Mexico",
+        "radius": 1000,
+        "packets": 371,
+        "bytes": 466310
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.011099999999999,
+          19.437100000000001
+        ]
+      },
+      "properties": {
+        "ip": "189.247.217.171",
+        "autonomous_system_number": 20940,
+        "autonomous_system_organization": "Akamai International B.V.",
+        "country": "Mexico",
+        "radius": 1000,
+        "packets": 3708,
+        "bytes": 4268199
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.011099999999999,
+          19.437100000000001
+        ]
+      },
+      "properties": {
+        "ip": "189.247.217.179",
+        "autonomous_system_number": 20940,
+        "autonomous_system_organization": "Akamai International B.V.",
+        "country": "Mexico",
+        "radius": 1000,
+        "packets": 4017,
+        "bytes": 4964264
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "199.232.210.110",
+        "autonomous_system_number": 54113,
+        "autonomous_system_organization": "FASTLY",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 78,
+        "bytes": 43368
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8014,
+          1.3673
+        ]
+      },
+      "properties": {
+        "ip": "203.104.166.47",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "Singapore",
+        "radius": 50,
+        "packets": 375,
+        "bytes": 134609
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8014,
+          1.3673
+        ]
+      },
+      "properties": {
+        "ip": "203.104.166.50",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "Singapore",
+        "radius": 50,
+        "packets": 734,
+        "bytes": 445309
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8014,
+          1.3673
+        ]
+      },
+      "properties": {
+        "ip": "203.104.167.129",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "Singapore",
+        "radius": 50,
+        "packets": 245,
+        "bytes": 119783
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "204.79.197.200",
+        "autonomous_system_number": 8068,
+        "autonomous_system_organization": "MICROSOFT-CORP-MSN-AS-BLOCK",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 48,
+        "bytes": 25891
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "205.185.216.42",
+        "autonomous_system_number": 20446,
+        "autonomous_system_organization": "STACKPATH-CDN",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 75,
+        "bytes": 32294
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "210.89.168.190",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 721,
+        "bytes": 192855
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "210.89.168.191",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 1473,
+        "bytes": 371280
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.244,
+          34.054400000000001
+        ]
+      },
+      "properties": {
+        "ip": "211.152.146.87",
+        "autonomous_system_number": 139341,
+        "autonomous_system_organization": "ACE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 72,
+        "bytes": 22181
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.244,
+          34.054400000000001
+        ]
+      },
+      "properties": {
+        "ip": "211.152.146.88",
+        "autonomous_system_number": 139341,
+        "autonomous_system_organization": "ACE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 63,
+        "bytes": 30334
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.244,
+          34.054400000000001
+        ]
+      },
+      "properties": {
+        "ip": "211.152.146.90",
+        "autonomous_system_number": 139341,
+        "autonomous_system_organization": "ACE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 3302,
+        "bytes": 3063564
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "216.58.195.228",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 55,
+        "bytes": 15739
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "216.58.195.234",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 45,
+        "bytes": 15933
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.822000000000003,
+          37.750999999999998
+        ]
+      },
+      "properties": {
+        "ip": "216.58.195.238",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 30,
+        "bytes": 13851
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.244,
+          34.054400000000001
+        ]
+      },
+      "properties": {
+        "ip": "216.239.34.181",
+        "autonomous_system_number": 15169,
+        "autonomous_system_organization": "GOOGLE",
+        "country": "United States",
+        "radius": 1000,
+        "packets": 34,
+        "bytes": 10893
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "223.130.192.59",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 501,
+        "bytes": 275384
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "223.130.192.64",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 210,
+        "bytes": 60717
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "223.130.192.207",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 288,
+        "bytes": 188422
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "223.130.194.13",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 110,
+        "bytes": 31060
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.97410000000001,
+          37.511200000000002
+        ]
+      },
+      "properties": {
+        "ip": "223.130.194.49",
+        "autonomous_system_number": 23576,
+        "autonomous_system_organization": "NAVER Cloud Corp.",
+        "country": "South Korea",
+        "radius": 200,
+        "packets": 278,
+        "bytes": 212641
+      }
+    }
+  ]
+}
+</script>
