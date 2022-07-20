@@ -158,6 +158,10 @@ Enlace al [reporte](https://reports.exodus-privacy.eu.org/en/reports/269334/) de
 - [VK](https://vk.com/about) 
 - [KAKAO](https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=en) --> [KAKAO Corporation](https://www.kakaocorp.com/page/) 
 
+### Dominios integrados al código de la app que no pertecen directamente a los trackers
+
+- https://weibo.com/
+- https://exoplayer.dev/
 
 
 ## Permisos   
@@ -435,7 +439,7 @@ Otros archivos de audio|Funciones de la app|
 |Diagnóstico|Estadísticas|
 |Dispositivo u otros ID|Funciones de la app, Estadísticas, Comunicaciones del desarrollador, Publicidad o marketing, Seguridad, cumplimiento y prevención de fraudes, Personalización y Administración de la cuenta|
 
-### Datos recopilados según la Política de privacidad y uso
+### Datos recopilados y uso según la Política de privacidad
 
 |Datos|Uso|
 |---|---|
@@ -501,9 +505,8 @@ Otros archivos de audio|Funciones de la app|
     - picsart.com (162.159.136.44)**Ver arriba**
     - pingma.qq.com (119.45.78.184)
     - picsartstage.com (198.105.215.206)
-- Dominios no contactados en el análisis dinámico pero que podrían ser de relevancia:
-    - api.weibo.com
-    - exoplayer.dev
+
+ 
 
 
 ## Conclusiones
@@ -511,7 +514,7 @@ Otros archivos de audio|Funciones de la app|
 - Siendo una red social, no debería sorprendernos que en el contexto de privacidad, esta app sea pésima. La relación que tiene con muchísimas empresas hace imposible rastrear exactamente quién tiene tus datos. Para los usuarios de esta aplicación y red, sólo podemos recomendar que tengan mucho cuidado con aquello que comparten y cómo lo comparten. Crear una cuenta con Google, Facebook, Instagram o Dropbox, por ejemplo, permite que Picsart y este otro servicio intercambien datos. Compartir las fotos hechas en esta aplicación mediante un servicios de tercero: Instagram, KAKAO, Snapchat u otros, también permite el intercambio de datos entre esas plataformas. Entre más plataformas utilice el usuario, más complejo se vuelve el manejo de los datos. En este sentido, recomendamos crear una cuenta con un email exclusivo para Picsart (o utilizar algún servicio como Firefox Relay o SimpleLogin). 
 - Como recomendación de seguridad, lo mejor es evitar tener activada la geolocalización del celular a la hora de hacer fotos para  que éstas no tengan esa información en sus metadatos.
 - Hay opciones de privacidad que permiten limitar el uso que hace picsart de los propios datos. 
-- En egenral la política de privacidad es muy clara, concisa y no es muy extensa. Recomendamos al usuario leerla detenidamente.
+- En geenral la política de privacidad es muy clara, concisa y no es muy extensa. Recomendamos al usuario leerla detenidamente.
 - No hay fallas de seguridad que no encontremos en otras aplicaciones.
 - El número de trackers es muy elevado en comparación de apps similares.
 
